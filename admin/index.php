@@ -1,3 +1,14 @@
+
+<?php
+session_start();
+if(isset($_SESSION['dbpasscode'])){
+  if(  $_SESSION['dbpasscode'] != 'unsecure'){
+    header('Location:adminhomegal.php');
+}else{
+  echo "";
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

@@ -5,7 +5,7 @@ $name = $_POST['uname'];
 $decrypt = $_POST['pword'];
 $password = $_POST['pword'];
 include "../con.php";
-printf("uniqid(): %s\r\n", uniqid());
+
 $query = "SELECT * FROM admin_table WHERE name ='$name'";
 
 $result = $conn->query($query);
@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
 
   // $email = $row["email"];
 
-  
+
 } else {
 echo "0 results";
 
@@ -46,12 +46,12 @@ if($pass == $newencrypt){
   $_SESSION['dbpassalloc'] =$pass;
   $_SESSION['dbpasscode'] = 'secure';
 
- 
 
-header("Location: adminhome.php?pass=$pass");
+
+header("Location: adminhomegal.php?pass=$pass?hghgjyg");
 
 }else{
-  
-  header("Location:index.php?pass=$password");
+
+  header("Location:indexgal.php?pass=$password");
 }
  ?>

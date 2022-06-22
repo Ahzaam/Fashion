@@ -2,14 +2,13 @@
 session_start();
 
 if(  $_SESSION['dbpasscode'] == 'unsecure'){
-  header('Location:../home.php');
+  header('Location:../home.php?i=khfuewhfheawfbgyu');
 }
-
+// Ahzam is a good boy
 function check(){
   echo "Checking";
   echo "<pre>";
   echo print_r($_POST);
-  echo $_POST['submit'] . "/ mada fuckers " . $_FILES['my_image'];
   if(isset($_POST['submit']) && isset($_FILES['my_image'])){
 
     echo "hello ";
@@ -22,7 +21,7 @@ function check(){
     $error = $_FILES['my_image']['error'];
 
     if($error === 0){
-    
+
         $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
         $img_ex_lc = strtolower($img_ex);
         $allowed_exs = array("jpg", "jpeg", "png");
@@ -30,8 +29,8 @@ function check(){
 
         if(in_array($img_ex_lc, $allowed_exs)){ //
           $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-          $from_folder = 'Home/items/' . $new_img_name;
-          $img_upload_path = '../Home/items/' . $new_img_name;
+          $from_folder = 'media/' . $new_img_name;
+          $img_upload_path = '../media/' . $new_img_name;
           move_uploaded_file($tmp_name ,$img_upload_path);
           echo $tmp_name ." file moved to " . $img_upload_path;
           savedata($from_folder);
@@ -58,42 +57,18 @@ function check(){
 function savedata($img_path){
     include "../con.php";
 
-    $stmt = $conn->prepare("INSERT INTO home(name, type, price, discount, description, model,stock, image) VALUES( ?, ?, ?, ?, ?, ?, ?, ?)");
-    echo "INSERT INTO home(name, type, price, discount, description, model,stock, image) VALUES( ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt->bind_param('ssiissis', $_POST['name'], $_POST['type'], $_POST['price'], $_POST['discount'], $_POST['description'], $_POST['model'] ,$_POST['stock'], $img_path);
+    $stmt = $conn->prepare("INSERT INTO  product_table(id, name, description, price, size, colors, image, stock, status, display) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    echo "INSERT INTO  prduct_table(name, description, price, size, colors, image, stock, status, display) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt->bind_param('sssissssis',uniqid() ,$_POST['name'], $_POST['description'], $_POST['price'], $_POST['size'], $_POST['color'],  $img_path, $_POST['stock'], $_POST['status'], $_POST['display']);
     $stmt->execute();
     $em = "Upload Successful";
     echo "<h1> $em </h1>";
     $stmt->close();
     $conn->close();
-    header("Location:admin.php?error=$em&suc=1");
+    header("Location:adminadd.php?error=$em&suc=1");
 }
 //
-//
-  include "crypt.php";
-    $decrypt = 'mega123';
-    if(strlen($decrypt) < 16){
-      $cou = floor(16 / strlen($decrypt));
-      $remain = 16 - ($cou * strlen($decrypt));
-      $i = 0;
-      $remainstr = substr($remstr,0, $remain);
-      $newkey = "";
 
-      while($i < $cou){
-        $newkey = $newkey . $decrypt;
-        $i++;
-      }
-
-      $newkey = $newkey . $remainstr;
-
-    }else{
-      $newkey = substr($decrypt,0, 15);
-    }
-    $newencrypt = openssl_encrypt($decrypt, $ciphering ,  $encryption_iv, $options, $newkey);
-
-if($_SESSION['dbpassalloc'] == $newencrypt){
 check();
-}else{
-  header("Location:../home.php");
-}
+
  ?>
