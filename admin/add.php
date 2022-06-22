@@ -2,7 +2,7 @@
 session_start();
 
 if(  $_SESSION['dbpasscode'] == 'unsecure'){
-  header('Location:../home.php?i=khfuewhfheawfbgyu');
+  header('Location:../index.php?i=khfuewhfheawfbgyu');
 }
 // Ahzam is a good boy
 function check(){

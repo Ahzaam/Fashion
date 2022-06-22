@@ -2,7 +2,7 @@
 session_start();
 
 if(  $_SESSION['dbpasscode'] == 'unsecure'){
-  header('Location:../home.php');
+  header('Location:../index.php');
 }
 
 ?>
@@ -142,6 +142,7 @@ margin-top:100px;
   $count = $conn->query($comments);
   $comments = $count->num_rows;
 
+    $display = ($comments > 0) ?'':'d-none';
 
   ?>
   <div class="container">
@@ -149,7 +150,7 @@ margin-top:100px;
 
       <ul class="nav nav-pills nav-justified">
         <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminhomegal.php">
-          <strong>In Stock</strong>
+          In Stock
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
             <?php echo $ins; ?>
             <span class="visually-hidden">instock</span>
@@ -165,9 +166,9 @@ margin-top:100px;
         </a>
 
         <!-- <a class="nav-link active " href="#">Comments and Feedback</a> -->
-        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="#">
-          Comments and Feedback
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <a type="button" class="nav-link  active m-lg-2 m-2 w-100 position-relative" href="comments.php">
+          Feedback
+          <span class="position-absolute  <?php echo $display ?> top-0 start-100 translate-middle badge rounded-pill bg-danger">
             <?php echo $comments; ?>
             <span class="visually-hidden">Unread</span>
           </span>
@@ -179,7 +180,7 @@ margin-top:100px;
 
 
         <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminadd.php">
-          Add Product
+          <strong>Add Product</strong>
         </a>
       </ul>
     </div>
@@ -204,7 +205,7 @@ margin-top:100px;
 
         <div class="mb-3 col-lg-3">
           <label for="exampleFormControlInput1" class="form-label">Color</label>
-          <input type="color" class="form-control" name='color' required id="exampleFormControlInput1">
+          <input type="color" class="form-control" name='color'  id="exampleFormControlInput1">
         </div>
 
       </div>

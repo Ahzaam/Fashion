@@ -2,7 +2,7 @@
 session_start();
 
 if(  $_SESSION['dbpasscode'] == 'unsecure'){
-  header('Location:../home.php');
+  header('Location:../index.php');
 }
 
 ?>
@@ -26,105 +26,6 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-    <style media="screen">
-    /* .fa-check-circle{
-      color:rgb(28, 255, 0);
-      padding-right: 15px;
-    }
-      label{
-        padding-left: 100px;
-        outline: none;
-        border: none;
-        font-size:20px;
-        width:300px;
-        height:100px;
-
-      }
-
-      input{
-        width: 200px;
-        height: 30px;
-
-      }
-
-      .container{
-        text-align:center;
-        padding-top: 100px;
-      }
-
-      input[type="submit"],button{
-        width: 240px;
-        height: 40px;
-        background-color: rgb(20, 171, 255);
-        border: none;
-        font-size:24px;
-        color:white;
-      }
-      input[type="submit"]:hover,button:hover{
-        cursor: pointer;
-        background-color:rgb(0, 141, 219);
-      }
-      table {
-        width: 100%;
-      }
-      th{
-        text-align: left;
-        border-bottom: 1px solid grey;
-        font-size: 19px;
-        font-weight: 10px;
-      }
-      td{
-        text-align: left;
-      }
-      tr{
-        margin-top:10px;
-      }
-      .container {
-
-        text-align: center;
-      }
-
-      button[type="button"]{
-        margin-top:50px;
-        width: 200px;
-        height:50px;
-        background-color:rgb(52, 236, 130);
-        border:none;
-        font-size: 25px;
-      }
-      a{
-        background-color:rgb(52, 236, 130);
-        border:none;
-        font-size: 25px;
-        padding:0px 100px;
-        link-style:none;
-        text-decoration:none;
-        color:white;
-
-      }
-      tr:hover{
-        background-color:rgb(218, 217, 217);
-        cursor:pointer;
-      }
-      button[type="buttonx"]{
-        margin:10px;
-      }
-      input[type="textx"]{
-        margin:10px ;
-      }
-      input[type="text"],select{
-        margin:0px ;
-        border:none;
-        outline:none;
-        border-bottom:1px solid black;
-      }
-      a[type="edit"]{
-        width:100px;
-        padding:0px 12px;
-        background-color:rgb(255, 18, 53);
-        margin-top:100px;
-      } */
-    </style>
   </head>
   <body>
     <?php
@@ -142,6 +43,7 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
                $count = $conn->query($comments);
                $comments = $count->num_rows;
 
+                 $display = ($comments > 0) ?'':'d-none';
 
      ?>
   <div class="container">
@@ -149,7 +51,7 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
 
       <ul class="nav nav-pills nav-justified">
         <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminhomegal.php">
-          <strong>In Stock</strong>
+          In Stock
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
             <?php echo $ins; ?>
             <span class="visually-hidden">instock</span>
@@ -157,7 +59,7 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
         </a>
 
         <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminoofs.php">
-          Out Of Stock
+          <strong>Out Of Stock</strong>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
             <?php echo $ofs; ?>
             <span class="visually-hidden">outofstock</span>
@@ -165,9 +67,9 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
         </a>
 
         <!-- <a class="nav-link active " href="#">Comments and Feedback</a> -->
-        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="#">
-          Comments and Feedback
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="comments.php">
+          Feedback
+          <span class="position-absolute top-0 start-100 <?php echo $display ?>  translate-middle badge rounded-pill bg-danger">
             <?php echo $comments; ?>
             <span class="visually-hidden">Unread</span>
           </span>
@@ -195,7 +97,7 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
 
 
                  echo "
-                 <div class='card mb-3 mx-5' style='max-width: 540px;'>
+                 <div class='card mb-3 mx-lg-5' style='max-width: 540px;'>
                  <div class='row g-0'>
                  <div class='col-md-4 my-4'>
                   <img src=../". $row['image']." class='img-fluid rounded-start' alt='Image'>

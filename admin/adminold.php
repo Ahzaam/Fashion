@@ -2,7 +2,7 @@
 session_start();
 
 if(  $_SESSION['dbpasscode'] == 'unsecure'){
-  header('Location:../home.php');
+  header('Location:../index.php');
 }
 
 ?>

@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['dbpasscode'])){
   if(  $_SESSION['dbpasscode'] == 'unsecure'){
-    header('Location:../home.php');
+    header('Location:../index.php');
   }else{
     echo "";
   }
@@ -50,6 +50,7 @@ if(isset($_SESSION['dbpasscode'])){
              $comments = $count->num_rows;
 
 
+               $display = ($comments > 0) ?'':'d-none';
    ?>
 <div class="container">
   <div class="my-5">
@@ -72,9 +73,9 @@ if(isset($_SESSION['dbpasscode'])){
       </a>
 
       <!-- <a class="nav-link active " href="#">Comments and Feedback</a> -->
-      <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="#">
-        Comments and Feedback
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="comments.php">
+        Feedback
+        <span class="position-absolute <?php echo $display ?>  top-0 start-100 translate-middle badge rounded-pill bg-danger">
           <?php echo $comments; ?>
           <span class="visually-hidden">Unread</span>
         </span>
@@ -91,13 +92,8 @@ if(isset($_SESSION['dbpasscode'])){
     </ul>
   </div>
     <div class="">
-      <!-- <div class="col-2">
-      <figure class="figure">
-      <img src="..\home\greyG-min.jpg" class="figure-img img-fluid rounded" alt="...">
-      <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
-    </figure>
-  </div> -->
-  <div class="grid">
+
+  <div class="grid w-100">
     <div class="row row-cols-1 row-cols-md-2 g-4">
     <?php
 
@@ -122,7 +118,7 @@ if(isset($_SESSION['dbpasscode'])){
 
 
                echo "
-               <div class='card mb-3 mx-5' style='max-width: 540px;'>
+               <div class='card mb-3 mx-lg-5' style='max-width: 540px;'>
                <div class='row g-0'>
                <div class='col-md-4 my-4'>
                 <img src=../". $row['image']." class='img-fluid rounded-start' alt='Image'>
