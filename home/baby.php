@@ -5,7 +5,7 @@ session_start(); ?>
 <html lang="en" dir="ltr">
 
   <head>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>MegaTrons</title>
     <link rel="stylesheet" href="../home/nav_style.css">
@@ -24,7 +24,7 @@ session_start(); ?>
     <link rel="stylesheet" href="../files/owl-carousel/carousel.css">
 
     <!-- bootstrap -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -54,7 +54,39 @@ session_start(); ?>
     body{
       text-align:center;
     }
+    .dressimg{
+      border-radius:20px;
+    }
+    .dressimgcaro{
+      border-radius:100px;
+    }
+    .card-img-top{
+  border-radius: 50px;
+}
 
+.sectionglass {
+  
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  background: inherit;
+  overflow: hidden;
+}
+
+.sectionglass:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  filter: blur(10px);
+  margin: -20px;
+}
     </style>
 
   </head>
@@ -65,7 +97,7 @@ session_start(); ?>
     
   <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">NZ-Fasions</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -74,27 +106,61 @@ session_start(); ?>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
+       
+
+            <li class="nav-item dropdown">
+                            <!-- first is the link in your navbar -->
+                          <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+
+                  <!-- your mega menu starts here! -->
+                  <div class="dropdown-menu dropdown-menu-right text-start" aria-labelledby="servicesDropdown">
+
+                  <!-- the standard dropdown items --> 
+                  <a class="dropdown-item" href="#">What we do</a>
+                  <a class="dropdown-item" href="#">How we fit your needs</a>
+
+                  <!-- next, a divider to tidy things up -->
+                  <div class="dropdown-divider"></div>
+
+                  <!-- finally, using flex to create your layout -->
+                  <div class="d-md-flex align-items-start justify-content-start">
+                    
+                    <div>   
+                    <div class="dropdown-header">Development</div>
+                    <a class="dropdown-item" href="#">Bespoke software</a>
+                    <a class="dropdown-item" href="#">Mobile apps</a>
+                    <a class="dropdown-item" href="#">Websites</a>
+                    </div>
+                                                
+                    <div>
+                    <div class="dropdown-header">Professional Services</div>
+                    <a class="dropdown-item" href="#">Project rescue</a>
+                    <a class="dropdown-item" href="#">Source code recovery</a>
+                    <a class="dropdown-item" href="#">Application support &amp; maintenance</a>
+                    </div>
+                                                  
+                    <div>
+                    <div class="dropdown-header">Fixed Price Services</div>
+                    <a class="dropdown-item" href="#">Add cookie consent</a>
+                    <a class="dropdown-item" href="#">Add captcha</a>
+                    <a class="dropdown-item" href="#">Add core data</a>
+                    <a class="dropdown-item" href="#">Custom error pages</a>
+                    <a class="dropdown-item" href="#">Contact form creation</a>
+                    <a class="dropdown-item" href="#">Automated backups</a>
+                    <a class="dropdown-item" href="#">Image to HTML</a>
+                    </div>
+                  </div>
+                </div>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Gallery</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
+
+          
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2" type="search" placeholder="Search" id="searchinput" aria-label="Search">
+        <button class="btn btn-primary" type="submit" id="search">Search</button>
       </form>
     </div>
   </div>
@@ -185,14 +251,14 @@ session_start(); ?>
   </div>
 </div>
 <!-- End of Feature -->
-<div class="container-fluid" >
+<div class="container" >
   <div class="row justify-content-center" >
     <div class="add-image d-inline-block position-relative  col-lg-5 col-md-9 col-sm-12 col-10 mt-5 mx-4" style="background-image: linear-gradient(to right, #a8f6f9, #2cf8fe);">
       <img src="images/add1.png"  alt="">
       <div class="top-left">
         <br>
         <h2 type='1'>New Born <br>Baby essentials</h2>
-        <button type="button1" name="button">Shop Now</button>
+        <button type="button1" class="btn btn-primary" name="button">Shop Now</button>
       </div>
     </div>
 
@@ -201,7 +267,7 @@ session_start(); ?>
       <div class="top-left">
         <br>
         <h2 type='2'>Best collection of<br>Gift for babies  </h2>
-        <button type="button2" name="button">Shop Now</button>
+        <button type="button2" class="btn btn-primary" name="button">Shop Now</button>
       </div>
     </div>
   </div>
@@ -211,202 +277,206 @@ session_start(); ?>
 <!-- carousel -->
 
 
-<div class="container-fluid mt-5">
-  <section class="">
+<div class="container-fluid mt-5 text-start " style="border-radius:20px;  background-image: background: #bdc3c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+<h1 class='display-2 m-3 text-white'>Baby Clothes</h1>
+  <section class="sectionglass my-5" style="opacity:; border-radius:10px;">
     <div class="container-fluid shadow text-center  py-lg-5 " >
       <div class="container-fluid text-center">
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-12 mt-5">
-            <img src="images/thumb1.jpg" class="owl-banner d-inline-block" type='q1' alt="">
+          <div class="col-lg-4 col-md-6 col-sm-12 mt-5 dressimg">
+            <img src="images/thumb1.jpg" class="owl-banner d-inline-block dressimg" type='q1' alt="">
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 mt-5">
-            <img src="images/thumb3.jpg" class="owl-banner d-inline-block" type='54' alt="">
+          <div class="col-lg-4 col-md-6 col-sm-12 mt-5 dressimg">
+            <img src="images/thumb3.jpg" class="owl-banner d-inline-block dressimg" type='54' alt="">
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 mt-5">
-            <img src="images/thumb2.jpg" class="owl-banner d-inline-block" type='54' alt="">
+          <div class="col-lg-4 col-md-6 col-sm-12 mt-5 dressimg">
+            <img src="images/thumb2.jpg" class="owl-banner d-inline-block dressimg" type='54' alt="">
           </div>
         </div>
       </div>
       <div class="row pt-3">
         <div class="owl-carousel owl-theme">
 
-           <div class="item">
+           <div class="item dressimgcaro">
             <div class="card border-0">
               <img src="images\product-1.jpg" class="card-img-top">
               <div class="card-body">
-                <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+                 
               </div>
             </div>
           </div>
 
-          <div class="item">
+          <div class="item dressimgcaro">
            <div class="card border-0">
              <img src="images\product-2.jpg" class="card-img-top">
              <div class="card-body">
-               <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+                
              </div>
            </div>
          </div>
 
-         <div class="item">
+         <div class="item dressimgcaro">
           <div class="card border-0">
             <img src="images\product-3.jpg" class="card-img-top">
             <div class="card-body ">
-              <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+               
             </div>
           </div>
         </div>
 
-        <div class="item">
+        <div class="item dressimgcaro">
          <div class="card border-0">
            <img src="images\product-4.jpg" class="card-img-top">
            <div class="card-body">
-             <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+              
            </div>
          </div>
        </div>
 
-       <div class="item">
+       <div class="item dressimgcaro">
         <div class="card border-0">
           <img src="images\product-5.jpg" class="card-img-top">
           <div class="card-body">
-            <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+             
           </div>
         </div>
       </div>
 
-      <div class="item">
+      <div class="item dressimgcaro">
        <div class="card border-0">
          <img src="images\product-6.jpg" class="card-img-top">
          <div class="card-body">
-           <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+            
          </div>
        </div>
      </div>
 
-     <div class="item">
+     <div class="item dressimgcaro">
       <div class="card border-0">
         <img src="images\product-7.jpg" class="card-img-top">
         <div class="card-body">
-          <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+           
         </div>
       </div>
     </div>
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-8.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-9.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-10.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-11.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-12.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-13.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-14.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-15.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-16.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-17.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-18.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
 
 
-    <div class="item">
+    <div class="item dressimgcaro">
      <div class="card border-0">
        <img src="images\product-19.jpg" class="card-img-top">
        <div class="card-body">
-         <a href="../home/view.php?id=0<?php //echo $row['item-id']?>" style="padding:0 40px;  " data-tip="Wishlist" class="cancel btn btn-info btn-block text-white w-100 "><i class="fa fa-search"></i> View  </a>
+          
        </div>
      </div>
    </div>
@@ -425,7 +495,7 @@ session_start(); ?>
 
 <div class="row">
 
-    <div class="col-md-3 col-sm-6 mt-5">
+    <div class="col-md-3 col-sm-6 mt-5 col-6">
         <div class="product-grid shadow rounded">
             <div class="product-image">
                 <a href="#">
@@ -448,14 +518,14 @@ session_start(); ?>
             </div>
             <div class="product-content px-3">
                 <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                <div class="price discount"><span>$21.00</span></div>
+                <div class="price discount"><span>$21.00</span> $ 15.99</div>
             </div>
         </div>
     </div>
 
 
 
-    <div class="col-md-3 col-sm-6 mt-5">
+    <div class="col-md-3 col-sm-6 mt-5 col-6">
         <div class="product-grid shadow rounded">
             <div class="product-image">
                 <a href="#">
@@ -478,7 +548,7 @@ session_start(); ?>
         </div>
     </div>
 
-    <div class="col-md-3 col-sm-6 mt-5">
+    <div class="col-md-3 col-sm-6 mt-5 col-6">
         <div class="product-grid shadow rounded">
             <div class="product-image">
                 <a href="#">
@@ -501,7 +571,7 @@ session_start(); ?>
         </div>
     </div>
 
-    <div class="col-md-3 col-sm-6 mt-5">
+    <div class="col-md-3 col-sm-6 mt-5 col-6">
         <div class="product-grid shadow rounded">
             <div class="product-image">
                 <a href="#">
@@ -523,7 +593,7 @@ session_start(); ?>
         </div>
     </div>
 
-    <div class="col-md-3 col-sm-6 mt-5">
+    <div class="col-md-3 col-sm-6 mt-5 col-6">
         <div class="product-grid shadow rounded">
             <div class="product-image">
                 <a href="#">
@@ -546,7 +616,7 @@ session_start(); ?>
     </div>
 
 
-    <div class="col-md-3 col-sm-6 mt-5">
+    <div class="col-md-3 col-sm-6 mt-5 col-6">
         <div class="product-grid shadow rounded">
             <div class="product-image">
                 <a href="#">
@@ -568,7 +638,7 @@ session_start(); ?>
         </div>
     </div>
 
-    <div class="col-md-3 col-sm-6 mt-5">
+    <div class="col-md-3 col-sm-6 mt-5 col-6">
         <div class="product-grid shadow rounded">
             <div class="product-image">
                 <a href="#">
@@ -590,7 +660,7 @@ session_start(); ?>
         </div>
     </div>
 
-    <div class="col-md-3 col-sm-6 mt-5">
+    <div class="col-md-3 col-sm-6 mt-5 col-6">
         <div class="product-grid shadow rounded">
             <div class="product-image">
                 <a href="#">
@@ -674,7 +744,12 @@ $('.owl-carousel').owlCarousel({
   }
 });
 </script>
+
 <script type="text/javascript" src="../files/addtocart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src='home.js'> </script>
   </body>
 </html>
 <!--
