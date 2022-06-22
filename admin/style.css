@@ -1,0 +1,136 @@
+background-image{
+  min-width: 200px;
+  max-width: 450px;
+}
+div.in{
+  padding: 50px 0 0px 0;
+  text-align: center;
+  margin: auto;
+
+  height:auto;
+  width: auto;
+  max-width: 700px;
+  border-radius: 5px;
+
+  /* border: 1px solid grey; */
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 3px 3px px silver; */
+}
+
+h1{
+  font-family:monospace;
+  font-size: 40px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+
+}
+
+.login_form{
+  padding: 0 20px 20px 20px;
+  margin: 0px;
+  overflow-x: auto;
+
+}
+
+label{
+
+  display:inline-block;
+  height:40px;
+  width:150px;
+  text-align:left;
+  padding-right:10px;
+  /* font-family:monospace; */
+  font-size:19px;
+  /* color:#7140fc; */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"]{
+  display: inline-block;
+  /* border-radius: 3px; */
+  /* border: none; */
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  /* border-bottom:1px solid white; */
+  font-size: 18px;
+  height: 30px;
+  width: 260px;
+  border:1px 1px ;
+}
+select{
+  width: 260px;
+  height: 30px;
+  margin-bottom: 20px;
+  font-size: 18px;
+
+
+}
+
+input[type="password"]{
+  text-spacing:2;
+}
+
+.carousel-item .bannercen{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+label[type="val"]{
+  font-size: 10px;
+  color: red;
+  font-family: sans-serif;
+  display: none;
+}
+.container{
+
+  text-align:center;
+
+}
+
+
+.section-top{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background-image: url('banner_01.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: change 20s infinite ease-in-out;
+}
+
+input[type='text']{
+
+}
+
+.in p{
+  color: white;
+}
+.in{
+  align-items: center;
+}
+
+input[type='submit']{
+  margin:40px 0 0 0;
+  width: 420px;
+  height:50px;
+  font-size:20px;
+  background-color:rgb(67, 86, 249);
+  border:1px solid blue;
+  color:white;
+}
+input[type='submit']:hover{
+  background-color:rgb(28, 52, 255);
+
+}
+.file-upload-button{
+  width: 420px;
+
+}

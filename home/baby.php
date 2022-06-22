@@ -282,7 +282,7 @@ background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-2
 background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 ">
 <h1 class='display-2 m-3 text-white'>Baby Clothes</h1>
-  <section class="sectionglass my-5" style="opacity:; border-radius:10px;">
+  <section class="sectionglass my-5 mx-5" style="opacity:; border-radius:10px;">
     <div class="container-fluid shadow text-center  py-lg-5 " >
       <div class="container-fluid text-center">
         <div class="row">
