@@ -1,0 +1,180 @@
+
+.container-fluid{
+  display: inline-block;
+}
+
+.carousel {
+  text-align: center;
+}
+.navbar-nav .nav-item a{
+  color: red;
+}
+div.option{
+  width: 100%;
+  height: auto;
+  overflow:auto;
+  box-sizing: border-box;
+}
+
+.option img{
+  height: 140px;
+  width:140px;
+  overflow:hidden;
+
+}
+.carousel-item .centered{
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+}
+
+.banner .centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  text-align: left;
+}
+
+.add-image{
+  position: relative;
+  min-height:270px;
+  max-height: 300px;
+  width:100%;
+  /* margin: 30px 0; */
+  border-radius: 40px;
+  overflow: auto;
+  overflow: hidden;
+  font-size: 20%;
+
+}
+.add-image img{
+  width: 50%;
+  height: auto;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  border-radius: 40px;
+
+}
+
+.top-left h2[type='1']{
+  color: #ff00d6;
+
+}
+.top-left button[type='button1']{
+  height: 50px;
+  padding: 0 20px 0 20px;
+  margin-top: 30px;
+  background-color: #fe2ae2;
+  border: none;
+  border-radius:25px;
+  color: white;
+}
+
+.top-left h2[type='2']{
+  color: #dbfcff;
+
+}
+.top-left button[type='button2']{
+  height: 50px;
+  padding: 0 20px 0 20px;
+  margin-top: 30px;
+  background-color: #2ad1fe;
+  border: none;
+  border-radius:25px;
+  color: white;
+  transition: 0.5s;
+}
+
+.top-left button[type='button2']:hover{
+  background-color: #b6f0ff;
+  color: #f200ff;
+  transition: 0.5s;
+}
+.top-left button[type='button1']:hover{
+  background-color: #ff90f0;
+  color: #0066ff;
+  transition: 0.5s;
+}
+
+
+.add{
+  overflow: auto;
+}
+
+
+.add{
+  height:auto;
+  /* position: relative; */
+  margin: auto;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 3px 3px px silver; */
+  display: inline-block;
+  /* position:fixed; */
+  box-sizing: border-box;
+  border-radius: 5px;
+  border-style: dashed;
+  border-color: #00ffe0;
+}
+
+.add img{
+  width: 100%;
+  opacity: 0.
+}
+
+.lead{
+  color: #000000;
+}
+
+.add p{
+  color: #ff00d7;
+  font-weight: bold;
+}
+.add del{
+  color: red;
+}
+span{
+  color:black;
+}
+.checked {
+  color: orange;
+}
+.add button[type="buttonshop"]{
+  /* position: absolute; */
+  width: 100%;
+  border: none;
+  height: 10%;
+  /* top:90%; */
+  /* left: 0%; */
+  height: 35px;
+  background-color: #00ffe0;
+  color: white;
+}
+/* .margin_{
+  display: none;
+} */
+
+.card-body{
+  background-color: rgba(215, 240, 255, 0.36);
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.owl-banner {
+  float: left;
+  width: 100%;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}

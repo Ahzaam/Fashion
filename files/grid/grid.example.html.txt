@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<title>Button Hover Effect html and css</title>
+		
+		<!-- Bootstrap Css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<!-- FontAwesome Css -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+		<!-- My Custom Stylesheet -->
+		<link rel="stylesheet" href="style.css" />
+	</head>
+<body>
+
+
+	<div class="container">
+		<div class="btn_wrap">
+			<button>Hover Me</button>
+			<div class="icon">
+				<i class="fas fa-arrow-right"></i> <!-- FontAwesome -->
+			</div>
+		</div>		
+	</div> <!-- bootstrap class -->
+
+
+
+
+
+
+
+
+
+
+	<!-- jQuery Main -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="js/bootstrap.min.js"></script>
+	
+
+</body>
+</html>
