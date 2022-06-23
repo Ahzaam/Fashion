@@ -2,25 +2,39 @@ $(document).ready(function() {
     $('#search').click(function (e) {
         e.preventDefault();
     })
-    $('#searchinput').keyup(function () {
-        console.log($(this).val());
-        let search = $(this).val();
-        url = 'addcomment.php';
-        data = {search: search}
-        $.post(url, data, function (data, status) {
-          let results = JSON.parse(data);
+    let value = ''
+    $('#searchinput').keyup(function (e ) {
 
-          if(results[0].status === 'noresults'){
-            $('#searchresultsdropdown').html('<p class="text-danger">No results found</p>')
-          }else{
-            $('#searchresultsdropdown').html('')
-            for(let i = 0; i < results.length; i++) {
-              resultdiv(results[i].name, results[i].image, results[i].description, results[i].id)
-              findAndHighlight(search ,  'des'+results[i].id)
-              findAndHighlight(search ,  'name'+results[i].id)
-            }
-          }
-        })
+        let search = $(this).val();
+        if(value === search || String.fromCharCode(e.keyCode) === ' ' ) {
+
+        }else{
+          value = search
+          url = 'search.php';
+          data = {search: search}
+          $.post(url, data, function (data, status) {
+
+              let results = JSON.parse(data);
+
+              if(results[0].status === 'noresults'){
+                $('#searchresultsdropdown').html('<p class="text-danger">No results found</p>')
+              }else{
+                $('#searchresultsdropdown').html('')
+                for(let i = 0; i < results.length; i++) {
+                  resultdiv(results[i].name, results[i].image, results[i].description, results[i].id)
+
+                  findAndHighlight(search ,  'name'+results[i].id)
+
+                  let arr = search.split(' ')
+                  
+                  for (let j = 0; j < arr.length; j++){
+                      findAndHighlight(arr[j],  'des'+results[i].id)
+                  }
+                }
+              }
+          })
+        }
+
 
     })
 
@@ -85,7 +99,6 @@ function resultdiv(name, src, description, id) {
 }
 
 function findAndHighlight(text, id) {
-    console.log(id)
     var text = text
     var search = new RegExp("(\\b" + text + "\\b)", "gim");
     var e = document.getElementById(id).innerHTML;

@@ -87,6 +87,32 @@ session_start(); ?>
   .searchdesc {
      word-wrap: break-word;
   }
+
+.gridserchanimation {
+    transition: 1s;
+    opacity: 0.1;
+
+}
+
+
+.card-text{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+.gridserchanimation{
+
+}
+#gridcont{
+
+    transition:0.5;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
   </style>
 
 
@@ -166,45 +192,21 @@ session_start(); ?>
 
     <!-- End of the Navbar -->
 
+    <div class="container my-5 ">
+      <div class="input-group mb-3 my-5 ">
+    <input type="text" class="form-control" onsearch='postsearch()' id='searchingallery' placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+  </div>
 
-    <div class="container my-5">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        <?php
-
-        include "../con.php";
-        $query = "SELECT * FROM product_table WHERE stock > 0 AND display='owl-carousel'";
-        $result = $conn->query($query);
-
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()){
-
-
-            echo "
-            <div class='col'>
-            <div class='card'>
-            <img src='../". $row['image'] ."' class='card-img-top' alt='Image'>
-            <div class='card-body text-start'>
-            <h5 class='card-title'>". $row['name'] ."</h5>
-            <p class='card-text'>". $row['description'] ."</p>
-            </div>
-            </div>
-            </div>
-            ";
-
-
-
-          }
-
-        }
-        ?>
-      </div>
-
+  <div class="gridcont my-5" >
+    <div class="row row-cols-1 row-cols-md-4  row-cols-2 g-4 " id='gridcont'>
     </div>
-    <div class="container my-5">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
+  </div>
+      <div class="row row-cols-1 row-cols-md-4 g-4 ">
         <?php
 
         include "../con.php";
+
         $query = "SELECT * FROM product_table WHERE stock > 0 AND display='grid'";
         $result = $conn->query($query);
 
@@ -233,6 +235,42 @@ session_start(); ?>
       </div>
 
     </div>
+    <div class="container my-5">
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        <?php
+
+        include "../con.php";
+
+        $query = "SELECT * FROM product_table WHERE stock > 0 AND display='owl-carousel'";
+        $result = $conn->query($query);
+
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()){
+
+
+            echo "
+            <div class='col'>
+            <div class='card'>
+            <img src='../". $row['image'] ."' class='card-img-top' alt='Image'>
+            <div class='card-body text-start'>
+            <h5 class='card-title'>". $row['name'] ."</h5>
+            <p class='card-text'>". $row['description'] ."</p>
+            </div>
+            </div>
+            </div>
+            ";
+
+
+
+          }
+
+        }
+        ?>
+      </div>
+
+    </div>
+    <script src='gallery.js'></script>
+
 
   </body>
   </html>

@@ -7,19 +7,27 @@ session_start(); ?>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>MegaTrons</title>
-  <link rel="stylesheet" href="../home/nav_style.css">
+  <title>NZ-Fasions</title>
+
   <link rel="stylesheet" href="body.css">
 
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../files/icon_css/all.css">
-  <script defer src="../files/icon_js/all.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+  integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <link rel="stylesheet" href="../files/icon_css/all.css">
+  <script defer src="../files/icon_js/all.js"></script> -->
 
 
   <!-- owl carousel -->
   <script src="../files/owl-carousel/jquery-3.6.0.js"></script>
   <script src="../files/owl-carousel/owl.carousel.min.js"></script>
+
   <link rel="stylesheet" href="../files/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="../files/owl-carousel/carousel.css">
 
@@ -702,7 +710,7 @@ session_start(); ?>
             </div>
           </div>
 
-          <div class="container-fluid mt-5" style="background-image:url('../bg-images/pattern-dot.png');background-color:#8cfffc;">
+          <div class="container-fluid mt-5" style="background-color:#8cfffc;">//background-image:url('../bg-images/pattern-dot.png');
             <div class="container py-5">
               <div class="row">
                 <div class="col-lg-3 col-sm-11 col-md-5">
