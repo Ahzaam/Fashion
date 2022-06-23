@@ -50,13 +50,10 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
     <div class="my-5">
 
       <ul class="nav nav-pills nav-justified">
-        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminhomegal.php">
-          In Stock
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            <?php echo $ins; ?>
-            <span class="visually-hidden">instock</span>
-          </span>
+        <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="adminhomegal.php">
+          In Stock <span class="badge text-bg-secondary"> <?php echo $ins; ?></span>
         </a>
+
 
         <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminoofs.php">
           Out Of Stock

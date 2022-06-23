@@ -142,20 +142,17 @@ margin-top:100px;
   $count = $conn->query($comments);
   $comments = $count->num_rows;
 
-    $display = ($comments > 0) ?'':'d-none';
+  $display = ($comments > 0) ?'':'d-none';
 
   ?>
   <div class="container">
     <div class="my-5">
 
       <ul class="nav nav-pills nav-justified">
-        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminhomegal.php">
-          In Stock
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            <?php echo $ins; ?>
-            <span class="visually-hidden">instock</span>
-          </span>
+        <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="adminhomegal.php">
+          In Stock <span class="badge text-bg-secondary"> <?php echo $ins; ?></span>
         </a>
+
 
         <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminoofs.php">
           Out Of Stock
@@ -209,6 +206,7 @@ margin-top:100px;
         </div>
 
       </div>
+
       <div class="row">
 
         <div class="mb-3 col-lg-3">
@@ -225,12 +223,12 @@ margin-top:100px;
 
 
 
-        <div class="mb-3 col-lg-3">
+        <div class="mb-3 col-lg-2">
           <label for="exampleFormControlInput1" class="form-label">Stock</label>
           <input type="number" class="form-control" name='stock' required id="exampleFormControlInput1" placeholder="120">
         </div>
 
-        <div class="mb-3 col-lg-3">
+        <div class="mb-3 col-lg-2">
           <label for="exampleFormControlTextarea1" class="form-label">Display </label>
           <select class="form-select" name='display' aria-label="Default select example">
             <option selected value="none">None</option>
@@ -240,34 +238,54 @@ margin-top:100px;
           </select>
         </div>
 
+        <div class="mb-3 col-lg-2">
+          <label for="exampleFormControlTextarea1" class="form-label">Category </label>
+          <select class="form-select" name='category' aria-label="Default select example" required>
+            <option selected value="none">--Select Category --</option>
+            <option value="Mens Dress">Mens Dress</option>
+            <option value="Womens Dress">Womens Dress</option>
+            <option value="Kids" >Kids</option>
+            <option value="Kids Dress" >Kids Dress</option>
+            <option value="Teens Dress" >Teens Dress</option>
+            <option value="Kids Toys" >Kids Toys</option>
+            <option value="Mens Accesorie" >Mens Accesorie</option>
+            <option value="Womens Accesorie" >Womens Accesorie</option>
+          </select>
+                  </div>
 
-      </div>
+                </div>
 
-      <div class="mb-3 my-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-        <textarea class="form-control" name='description' required id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
+                <div class="row">
+                  <div class="mb-3 my-3 col-lg-6">
+                    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                    <textarea class="form-control" name='description' required id="exampleFormControlTextarea1" rows="4"></textarea>
+                  </div>
+                  <div class="mb-3 col-lg-5 my-3">
+                    <label for="exampleFormControlInput1" class="form-label">Status</label>
+                    <select name='status' class="form-select" aria-label="Default select example">
+                      <option selected value='selling'>Selling</option>
+                      <option value="stopped">Stopped</option>
+
+                    </select>
+                  </div>
 
 
-
-
-
-
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Status</label>
-        <select name='status' class="form-select" aria-label="Default select example">
-          <option selected value='selling'>Selling</option>
-          <option value="stopped">Stopped</option>
-
-        </select>
-      </div>
+                </div>
 
 
 
 
-      <button type="submit" class='btn btn-primary' name='submit'>Save</button>
-    </form>
 
-  </div>
-</body>
-</html>
+
+
+
+
+
+
+
+                <button type="submit" class='btn btn-primary' name='submit'>Save</button>
+              </form>
+
+            </div>
+          </body>
+          </html>

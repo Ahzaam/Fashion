@@ -56,13 +56,11 @@ if(isset($_SESSION['dbpasscode'])){
   <div class="my-5">
 
     <ul class="nav nav-pills nav-justified">
-      <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminhomegal.php">
-        <strong>In Stock</strong>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          <?php echo $ins; ?>
-          <span class="visually-hidden">instock</span>
-        </span>
+
+      <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="adminhomegal.php">
+        <strong>In Stock </strong><span class="badge text-bg-secondary"> <?php echo $ins; ?></span>
       </a>
+
 
       <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminoofs.php">
         Out Of Stock
@@ -103,18 +101,7 @@ if(isset($_SESSION['dbpasscode'])){
 
          if ($result->num_rows > 0) {
            while ($row = $result->fetch_assoc()){
-             $prc = '';
-             $pr = array_reverse(str_split(strval($row['price'])));
-             $i = count($pr) ;
-             $j = $i;
-             while($i  > 0 ){
-               if($i != $j & $i % 3 == 0 ) {
-                 $prc = $prc.', '.$pr[$i -1];
-               }else{
-                 $prc = $prc . $pr[$i - 1];
-               }
-               $i--;
-             }
+
 
 
                echo "

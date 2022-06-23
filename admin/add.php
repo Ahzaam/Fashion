@@ -57,9 +57,9 @@ function check(){
 function savedata($img_path){
     include "../con.php";
 
-    $stmt = $conn->prepare("INSERT INTO  product_table(id, name, description, price, size, colors, image, stock, status, display) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO  product_table(id, name, description, price, size, colors, image, stock, status, display, category) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     echo "INSERT INTO  prduct_table(name, description, price, size, colors, image, stock, status, display) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt->bind_param('sssissssis',uniqid() ,$_POST['name'], $_POST['description'], $_POST['price'], $_POST['size'], $_POST['color'],  $img_path, $_POST['stock'], $_POST['status'], $_POST['display']);
+    $stmt->bind_param('sssissssiss',uniqid() ,$_POST['name'], $_POST['description'], $_POST['price'], $_POST['size'], $_POST['color'],  $img_path, $_POST['stock'], $_POST['status'], $_POST['display'], $_POST['category']);
     $stmt->execute();
     $em = "Upload Successful";
     echo "<h1> $em </h1>";
