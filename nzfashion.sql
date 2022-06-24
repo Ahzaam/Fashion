@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2022 at 12:29 PM
+-- Generation Time: Jun 24, 2022 at 09:50 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -76,7 +76,7 @@ CREATE TABLE `comments_feedback` (
 --
 
 INSERT INTO `comments_feedback` (`id`, `user_id`, `name`, `comment`, `status`, `reply`, `rating`, `product_id`) VALUES
-(2, '62b30c6627907', 'Ahzam', 'unread', 'read', 'Hi', 0, ''),
+(2, '62b30c6627907', 'Ahzam', 'unread', 'read', '', 0, ''),
 (3, '62b30c6627907', 'Ahzam', 'Read Comment', 'read', '', 4, '');
 
 -- --------------------------------------------------------
@@ -115,11 +115,13 @@ INSERT INTO `product_table` (`id`, `name`, `description`, `price`, `size`, `colo
 ('62b37513e123a', 'Teddy', 'Teddy bear', 1500, 'S', '#efe1eb', 'media/IMG-62b37513e09b26.28602004.jpg', 22, '', 'grid', 0, '2022-06-23', 'kids'),
 ('62b37558f3084', 'Pink Deer', 'Cotton Teddy Bear for Babies', 1500, 'S', '#ffd6fc', 'media/IMG-62b37558f259f8.17102927.jpg', 11, '', 'grid', 0, '2022-06-23', 'kids'),
 ('62b3758379556', 'Teddy', 'Teddy', 999, 'S', '#ffb3f1', 'media/IMG-62b3758378d7d9.73077077.jpg', 11, '', 'grid', 0, '2022-06-23', 'kids'),
-('62b375c65e8ba', 'Brown Teddy Bear', 'Medium Size Teddy Bear', 750, 'M', '#876464', 'media/IMG-62b375c6592772.69662135.jpg', 2, '', 'grid', 0, '2022-06-23', 'kids'),
+('62b375c65e8ba', 'Brown Teddy Bear', 'Medium Size Teddy Bear', 750, 'M', '#876464', 'media/IMG-62b375c6592772.69662135.jpg', 2, '', 'grid', 0, '2022-06-23', 'kids toy'),
 ('62b376084e9bd', 'Cat Pillow', 'Small size cat pillow for babies', 1500, 'S', '#ad9090', 'media/IMG-62b376084aea08.36466437.jpg', 8, '', 'grid', 0, '2022-06-23', 'kids'),
 ('62b3764a3383a', 'Rabbit Doll', 'Rabbit Doll for Kids', 1500, 'S', '#efdcdc', 'media/IMG-62b3764a32cce8.61456020.jpg', 18, '', 'grid', 0, '2022-06-23', 'kids'),
 ('62b42cfb64832', 'Girl Frock', 'Small Blue baby frock for kids, denim material', 700, 'S', '#4d6aff', 'media/IMG-62b42cfb364b99.89371677.jpg', 8, '', 'owl-carousel', 0, '2022-06-23', 'kids'),
-('62b4366a4af1b', 'Baby Shirt', 'Cute little shirt for baby boy', 500, 'S', '#00bfff', 'media/IMG-62b4366a439ee8.58301687.jpg', 18, '', 'owl-carousel', 0, '2022-06-23', 'Kids Dress');
+('62b4366a4af1b', 'Baby Shirt', 'Cute little shirt for baby boy', 500, 'S', '#00bfff', 'media/IMG-62b4366a439ee8.58301687.jpg', 18, '', 'owl-carousel', 0, '2022-06-23', 'Kids Dress'),
+('62b4b7733ba7d', 'Baby Shoe', 'Nice little pair of shoes for babies, light weight, comfortable material', 500, 'S', '#00d5ff', 'media/IMG-62b4b773193207.75986258.jpg', 14, '', 'owl-carousel', 0, '2022-06-24', 'Kids Dress'),
+('62b5a7cb63e37', 'Baby Wedding Frock', 'wedding frock for babies, comfortable material', 2500, 'S', '#0044b3', 'media/62b5a7cb632c5-2022-06-24.png', 23, 'selling', 'owl-carousel', 0, '2022-06-24', 'Kids Dress');
 
 -- --------------------------------------------------------
 
