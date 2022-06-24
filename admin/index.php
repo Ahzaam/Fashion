@@ -3,7 +3,7 @@
 session_start();
 if(isset($_SESSION['dbpasscode'])){
   if(  $_SESSION['dbpasscode'] != 'unsecure'){
-    header('Location:adminhomegal.php');
+    header('Location:admin.php');
 }else{
   echo "";
 }

@@ -48,10 +48,10 @@ if($pass == $newencrypt){
 
 
 
-header("Location: adminhomegal.php?pass=$pass?hghgjyg");
+header("Location: admin.php?pass=$pass?hghgjyg");
 
 }else{
 
-  header("Location:indexgal.php?pass=$password");
+  header("Location:index.php?pass=$password");
 }
  ?>

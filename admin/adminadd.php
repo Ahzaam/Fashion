@@ -1,9 +1,18 @@
 <?php
 session_start();
 
-if(  $_SESSION['dbpasscode'] == 'unsecure'){
-  header('Location:../index.php');
+if(isset($_SESSION['dbpasscode'])){
+
+  if($_SESSION['dbpasscode'] == 'unsecure'){
+    header('Location:index.php');
+  }else{
+
+
+  }
+}else{
+  header('Location:index.php');
 }
+
 
 ?>
 
@@ -18,6 +27,10 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
   <script defer src="../bootsrap/icon_js/all.js"></script>
 
 
+  <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/dropzone"></script>
+  <script src="https://unpkg.com/cropperjs"></script>
+
 
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,103 +40,56 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
   integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
   <style media="screen">
-  /* .fa-check-circle{
-  color:rgb(28, 255, 0);
-  padding-right: 15px;
-}
-label{
-padding-left: 100px;
-outline: none;
-border: none;
-font-size:20px;
-width:300px;
-height:100px;
+  .image_area {
+    position: relative;
+  }
 
-}
+  img {
+    display: block;
+    max-width: 100%;
+  }
 
-input{
-width: 200px;
-height: 30px;
+  .preview {
+    overflow: hidden;
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+    border: 1px solid red;
+  }
 
-}
+  .modal-lg{
+    /* max-width:400px !important; */
+  }
 
-.container{
-text-align:center;
-padding-top: 100px;
-}
+  .overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    height: 0;
+    transition: .5s ease;
+    width: 100%;
+  }
 
-input[type="submit"],button{
-width: 240px;
-height: 40px;
-background-color: rgb(20, 171, 255);
-border: none;
-font-size:24px;
-color:white;
-}
-input[type="submit"]:hover,button:hover{
-cursor: pointer;
-background-color:rgb(0, 141, 219);
-}
-table {
-width: 100%;
-}
-th{
-text-align: left;
-border-bottom: 1px solid grey;
-font-size: 19px;
-font-weight: 10px;
-}
-td{
-text-align: left;
-}
-tr{
-margin-top:10px;
-}
-.container {
+  .image_area:hover .overlay {
+    height: 50%;
+    cursor: pointer;
+  }
 
-text-align: center;
-}
+  .text {
+    color: #333;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 
-button[type="button"]{
-margin-top:50px;
-width: 200px;
-height:50px;
-background-color:rgb(52, 236, 130);
-border:none;
-font-size: 25px;
-}
-a{
-background-color:rgb(52, 236, 130);
-border:none;
-font-size: 25px;
-padding:0px 100px;
-link-style:none;
-text-decoration:none;
-color:white;
-
-}
-tr:hover{
-background-color:rgb(218, 217, 217);
-cursor:pointer;
-}
-button[type="buttonx"]{
-margin:10px;
-}
-input[type="textx"]{
-margin:10px ;
-}
-input[type="text"],select{
-margin:0px ;
-border:none;
-outline:none;
-border-bottom:1px solid black;
-}
-a[type="edit"]{
-width:100px;
-padding:0px 12px;
-background-color:rgb(255, 18, 53);
-margin-top:100px;
-} */
 </style>
 </head>
 <body>
@@ -145,12 +111,39 @@ margin-top:100px;
   $display = ($comments > 0) ?'':'d-none';
 
   ?>
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" id='savechanges' data-bs-target="#exampleModal">
+
+</button>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Item Added Successfully
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
   <div class="container">
     <div class="my-5">
 
       <ul class="nav nav-pills nav-justified">
+        <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="admin.php">
+          Home <span class="badge text-bg-secondary"></span>
+        </a>
         <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="adminhomegal.php">
-          In Stock <span class="badge text-bg-secondary"> <?php echo $ins; ?></span>
+          Selling <span class="badge text-bg-secondary"> <?php echo $ins; ?></span>
         </a>
 
 
@@ -183,109 +176,195 @@ margin-top:100px;
     </div>
 
 
-
-
-
     <form class="from" action="add.php" method="post" enctype="multipart/form-data">
       <div class="row">
 
         <div class="mb-3 col-lg-5">
           <label for="exampleFormControlInput1" class="form-label">Name</label>
           <input type="text" class="form-control" name='name' id="exampleFormControlInput1" required placeholder="Name">
-        </div>
 
-        <div class="mb-3 col-lg-4">
           <label for="exampleFormControlInput1" class="form-label">Price(LKR)</label>
           <input type="number" class="form-control" name='price' id="exampleFormControlInput1" required placeholder="1000 LKR">
-        </div>
 
-
-        <div class="mb-3 col-lg-3">
           <label for="exampleFormControlInput1" class="form-label">Color</label>
           <input type="color" class="form-control" name='color'  id="exampleFormControlInput1">
         </div>
+
+        <div class="mb-3 col-lg-7">
+          <div class="">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea class="form-control" name='description' required id="exampleFormControlTextarea1" rows="7"></textarea>
+          </div>
+        </div>
+
+
+
 
       </div>
 
       <div class="row">
 
-        <div class="mb-3 col-lg-3">
+        <div class="mb-3 col-lg-5">
           <label for="exampleFormControlInput1" class="form-label">Images</label>
-          <input type="file" class="form-control" name='my_image' required id="exampleFormControlInput1" >
-        </div>
-
-        <div class="mb-3 col-lg-3">
-          <label for="exampleFormControlInput1" class="form-label">Size</label>
-          <input type="text" class="form-control" name='size' id="exampleFormControlInput1" placeholder="S, M, L, XL ">
-          <p class="text-success" style="font-size:12px;">You can add multiple sizes with comma separated</p>
-        </div>
-
-
-
-
-        <div class="mb-3 col-lg-2">
-          <label for="exampleFormControlInput1" class="form-label">Stock</label>
-          <input type="number" class="form-control" name='stock' required id="exampleFormControlInput1" placeholder="120">
-        </div>
-
-        <div class="mb-3 col-lg-2">
-          <label for="exampleFormControlTextarea1" class="form-label">Display </label>
-          <select class="form-select" name='display' aria-label="Default select example">
-            <option selected value="none">None</option>
-            <option value="owl-carousel">Owl Carousel</option>
-            <option value="grid" >Grid</option>
-
-          </select>
-        </div>
-
-        <div class="mb-3 col-lg-2">
-          <label for="exampleFormControlTextarea1" class="form-label">Category </label>
-          <select class="form-select" name='category' aria-label="Default select example" required>
-            <option selected value="none">--Select Category --</option>
-            <option value="Mens Dress">Mens Dress</option>
-            <option value="Womens Dress">Womens Dress</option>
-            <option value="Kids" >Kids</option>
-            <option value="Kids Dress" >Kids Dress</option>
-            <option value="Teens Dress" >Teens Dress</option>
-            <option value="Kids Toys" >Kids Toys</option>
-            <option value="Mens Accesorie" >Mens Accesorie</option>
-            <option value="Womens Accesorie" >Womens Accesorie</option>
-          </select>
-                  </div>
-
-                </div>
-
-                <div class="row">
-                  <div class="mb-3 my-3 col-lg-6">
-                    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                    <textarea class="form-control" name='description' required id="exampleFormControlTextarea1" rows="4"></textarea>
-                  </div>
-                  <div class="mb-3 col-lg-5 my-3">
-                    <label for="exampleFormControlInput1" class="form-label">Status</label>
-                    <select name='status' class="form-select" aria-label="Default select example">
-                      <option selected value='selling'>Selling</option>
-                      <option value="stopped">Stopped</option>
-
-                    </select>
-                  </div>
-
-
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-                <button type="submit" class='btn btn-primary' name='submit'>Save</button>
-              </form>
-
+          <input type="file" class="form-control"  required id="upload_image" >
+          <input type="hidden" id='hiddeninputimg'  name="my_image" value="">
+          <div class="  " style=' cursor: pointer;' id='uploadimgicon'>
+            <div class="text-start m-lg-5 m-2">
+              <img src="../home/images/uploadpng.png" class=' text-center' style='max-height:300px; border-radius:10px;' alt="Image" id='img_prev'>
+              <div class="d-none" id='resdiv'>
+                <p class=''>Resolution <span id='resolution'></span> </p>
+              </div>
             </div>
-          </body>
-          </html>
+
+          </div>
+
+        </div>
+
+        <div class="mb-3 col-lg-7 ">
+          <div class="">
+            <label for="exampleFormControlTextarea1" class="form-label">Category </label>
+            <select class="form-select" name='category' aria-label="Default select example" required>
+              <option selected value="none">--Select Category --</option>
+              <option value="Mens Dress">Mens Dress</option>
+              <option value="Womens Dress">Womens Dress</option>
+              <option value="Kids Toy" >Kids Toy</option>
+              <option value="Kids Dress" >Kids Dress</option>
+              <option value="Teens Dress" >Teens Dress</option>
+              <option value="Kids Toys" >Kids Toys</option>
+              <option value="Mens Accesorie" >Mens Accesorie</option>
+              <option value="Womens Accesorie" >Womens Accesorie</option>
+              <option value="Kids" ></option>
+              <option value="Kids" >Kids Toy</option>
+            </select>
+          </div>
+
+          <div class="">
+            <label for="exampleFormControlInput1" class="form-label">Size</label>
+            <input type="text" class="form-control" name='size' id="exampleFormControlInput1" placeholder="S, M, L, XL ">
+            <p class="text-success" style="font-size:12px;">You can add multiple sizes with comma separated</p>
+          </div>
+
+
+
+
+          <div class="">
+            <label for="exampleFormControlInput1" class="form-label">Stock</label>
+            <input type="number" class="form-control" name='stock' required id="exampleFormControlInput1" placeholder="120">
+          </div>
+
+          <div class="">
+            <label for="exampleFormControlTextarea1" class="form-label">Display </label>
+            <select class="form-select" name='display' aria-label="Default select example">
+              <option selected value="none">None</option>
+              <option value="owl-carousel">Owl Carousel</option>
+              <option value="grid" >Grid</option>
+
+            </select>
+          </div>
+
+
+          <div class="row">
+            <div class="mb-3 col-lg-5 my-3">
+              <label for="exampleFormControlInput1" class="form-label">Status</label>
+              <select name='status' class="form-select" aria-label="Default select example">
+                <option selected value='selling'>Selling</option>
+                <option value="stopped">Stopped</option>
+
+              </select>
+            </div>
+            <div class="mb-3 col-lg-7 my-4">
+              <label for="exampleFormControlInput1" class="form-label"></label><br>
+
+                <button type="submit" class='btn btn-primary w-100' name='submit'>Save</button>
+
+              </select>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </form>
+
+  </div>
+
+
+
+
+
+
+
+<!--
+  <div class="image_area">
+    <form method="post">
+      <label for="upload_image">
+        <img src="upload/user.png" id="uploaded_image" class="img-responsive img-circle" />
+        <div class="overlay">
+          <div class="text">Click to Change Profile Image</div>
+        </div>
+        <input type="file" name="image" class="image" id="upload_image" style="display:none" />
+      </label>
+    </form>
+  </div> -->
+
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <div class="img-container">
+
+              <div class="w-100">
+                <img src="" style='min-width:300px;' id="sample_image" />
+              </div>
+              <div class="col-md-4">
+                <div class="preview"></div>
+              </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="crop" class="btn btn-primary">Crop</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      <?php if(isset($_REQUEST['suc'])){
+        $suc = $_REQUEST['suc'];
+        echo "let val = ". $suc. ";";
+      } else{
+        echo "let val = 0;";
+      }
+
+      ?>
+
+      if(val == 1){
+        $('#savechanges').click()
+      }
+    })
+  </script>
+  <script src='adminadd.js'></script>
+
+
+</body>
+</html>

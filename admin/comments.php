@@ -1,12 +1,20 @@
 <?php
 session_start();
 
-if(  $_SESSION['dbpasscode'] == 'unsecure'){
-  header('Location:../index.php');
+if(isset($_SESSION['dbpasscode'])){
+
+  if($_SESSION['dbpasscode'] == 'unsecure'){
+    header('Location:index.php');
+  }else{
+
+
+  }
+}else{
+  header('Location:index.php');
 }
 
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -50,8 +58,11 @@ if(  $_SESSION['dbpasscode'] == 'unsecure'){
     <div class="my-5">
 
       <ul class="nav nav-pills nav-justified">
+        <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="admin.php">
+          Home <span class="badge text-bg-secondary"></span>
+        </a>
         <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="adminhomegal.php">
-          In Stock <span class="badge text-bg-secondary"> <?php echo $ins; ?></span>
+          Selling <span class="badge text-bg-secondary"> <?php echo $ins; ?></span>
         </a>
 
 

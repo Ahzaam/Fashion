@@ -1,13 +1,18 @@
-<!--
+<?php
+session_start();
 
-   <td> <input type='textx' name='name' value='". $row['name'] ."'</td>
-   <td style='text-align:right; padding-right:50px;'> <input type='textx' name='price' value='". $prc . "'></td>
-   <td><input type='textx' name='description' value='". $row['description'] ."'</td>
-   <td><input type='textx' name='stock' value='". $row['stock'] ."' </td>
-   <td ><a type='edit' href='additem.php' style='padding:0px 50px;' >Save</a> <a type='edit' href='additem.php' style='color:white;width:100px;'>cancel</a> </td>
+if(isset($_SESSION['dbpasscode'])){
+  if($_SESSION['dbpasscode'] == 'unsecure'){
 
-</tr> -->
+  }else{
+    header('Location:index.php');
+  }
+}else{
+  header('Location:index.php');
+}
 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -89,7 +94,7 @@
                   <option value="owl-carousel">Owl Carousel</option>
                   <option value="grid" >Grid</option>
                   <option value="none">None</option>
-                  
+
                 </select>
 
                 <label for="" class="label">Price</label>
