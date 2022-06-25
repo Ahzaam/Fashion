@@ -162,7 +162,7 @@ if(isset($_SESSION['dbpasscode'])){
   <body>
     <div class="section-top col-sm-12   col-bg-3" style="background-image: url('D/xampp/htdocs/websites/megatron/Login/banner_01.jpg');">
       <div class="in mt-lg-5">
-        <form class="login_form" action="val.php"   method="post" name="form" id="form">
+        <form class="login_form" action="api/val.php"   method="post" name="form" id="form">
           <h1>LOGIN</h1>
           <br><br>
 

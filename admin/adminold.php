@@ -1,21 +1,6 @@
 <?php
-session_start();
-
-if(isset($_SESSION['dbpasscode'])){
-
-  if($_SESSION['dbpasscode'] == 'unsecure'){
-    header('Location:index.php');
-  }else{
-
-
-  }
-}else{
-  header('Location:index.php');
-}
-
-
-?>
-
+  require('pageauth.php')
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

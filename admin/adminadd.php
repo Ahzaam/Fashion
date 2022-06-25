@@ -1,42 +1,24 @@
 <?php
-session_start();
-
-if(isset($_SESSION['dbpasscode'])){
-
-  if($_SESSION['dbpasscode'] == 'unsecure'){
-    header('Location:index.php');
-  }else{
-
-
-  }
-}else{
-  header('Location:index.php');
-}
-
-
-?>
-
+  require('pageauth.php')
+ ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Admin</title>
+  <title>Add Product</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../bootsrap/icon_css/all.css">
-  <script defer src="../bootsrap/icon_js/all.js"></script>
-
 
   <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet"/>
-  <script src="https://unpkg.com/dropzone"></script>
-  <script src="https://unpkg.com/cropperjs"></script>
+  <script defer src="https://unpkg.com/dropzone"></script>
+  <script defer src="https://unpkg.com/cropperjs"></script>
 
 
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
   <style media="screen">
@@ -176,7 +158,7 @@ if(isset($_SESSION['dbpasscode'])){
     </div>
 
 
-    <form class="from" action="add.php" method="post" enctype="multipart/form-data">
+    <form class="from" action="api/add.php" method="post" enctype="multipart/form-data">
       <div class="row">
 
         <div class="mb-3 col-lg-5">
@@ -233,7 +215,7 @@ if(isset($_SESSION['dbpasscode'])){
               <option value="Kids Toys" >Kids Toys</option>
               <option value="Mens Accesorie" >Mens Accesorie</option>
               <option value="Womens Accesorie" >Womens Accesorie</option>
-              <option value="Kids" ></option>
+              <!-- <option value="Kids" ></option> -->
               <option value="Kids" >Kids Toy</option>
             </select>
           </div>
@@ -283,20 +265,6 @@ if(isset($_SESSION['dbpasscode'])){
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </form>
 
   </div>
@@ -363,7 +331,7 @@ if(isset($_SESSION['dbpasscode'])){
       }
     })
   </script>
-  <script src='adminadd.js'></script>
+  <script src='js/adminadd.js'></script>
 
 
 </body>

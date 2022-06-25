@@ -1,26 +1,12 @@
 <?php
-session_start();
-
-if(isset($_SESSION['dbpasscode'])){
-
-  if($_SESSION['dbpasscode'] == 'unsecure'){
-    header('Location:index.php');
-  }else{
-
-
-  }
-}else{
-  header('Location:index.php');
-}
-
-
-?>
+  require('pageauth.php')
+ ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Admin</title>
+  <title>Comments</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../files/icon_css/all.css">
   <script defer src="../files/icon_js/all.js"></script>
@@ -148,7 +134,7 @@ if(isset($_SESSION['dbpasscode'])){
       let reply = $('#' + inid).val()
       let data = {id: $(this).attr('id'), reply:reply}
       $.post({
-        url:'commentmark.php',
+        url:'api/commentmark.php',
         data:data,
         success: function (data, status) {
           location.reload()

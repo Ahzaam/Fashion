@@ -9,7 +9,7 @@ session_start(); ?>
   <meta charset="utf-8">
   <title>MegaTrons</title>
   <link rel="stylesheet" href="../home/nav_style.css">
-  <link rel="stylesheet" href="body.css">
+  <link rel="stylesheet" href="css/body.css">
 
 
   <!-- Font Awesome -->
@@ -131,7 +131,7 @@ session_start(); ?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="baby.php">Home</a>
+              <a class="nav-link active" aria-current="page" href="../home">Home</a>
             </li>
 
 
@@ -269,7 +269,7 @@ session_start(); ?>
       </div>
 
     </div>
-    <script src='gallery.js'></script>
+    <script src='js/gallery.js'></script>
 
 
   </body>

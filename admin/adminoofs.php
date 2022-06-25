@@ -1,30 +1,13 @@
 <?php
-session_start();
-
-if(isset($_SESSION['dbpasscode'])){
-
-  if($_SESSION['dbpasscode'] == 'unsecure'){
-    header('Location:index.php');
-  }else{
-
-
-  }
-}else{
-  header('Location:index.php');
-}
-
-
-?>
+  require('pageauth.php')
+ ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Admin</title>
+    <title>Out Of Stock</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../bootsrap/icon_css/all.css">
-    <script defer src="../bootsrap/icon_js/all.js"></script>
-
 
 
       <!-- CSS only -->
@@ -127,7 +110,7 @@ if(isset($_SESSION['dbpasscode'])){
                    <button type='button' class='btn btn-light my-2'>
                    Selled  <span class='badge text-bg-success'>" . $row['selled'] . "</span>
                    </button>
-                   <a href='#' class='btn btn-primary my-2 w-100'>Edit Now</a>
+                   <a href='edit.php?id=". $row['id'] ."' class='btn btn-primary my-2 w-100'>Edit Now</a>
 
                  </div>
                  </div>

@@ -1,3 +1,3 @@
 <?php
-header('Location:home/baby.php');
+header('Location:home/');
  ?>
