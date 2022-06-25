@@ -4,7 +4,7 @@ include '../../con.php';
     if(isset($_POST['event'])){
       if($_POST['event'] == 'lightbox'){
         $id = $_POST['id'];
-        $query = "SELECT * FROM product_table WHERE id='$id' AND status='selling'";
+        $query = "SELECT * FROM product_table WHERE id='$id' ";
         $result = $conn->query($query);
 
         if($result->num_rows > 0){
@@ -29,9 +29,9 @@ include '../../con.php';
 
 
       if($search == '' || $search == ' '){
-        $query = "SELECT id, name, description, image FROM product_table AND status='selling'  ORDER BY date DESC LIMIT 4";
+        $query = "SELECT id, name, description, image FROM product_table ORDER BY date DESC LIMIT 4";
       }else{
-        $query = "SELECT id, name, description, image FROM product_table WHERE( description LIKE  '%$search%' OR name LIKE  '%$search%' OR description REGEXP  '$search' OR name REGEXP  '$search' OR category REGEXP  '$search') AND status='selling' LIMIT   5 "; // OR name REGEXP '[[:<:]]$search[[:>:]]' OR category LIKE '%$search%'
+        $query = "SELECT id, name, description, image FROM product_table WHERE(id LIKE '%$search%' OR description LIKE  '%$search%' OR name LIKE  '%$search%' OR description REGEXP  '$search' OR name REGEXP  '$search' OR category REGEXP  '$search')  LIMIT   5 "; // OR name REGEXP '[[:<:]]$search[[:>:]]' OR category LIKE '%$search%'
       }
 
 

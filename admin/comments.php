@@ -47,33 +47,9 @@
         <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="admin.php">
           Home <span class="badge text-bg-secondary"></span>
         </a>
-        <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="adminhomegal.php">
-          Selling <span class="badge text-bg-secondary"> <?php echo $ins; ?></span>
-        </a>
 
-
-        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminoofs.php">
-          Out Of Stock
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            <?php echo $ofs; ?>
-            <span class="visually-hidden">outofstock</span>
-          </span>
-        </a>
-
-        <!-- <a class="nav-link active " href="#">Comments and Feedback</a> -->
-        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="#">
-          <strong>Feedback  </strong>
-          <span class="position-absolute top-0 start-100 translate-middle badge <?php echo $display ?> rounded-pill bg-danger">
-            <?php echo $comments; ?>
-            <span class="visually-hidden">Unread</span>
-          </span>
-        </a>
-
-        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminadd.php">
-          Add Product
-        </a>
-      </ul>
     </div>
+
     <div class="comments">
       <h1 class='display-6'>Feedbacks</h1>
       <?php

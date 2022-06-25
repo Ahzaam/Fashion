@@ -452,6 +452,21 @@ session_start(); ?>
                   </div>
                 </div>
               </div>
+                <br><br><br><br><br>
+
+              <!-- Start of the parallax -->
+                <div class="margin d-flex my-5" style="align-items:center;">
+                  <section class="parallax w-100" style="background: url('images/sldimg1.jpg')no-repeat fixed 100%;">
+                    <div class="parallax-inner text-center">
+                      <br><br><br>
+                      <h1 class="display-3 text-muted">Buy all baby Accesorien in one place</h1>
+                      <br><br><br>
+                      <a href=""><button class='btn my-3 rounded-pill ' style="background-color:#00c9c3; font-size:20px;" type="button-baby-corner" name="button">Visit</button></a>
+                    </div>
+                  </section>
+                </div>
+              <br><br><br><br><br>
+              <!-- End of the parallax -->
 
 
 
@@ -514,7 +529,7 @@ session_start(); ?>
 
                       <?php
                       include '../con.php';
-                      $query = "SELECT id, image, name FROM product_table WHERE display='owl-carousel'";
+                      $query = "SELECT id, image, name FROM product_table WHERE display='owl-carousel' AND status='selling'";
                       $result = $conn->query($query);
 
                       if ($result->num_rows > 0){
@@ -735,7 +750,7 @@ session_start(); ?>
 
                 <?php
                 include '../con.php';
-                $query = "SELECT id, image, name, price FROM product_table WHERE display='grid'";
+                $query = "SELECT id, image, name, price FROM product_table WHERE display='grid' AND status='selling'";
                 $result = $conn->query($query);
 
                 if ($result->num_rows > 0){
@@ -743,7 +758,7 @@ session_start(); ?>
                     ?>
 
 
-                    <div class="col-md-3 col-sm-6 mt-5 col-6 lightboxsupport" id='<?php echo $row['id'] ?>'>
+                    <div class="col-md-3 col-sm-6 mt-5 col-6 " >
                       <div class="product-grid shadow rounded">
                         <div class="product-image">
                           <a href="#">
@@ -756,7 +771,7 @@ session_start(); ?>
                             <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
                             <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
                             <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-                            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                            <li><a  class='lightboxsupport' id='<?php echo $row['id'] ?>' data-tip="Quick View"><i class="fa fa-search"></i></a></li>
                           </ul>
                         </div>
                         <div class="product-content px-3">

@@ -27,24 +27,7 @@
   </style>
 </head>
 <body>
-  <?php
 
-  include "../con.php";
-  $outofstock = "SELECT * FROM product_table WHERE stock <= 0";
-  $count = $conn->query($outofstock);
-  $ofs = $count->num_rows;
-
-  $instock = "SELECT * FROM product_table WHERE stock > 0";
-  $count = $conn->query($instock);
-  $ins = $count->num_rows;
-
-  $comments = "SELECT * FROM comments_feedback WHERE status = 'unread'";
-  $count = $conn->query($comments);
-  $comments = $count->num_rows;
-
-
-  $display = ($comments > 0) ?'':'d-none';
-  ?>
   <div class="container-fluid">
     <div class="container">
       <div class="my-5">
@@ -57,7 +40,7 @@
       </div>
 
       <div class="input-group mb-3 my-5 ">
-        <input type="text" class="form-control" onsearch='postsearch()' id='searchingallery' placeholder="Enter Id, Name, Part of description" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <input type="text" class="form-control" onsearch='postsearch()' id='searchingallery' placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
         <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
       </div>
 
@@ -76,13 +59,12 @@
             <?php
 
             include "../con.php";
-            $query = "SELECT * FROM product_table WHERE stock > 0";
+            $query = "SELECT * FROM deleted_product_table WHERE stock > 0";
             $result = $conn->query($query);
 
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()){
 
-                $color = ($row['status'] == 'selling') ? 'success' : 'danger';
 
 
                 echo "
@@ -107,9 +89,6 @@
                 </button>
                 <button type='button' class='btn btn-light my-2'>
                 Selled  <span class='badge text-bg-success'>" . $row['selled'] . "</span>
-                </button>
-                <button type='button' class='btn btn-light my-2'>
-                  <span class='badge text-bg-$color '>" . $row['status'] . "</span>
                 </button>
                 <a href='edit.php?id=". $row['id'] ."' class='btn btn-primary my-2 w-100'>Edit Now</a>
 

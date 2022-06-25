@@ -1,0 +1,49 @@
+body{
+  overflow: hidden;
+}
+div.in{
+
+
+  background-color: rgba(0, 0, 0, 0.51);
+
+
+  border-radius:10px;
+}
+
+
+.section-top{
+  height:100vh;
+
+  background-image: url('banner_01.jpg');
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: change 20s infinite ease-in-out;
+}
+
+@keyframes change {
+  0%
+  {
+    background-image: url('../images/banner_02.jpg');
+  }
+  20%
+  {
+    background-image: url('../images/banner_03.jpg');
+  }
+  40%
+  {
+    background-image: url('../images/banner_01.jpg');
+  }
+  60%
+  {
+    background-image: url('../images/banner_03.jpg');
+  }
+  80%
+  {
+    background-image: url('../images/banner_01.jpg');
+  }
+  100%
+  {
+    background-image: url('../images/banner_03.jpg');
+  }
+}

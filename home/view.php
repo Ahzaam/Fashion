@@ -1,16 +1,10 @@
-<?php
-  require('pageauth.php')
- ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <title>Edit Product</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link defer href="js/cropper.css" rel="stylesheet"/>
-    <script defer src="js/cropper.js"></script>
-    <script defer src="js/cropperjs.js"></script>
 
 
   <!-- CSS only -->
@@ -78,7 +72,7 @@
 
            include "../con.php";
 
-           $cus_id = $_REQUEST['id'];
+           $cus_id = $_REQUEST['product'];
 
 
            $query = "SELECT * FROM product_table WHERE `id` = '$cus_id'" ;
@@ -115,9 +109,8 @@
             <button type="submit" id="editformsubmit"  class="btn btn-primary" name='submit'>Save</button>
           </div>
           <div class="" id='doneformsubmit'>
-
-            <button type="submit" id="doneformsubmit"  class="btn btn-success" data-bs-dismiss="modal" name='submit'>Edit</button>
             <button type="submit" id="doneformsubmit"  class="btn btn-danger" onclick="history.back()" name='submit'>Exit</button>
+            <button type="submit" id="doneformsubmit"  class="btn btn-success" data-bs-dismiss="modal" name='submit'>Edit</button>
           </div>
         </div>
       </div>
@@ -152,19 +145,19 @@
       <div class="row">
 
         <div class="mb-3 col-lg-5">
-          <input type="hidden" name="id" id='hiddenid' value="<?php echo $row['id'] ?>">
+          <input readonly type="hidden" name="id" id='hiddenid' value="<?php echo $row['id'] ?>">
           <label for="exampleFormControlInput1" class="form-label">Name</label>
-          <input type="text" class="form-control  deafultinput" data-prev-data='<?php echo $row['name'] ?>' value="<?php echo $row['name'] ?>" name='name' id="exampleFormControlInput1" required placeholder="Name">
+          <input readonly type="text" class="form-control  deafultinput" data-prev-data='<?php echo $row['name'] ?>' value="<?php echo $row['name'] ?>" name='name' id="exampleFormControlInput1" required placeholder="Name">
           <div class="valid-feedback">
 
     </div>
           <label for="exampleFormControlInput1" class="form-label">Price(LKR)</label>
-          <input type="number" class="form-control deafultinput" data-prev-data='<?php echo $row['price'] ?>' value="<?php echo $row['price'] ?>"  name='price' id="exampleFormControlInput1" required placeholder="1000 LKR">
+          <input readonly type="number" class="form-control deafultinput" data-prev-data='<?php echo $row['price'] ?>' value="<?php echo $row['price'] ?>"  name='price' id="exampleFormControlInput1" required placeholder="1000 LKR">
           <div class="valid-feedback">
 
     </div>
           <label for="exampleFormControlInput1" class="form-label">Color</label>
-          <input type="color" class="form-control deafultinput" data-prev-data='<?php echo $row['colors'] ?>' value="<?php echo $row['colors'] ?>" name='color'  id="exampleFormControlInput1">
+          <input readonly type="color" class="form-control deafultinput" data-prev-data='<?php echo $row['colors'] ?>' value="<?php echo $row['colors'] ?>" name='color'  id="exampleFormControlInput1">
           <div class="valid-feedback">
 
     </div>
@@ -189,8 +182,8 @@
 
         <div class="mb-3 col-lg-5">
           <!-- <label for="exampleFormControlInput1" class="form-label">Images</label> -->
-          <input type="file" class="form-control d-none "  required id="upload_image" >
-          <input type="hidden" id='hiddeninputimg'  name="my_image" value="">
+          <!-- <input readonly type="file" class="form-control d-none "  required id="upload_image" > -->
+          <!-- <input readonly type="hidden" id='hiddeninputimg'  name="my_image" value=""> -->
           <div class="  " style=' cursor: pointer;' id='uploadimgicon'>
             <div class="text-start ">
                 <img src="../<?php echo $row['image'] ?>" class=' text-center' style='max-height:400px; border-radius:10px;' alt="Image" id='img_prev'>
@@ -226,7 +219,7 @@
 
           <div class="">
             <label for="exampleFormControlInput1" class="form-label">Size</label>
-            <input type="text" class="form-control deafultinput" data-prev-data='<?php echo $row['size'] ?>' value="<?php echo $row['size'] ?>"  name='size' id="exampleFormControlInput1" placeholder="S, M, L, XL ">
+            <input readonly type="text" class="form-control deafultinput" data-prev-data='<?php echo $row['size'] ?>' value="<?php echo $row['size'] ?>"  name='size' id="exampleFormControlInput1" placeholder="S, M, L, XL ">
             <div class="valid-feedback">
 
       </div>
@@ -238,7 +231,7 @@
 
           <div class="">
             <label for="exampleFormControlInput1"  class="form-label">Stock</label>
-            <input type="number" class="form-control deafultinput" data-prev-data='<?php echo $row['stock'] ?>' value="<?php echo $row['stock'] ?>"  name='stock' required id="exampleFormControlInput1" placeholder="120">
+            <input readonly type="number" class="form-control deafultinput" data-prev-data='<?php echo $row['stock'] ?>' value="<?php echo $row['stock'] ?>"  name='stock' required id="exampleFormControlInput1" placeholder="120">
             <div class="valid-feedback">
 
       </div>
@@ -300,7 +293,7 @@
         <div class="overlay">
           <div class="text">Click to Change Profile Image</div>
         </div>
-        <input type="file" name="image" class="image" id="upload_image" style="display:none" />
+        <input readonly type="file" name="image" class="image" id="upload_image" style="display:none" />
       </label>
     </form>
   </div> -->
@@ -329,15 +322,6 @@
     </div>
 
   </div>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <script src='js/adminadd.js'></script>
-
-  <script src='js/edit.js'>
-
-  </script>
 
   <?php
 }else{

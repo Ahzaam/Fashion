@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     }else{
       value = search
-      url = '../home/api/search.php';
+      url = 'api/search.php';
       data = {search: search}
       $.post(url, data, function (data, status) {
         let results = JSON.parse(data);
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 
   function resultdiv(i, name, src, description, id) {
-    let div = "<div id='gridserchanimation"+i+"' style='' class='col gridserchanimation'><div class='card'><img src='../"+src+"' class='card-img-top' alt='Image'><div class='card-body text-start'><h5 class='card-title'>"+name +"</h5><p class='card-text'>"+ description +"</p></div></div></div>"
+    let div = "<div id='gridserchanimation"+i+"' style='' class='col gridserchanimation'><div class='card'><img src='../"+src+"' class='card-img-top' alt='Image'><div class='card-body text-start'><h5 class='card-title'>"+name +"</h5><p class='card-text'>"+ description +"</p><a class='btn btn-primary rounded-pill' href='edit.php?id="+id+"'>Edit</a></div></div></div>"
     // transform: translateX(-100px);
     $('#gridcont').append(div)
     let counter = 0.1;

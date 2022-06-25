@@ -9,9 +9,9 @@
   <title>Add Product</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet"/>
-  <script defer src="https://unpkg.com/dropzone"></script>
-  <script defer src="https://unpkg.com/cropperjs"></script>
+  <link defer href="js/cropper.css" rel="stylesheet"/>
+  <script defer src="js/cropper.js"></script>
+  <script defer src="js/cropperjs.js"></script>
 
 
   <!-- CSS only -->
@@ -75,24 +75,6 @@
 </style>
 </head>
 <body>
-  <?php
-
-  include "../con.php";
-  $outofstock = "SELECT * FROM product_table WHERE stock <= 0";
-  $count = $conn->query($outofstock);
-  $ofs = $count->num_rows;
-
-  $instock = "SELECT * FROM product_table WHERE stock > 0";
-  $count = $conn->query($instock);
-  $ins = $count->num_rows;
-
-  $comments = "SELECT * FROM comments_feedback WHERE status = 'unread'";
-  $count = $conn->query($comments);
-  $comments = $count->num_rows;
-
-  $display = ($comments > 0) ?'':'d-none';
-
-  ?>
 
   <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" id='savechanges' data-bs-target="#exampleModal">
@@ -124,37 +106,7 @@
         <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="admin.php">
           Home <span class="badge text-bg-secondary"></span>
         </a>
-        <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="adminhomegal.php">
-          Selling <span class="badge text-bg-secondary"> <?php echo $ins; ?></span>
-        </a>
 
-
-        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminoofs.php">
-          Out Of Stock
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            <?php echo $ofs; ?>
-            <span class="visually-hidden">outofstock</span>
-          </span>
-        </a>
-
-        <!-- <a class="nav-link active " href="#">Comments and Feedback</a> -->
-        <a type="button" class="nav-link  active m-lg-2 m-2 w-100 position-relative" href="comments.php">
-          Feedback
-          <span class="position-absolute  <?php echo $display ?> top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            <?php echo $comments; ?>
-            <span class="visually-hidden">Unread</span>
-          </span>
-        </a>
-
-
-
-
-
-
-        <a type="button" class="nav-link active m-lg-2 m-2 w-100 position-relative" href="adminadd.php">
-          <strong>Add Product</strong>
-        </a>
-      </ul>
     </div>
 
 
@@ -213,6 +165,8 @@
               <option value="Kids Dress" >Kids Dress</option>
               <option value="Teens Dress" >Teens Dress</option>
               <option value="Kids Toys" >Kids Toys</option>
+                <option value="Baby Dress">Baby Dress</option>
+                <option value="Baby Accesorie">Baby Accesorie</option>
               <option value="Mens Accesorie" >Mens Accesorie</option>
               <option value="Womens Accesorie" >Womens Accesorie</option>
               <!-- <option value="Kids" ></option> -->
