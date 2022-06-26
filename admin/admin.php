@@ -42,6 +42,7 @@ require('pageauth.php')
   }
 
   .our-team {
+    border-radius:10px;
     padding: 30px 0 40px;
     margin-bottom: 30px;
     background-color: #f7f5ec;
@@ -179,7 +180,7 @@ require('pageauth.php')
           <img class="img-fluid" src="images/gallery.png">
         </div>
         <div class="team-content">
-          <h3 class="name">Gallery</h3>
+          <h3 class="name">Gallery <span class="badge text-bg-secondary"><?php echo $ins ?></span></h3>
 
         </div>
 
@@ -238,7 +239,7 @@ require('pageauth.php')
     </div>
 
 
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='management/'">
       <div class="our-team">
         <div class="picture">
           <img class="img-fluid" src="images/admin.jpg">
@@ -255,10 +256,10 @@ require('pageauth.php')
     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="images/users.png">
+          <img class="img-fluid" src="images/shipment.png">
         </div>
         <div class="team-content">
-          <h3 class="name">Manage Users</h3>
+          <h3 class="name">Orders & Shipments</h3>
 
         </div>
 
@@ -292,7 +293,44 @@ require('pageauth.php')
 
       </div>
     </div>
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3" >
+      <div class="our-team">
 
+        <div class="team-content">
+          <h3 class="name">Top Selling <i class="fa fa-heart mx-2" style='color:#ff70a6;' aria-hidden="true"></i></h3>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3" >
+      <div class="our-team">
+
+        <div class="team-content">
+          <h3 class="name">Top Search <i class="fa fa-search mx-2" style='color:#4361ee;' aria-hidden="true"></i> </h3>
+
+        </div>
+
+      </div>
+    </div><div class="col-6 col-sm-6 col-md-4 col-lg-3" >
+      <div class="our-team">
+
+        <div class="team-content">
+          <h3 class="name">Users <i class="fa fa-users mx-2" style='color:#70d6ff;' aria-hidden="true"></i></h3>
+
+        </div>
+
+      </div>
+    </div><div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='api/logout.php'">
+      <div class="our-team">
+
+        <div class="team-content text-danger">
+          <h3 class="name">Logout <i class="fa fa-sign-out"  aria-hidden="true"></i></h3>
+
+        </div>
+
+      </div>
+    </div>
 
 
   </div>

@@ -57,6 +57,7 @@ $(document).ready(function() {
       url: 'api/delete.php',
       data: {id: id},
       success: function (data, status) {
+        console.log(data);
           history.back()
       }
     })

@@ -7,6 +7,11 @@ if(isset($_SESSION['dbpasscode'])){
 }else{
   echo "";
 }
+
+}
+
+if(isset($_REQUEST['request'])){
+  echo '<h3 class="display-2"> '.$_REQUEST['request'].'</h3>';
 }
 ?>
 <!DOCTYPE html>
@@ -15,11 +20,24 @@ if(isset($_SESSION['dbpasscode'])){
     <meta charset="utf-8">
     <title>Admin Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../files/css/bootstrap.css">
-    <link rel="stylesheet" href="baby-corner/body.css">
-    <link rel="stylesheet" href="style.css"> <!--load all styles -->
-    <script type="text/javascript" src="../files/js/bootstrap.bundle.js">
-    </script>
+
+      <!-- CSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+      <!-- JavaScript Bundle with Popper -->
+      <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+      integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../files/icon_css/all.css">
@@ -43,18 +61,17 @@ if(isset($_SESSION['dbpasscode'])){
       min-height:700px;
       width: auto;
       max-width: 460px;
-      border-radius: 5px;
-      border-style: dashed;
-      border-color: #fff500;
+
+
       /* border: 1px solid grey; */
       /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       box-shadow: 3px 3px px silver; */
     }
 
     .in:hover{
-      border-style:solid;
+
       transition: 0.5s;
-      border-color: #00d9ff;
+
       /* border-color: #fff500; */
 
     }
@@ -70,6 +87,7 @@ if(isset($_SESSION['dbpasscode'])){
     .login_form{
       padding: 0 20px 20px 20px;
       margin: 0px;
+
       overflow-x: auto;
 
     }
@@ -130,8 +148,9 @@ if(isset($_SESSION['dbpasscode'])){
 
     .section-top{
       width: 100%;
-      height: 100vh;
+      max-height: 700px;
       overflow: hidden;
+      border-radius:10px;
       position: relative;
       background-image: url('banner_01.jpg');
       background-position: center;
@@ -160,27 +179,27 @@ if(isset($_SESSION['dbpasscode'])){
     </style>
   </head>
   <body>
-    <div class="section-top col-sm-12   col-bg-3" style="background-image: url('D/xampp/htdocs/websites/megatron/Login/banner_01.jpg');">
+    <div class="section-top col-sm-12 my-5  col-bg-3" style="background-image: url('D/xampp/htdocs/websites/megatron/Login/banner_01.jpg');">
       <div class="in mt-lg-5">
         <form class="login_form" action="api/val.php"   method="post" name="form" id="form">
           <h1>LOGIN</h1>
           <br><br>
 
-          <label for="uname" style="margin-right:105px;">Username</label><br>
-          <input type="text" name="uname" id="uname" value=""
-          class="from-control" required autofocus>
+          <label for="uname" style="margin-right:105px;">Email</label><br>
+          <input type="email" name="uname" id="uname" value=""
+          class="from-control text-white  " required autofocus>
 
           <br />
 
 
           <label for="pword" style="margin-right:105px;">Password</label><br>
           <input type="password" name="pword" id="pword" class="text-white" value="" required ><br />
-          <span><i class="fas fa-eye text-white" aria-hidden="true" id="eye"></i></span>
+
           <br>
           <br>
 
 
-          <button type="submit" class="btn btn-primary" onclick="validate()"style="height: 40px; width:260px">Login</button>
+          <button type="submit" class="btn btn-primary my-5" onclick="validate()"style="height: 40px; width:260px">Login</button>
 
         </form>
 

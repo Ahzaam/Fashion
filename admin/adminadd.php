@@ -1,6 +1,6 @@
 <?php
-  require('pageauth.php')
- ?>
+require('pageauth.php')
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -12,6 +12,21 @@
   <link defer href="js/cropper.css" rel="stylesheet"/>
   <script defer src="js/cropper.js"></script>
   <script defer src="js/cropperjs.js"></script>
+
+
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+  integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <link rel="stylesheet" href="../files/icon_css/all.css">
+  <script defer src="../files/icon_js/all.js"></script> -->
+
+
 
 
   <!-- CSS only -->
@@ -77,40 +92,41 @@
 <body>
 
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" id='savechanges' data-bs-target="#exampleModal">
+  <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" id='savechanges' data-bs-target="#exampleModal">
 
-</button>
+  </button>
 
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Success</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Item Added Successfully
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Item Added Successfully
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
-  <div class="container">
-    <div class="my-5">
-
-      <ul class="nav nav-pills nav-justified">
-        <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="admin.php">
-          Home <span class="badge text-bg-secondary"></span>
-        </a>
-
+  <div class="container position-relative ">
+    <div class="my-5 position-absolute top-0 start-0">
+      <a type="button" class="btn btn-light nav-link active m-lg-2 m-2 w-100 " href="admin.php">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i><span class="badge text-bg-secondary"></span>
+      </a>
     </div>
+  </div>
+  <br><br>
+  <div class="container   my-5">
 
 
-    <form class="from" action="api/add.php" method="post" enctype="multipart/form-data">
+
+    <form class="from my-5" action="api/add.php" method="post" enctype="multipart/form-data">
       <div class="row">
 
         <div class="mb-3 col-lg-5">
@@ -161,12 +177,15 @@
               <option selected value="none">--Select Category --</option>
               <option value="Mens Dress">Mens Dress</option>
               <option value="Womens Dress">Womens Dress</option>
+              <option value="Islamic Girls Dress">Islamic Girls Dress</option>
+
               <option value="Kids Toy" >Kids Toy</option>
               <option value="Kids Dress" >Kids Dress</option>
               <option value="Teens Dress" >Teens Dress</option>
               <option value="Kids Toys" >Kids Toys</option>
-                <option value="Baby Dress">Baby Dress</option>
-                <option value="Baby Accesorie">Baby Accesorie</option>
+              <option value="Baby Dress">Baby Dress</option>
+              <option value="Baby Accesorie">Baby Accesorie</option>
+
               <option value="Mens Accesorie" >Mens Accesorie</option>
               <option value="Womens Accesorie" >Womens Accesorie</option>
               <!-- <option value="Kids" ></option> -->
@@ -211,17 +230,17 @@
             <div class="mb-3 col-lg-7 my-4">
               <label for="exampleFormControlInput1" class="form-label"></label><br>
 
-                <button type="submit" class='btn btn-primary w-100' name='submit'>Save</button>
+              <button type="submit" class='btn btn-primary w-100' name='submit'>Save</button>
 
-              </select>
-            </div>
-
+            </select>
           </div>
+
         </div>
       </div>
-    </form>
+    </div>
+  </form>
 
-  </div>
+</div>
 
 
 
@@ -230,62 +249,62 @@
 
 
 <!--
-  <div class="image_area">
-    <form method="post">
-      <label for="upload_image">
-        <img src="upload/user.png" id="uploaded_image" class="img-responsive img-circle" />
-        <div class="overlay">
-          <div class="text">Click to Change Profile Image</div>
-        </div>
-        <input type="file" name="image" class="image" id="upload_image" style="display:none" />
-      </label>
-    </form>
-  </div> -->
+<div class="image_area">
+<form method="post">
+<label for="upload_image">
+<img src="upload/user.png" id="uploaded_image" class="img-responsive img-circle" />
+<div class="overlay">
+<div class="text">Click to Change Profile Image</div>
+</div>
+<input type="file" name="image" class="image" id="upload_image" style="display:none" />
+</label>
+</form>
+</div> -->
 
-  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
 
-        <div class="modal-body">
-          <div class="img-container">
+      <div class="modal-body">
+        <div class="img-container">
 
-              <div class="w-100">
-                <img src="" style='min-width:300px;' id="sample_image" />
-              </div>
-              <div class="col-md-4">
-                <div class="preview"></div>
-              </div>
-
+          <div class="w-100">
+            <img src="" style='min-width:300px;' id="sample_image" />
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="crop" class="btn btn-primary">Crop</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <div class="col-md-4">
+            <div class="preview"></div>
+          </div>
+
         </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" id="crop" class="btn btn-primary">Crop</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
     </div>
-
   </div>
 
+</div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      <?php if(isset($_REQUEST['suc'])){
-        $suc = $_REQUEST['suc'];
-        echo "let val = ". $suc. ";";
-      } else{
-        echo "let val = 0;";
-      }
 
-      ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  <?php if(isset($_REQUEST['suc'])){
+    $suc = $_REQUEST['suc'];
+    echo "let val = ". $suc. ";";
+  } else{
+    echo "let val = 0;";
+  }
 
-      if(val == 1){
-        $('#savechanges').click()
-      }
-    })
-  </script>
-  <script src='js/adminadd.js'></script>
+  ?>
+
+  if(val == 1){
+    $('#savechanges').click()
+  }
+})
+</script>
+<script src='js/adminadd.js'></script>
 
 
 </body>

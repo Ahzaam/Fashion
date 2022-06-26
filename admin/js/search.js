@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 
   function resultdiv(i, name, src, description, id) {
-    let div = "<div id='gridserchanimation"+i+"' style='' class='col gridserchanimation'><div class='card'><img src='../"+src+"' class='card-img-top' alt='Image'><div class='card-body text-start'><h5 class='card-title'>"+name +"</h5><p class='card-text'>"+ description +"</p><a class='btn btn-primary rounded-pill' href='edit.php?id="+id+"'>Edit</a></div></div></div>"
+    let div = "<div id='gridserchanimation"+i+"' style='height: 100%;' class='gridserchanimation'><div class='card'><img src='../"+src+"' class='card-img-top' alt='Image'><div class='card-body text-start'><h5 class='card-title'>"+name +"</h5><p class='card-text'>"+ description +"</p><a class='btn btn-primary rounded-pill' href='edit.php?id="+id+"'>Edit</a></div></div></div>"
     // transform: translateX(-100px);
     $('#gridcont').append(div)
     let counter = 0.1;

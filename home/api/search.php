@@ -31,7 +31,7 @@ include '../../con.php';
       if($search == '' || $search == ' '){
         $query = "SELECT id, name, description, image FROM product_table AND status='selling'  ORDER BY date DESC LIMIT 4";
       }else{
-        $query = "SELECT id, name, description, image FROM product_table WHERE( description LIKE  '%$search%' OR name LIKE  '%$search%' OR description REGEXP  '$search' OR name REGEXP  '$search' OR category REGEXP  '$search') AND status='selling' LIMIT   5 "; // OR name REGEXP '[[:<:]]$search[[:>:]]' OR category LIKE '%$search%'
+        $query = "SELECT id, name, description, image FROM product_table WHERE( description LIKE  '%$search%' OR name LIKE  '%$search%'OR category REGEXP  '$search' OR description REGEXP  '$search' OR name REGEXP  '$search' ) AND status='selling' LIMIT   5 "; // OR name REGEXP '[[:<:]]$search[[:>:]]' OR category LIKE '%$search%'
       }
 
 

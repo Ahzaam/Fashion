@@ -86,7 +86,7 @@ $(document).ready(function() {
     // Returns Row DIV =============================
 
 
-    let ahref = document.createElement('button');
+    let ahref = document.createElement('div');
     $(ahref).attr('class', 'dropdown-item')
     $(ahref).attr('id',  id)
     $(ahref).append(rowdiv)
@@ -201,6 +201,8 @@ function displaylightbox() {
   })
 
   $(lightbox).click(function (e) {
+
+    console.log(e.target)
     if(e.target !== e.currentTarget) return
     $(this).removeClass('active');
     console.log($(this))

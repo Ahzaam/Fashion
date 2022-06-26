@@ -138,7 +138,7 @@
 </div>
 
     <div class="">
-      <h1 class='display-3'>Editing Item  No:<?php echo $row['id'] ?></h1>
+      <h1 class='display-6'> Item  No:<?php echo $row['id'] ?></h1>
     </div>
     <form class="from" id='editform' enctype="multipart/form-data">
 
@@ -267,9 +267,9 @@
             </div>
             <div class="mb-3 row col-lg-8 my-4">
               <label for="exampleFormControlInput1" class="form-label"></label><br>
-              <button type='button'  class='btn btn-primary col-5 ' id='modeltogller' data-bs-toggle="modal" id='savechanges' data-bs-target="#exampleModal">Save</button>
+              <!-- <button type='button'  class='btn btn-primary col-5 ' id='modeltogller' data-bs-toggle="modal" id='savechanges' data-bs-target="#exampleModal">Save</button>
               <button type='button'  class='btn btn-danger col-4 mx-3' data-bs-toggle="modal" data-bs-target="#deleteModal" name='submit'>Delete</button>
-              <button type='button' class='btn btn-secondary col-2 ' onclick="history.back()" name='submit'>Back</button>
+              <button type='button' class='btn btn-secondary col-2 ' onclick="history.back()" name='submit'>Back</button> -->
             </div>
 
           </div>

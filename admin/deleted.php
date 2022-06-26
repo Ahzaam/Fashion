@@ -10,6 +10,18 @@
   <title>Admin Gallery</title>
 
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+    integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <link rel="stylesheet" href="../files/icon_css/all.css">
+    <script defer src="../files/icon_js/all.js"></script> -->
+
+
 
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -29,15 +41,16 @@
 <body>
 
   <div class="container-fluid">
-    <div class="container">
-      <div class="my-5">
-
-        <ul class="nav nav-pills nav-justified">
-          <a type="button" class="btn btn-primary nav-link active m-lg-2 m-2 w-100 " href="admin.php">
-            Home <span class="badge text-bg-secondary"></span>
-          </a>
-
+    <div class="container position-relative ">
+      <div class="my-5 position-absolute top-0 start-0">
+        <a type="button" class="btn btn-light nav-link active m-lg-2 m-2 w-100 " href="admin.php">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i><span class="badge text-bg-secondary"></span>
+        </a>
       </div>
+    </div>
+    <br><br>
+    <div class="container">
+      
 
       <div class="input-group mb-3 my-5 ">
         <input type="text" class="form-control" onsearch='postsearch()' id='searchingallery' placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -59,7 +72,7 @@
             <?php
 
             include "../con.php";
-            $query = "SELECT * FROM deleted_product_table WHERE stock > 0";
+            $query = "SELECT * FROM deleted_product_table  ";
             $result = $conn->query($query);
 
             if ($result->num_rows > 0) {
