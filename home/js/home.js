@@ -1,4 +1,32 @@
 $(document).ready(function() {
+
+  $.post({
+    url:'api/getname.php',
+    data: {data:'whats my name'},
+    success: function(data, status) {
+      let details = JSON.parse(data)
+
+      if(data === '404'){
+        $('#logintoggle').removeClass('d-none')
+      }else{
+
+        $('#holdersname').html(capitalizeFirstLetter(details.name))
+          $('#emaildrp').html(details.email)
+        $('#account').removeClass('d-none')
+        $('#cart').removeClass('d-none')
+          $('#cartandwish').removeClass('d-none')
+      }
+    }
+  })
+
+  function capitalizeFirstLetter(str) {
+
+      // converting first letter to uppercase
+      const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
+
+      return capitalized;
+  }
+
   $('#search').click(function (e) {
     e.preventDefault();
   })
@@ -7,7 +35,7 @@ $(document).ready(function() {
 
     let search = $(this).val();
     if(value === search || String.fromCharCode(e.keyCode) === ' ' ) {
-
+      return
     }else{
       value = search
       url = 'api/search.php';
@@ -45,11 +73,11 @@ $(document).ready(function() {
     let img = document.createElement('img')
     $(img).attr('src', '../'+src)
     $(img).attr('alt', 'Image')
-    $(img).attr('class', 'w-100 responsive-img')
+    $(img).attr('class', ' serchimg responsive-img')
 
 
     let imgdiv = document.createElement('div');
-    $(imgdiv).attr('class', 'col-lg-4')
+    $(imgdiv).attr('class', 'col-4')
     $(imgdiv).append(img)
 
     // Returns Image DIV =========================
@@ -72,7 +100,7 @@ $(document).ready(function() {
 
 
     let bodydiv = document.createElement('div');
-    $(bodydiv).attr('class', 'col-lg-8 text-start')
+    $(bodydiv).attr('class', 'col-7 text-start')
     $(bodydiv).append(bodyh1, bodydes)
 
 
@@ -103,7 +131,8 @@ $(document).ready(function() {
 
     $('#searchresultsdropdown').append(allcontdiv)
 
-    displaylightbox()
+      displaylightbox()
+
 
   }
 
@@ -124,14 +153,9 @@ $(document).ready(function() {
 displaylightbox()
 
 function displaylightbox() {
-  const lightbox = document.createElement('div');
-  lightbox.id = 'lightbox';
-  document.body.appendChild(lightbox);
+
   $('.lightboxsupport').click(function (e) {
-    console.log(e.target)
-    console.log(e.currentTarget)
-    // if( !== e.currentTarget) return
-    console.log($(this).attr('id'));
+
     let id = $(this).attr('id')
 
     let data = {id: id, event:'lightbox'}
@@ -139,7 +163,7 @@ function displaylightbox() {
     $.post({
       url,data,
       success: function (data, status){
-        console.log(data)
+
         let item = JSON.parse(data)
 
 
@@ -148,9 +172,9 @@ function displaylightbox() {
         const img = document.createElement('img');
         $(img).attr('src', '../'+item[0].image)
         $(img).css('max-width', '600px')
-        $(img).addClass('w-100')
+        $(img).addClass('w-100 ')
         $(img).addClass('img-fluid')
-        console.log(item[0].image)
+
 
         while(lightbox.firstChild){
           lightbox.removeChild(lightbox.firstChild)
@@ -172,20 +196,53 @@ function displaylightbox() {
         const body = document.createElement('p')
         $(body).addClass('lead')
         $(body).html(item[0].description)
+        const closebutton = document.createElement('div')
+        $(closebutton).css('position', 'absolute')
 
+        $(closebutton).css('top', '8px')
+        $(closebutton).css('left', '16px')
+        $(closebutton).html('<i class="fa-solid fa-2x fa-xmark"></i>')
+        $(closebutton).css('cursor', 'pointer')
+        $(closebutton).addClass('closelightbox')
+
+        $(closebutton).click(function (e) {
+
+          $(lightbox).removeClass('active');
+
+        })
+
+        bodydiv.appendChild(closebutton)
         bodydiv.appendChild(name)
         bodydiv.appendChild(body)
         bodydiv.appendChild(img)
+
         const abutton = document.createElement('a')
         abutton.setAttribute('href','view.php?product='+id)
         $(abutton).html('Buy Now')
-        $(abutton).addClass('btn btn-primary rounded-pill my-2 mx-sm-5')
+        $(abutton).addClass('btn btn-primary rounded-pill  mx-sm-5')
 
+        const cartbutton = document.createElement('button')
+        cartbutton.setAttribute('data-pro-id', id)
+        $(cartbutton).html('<i class="fa fa-shopping-cart"></i>')
+        $(cartbutton).addClass('add-cart btn btn-primary mx-2 rounded-pill my-2 ')
 
+        const wishbutton = document.createElement('button')
+        wishbutton.setAttribute('data-pro-id', id)
+        $(wishbutton).html('<i class="fa fa-heart"></i>')
+        $(wishbutton).addClass('add-wish btn btn-danger rounded-pill my-2 ')
+
+        $(cartbutton).click(function () {
+            addtocart($(this).attr('data-pro-id') );
+        })
+        $(wishbutton).click(function () {
+            addtowish($(this).attr('data-pro-id') );
+        })
 
         const topleft = document.createElement('div')
-        $(topleft).addClass('top-left')
+        $(topleft).addClass('top-left mx-5')
         topleft.appendChild(abutton)
+        topleft.appendChild(cartbutton)
+        topleft.appendChild(wishbutton)
 
 
 
@@ -197,17 +254,98 @@ function displaylightbox() {
 
       }
     })
+    $(lightbox).click(function (e) {
+      if(e.target !== e.currentTarget) return
+      $(this).removeClass('active');
+
+    })
+
+
 
   })
 
-  $(lightbox).click(function (e) {
 
-    console.log(e.target)
-    if(e.target !== e.currentTarget) return
-    $(this).removeClass('active');
-    console.log($(this))
-  })
 }
+
+
+    function addtocart(id) {
+      $.post({
+        url: 'api/addtocart.php',
+        data: {id: id},
+        success: function (data, status) {
+          if(data === '200' ){
+
+
+            $('#numofcart').html(parseInt($('#numofcart').html()) +1)
+            $('#cart-'+id).addClass(' text-danger')
+          }else if(data === '201'){
+
+                $('#cart-'+id).addClass(' text-danger')
+          }
+        }
+      })
+
+
+
+
+    }
+
+    function addtowish(id) {
+
+      $.post({
+        url: 'api/wishlist.php',
+        data: {id: id},
+        success: function (data, status) {
+          if(data === '200' ){
+
+
+            $('#numofwish').html(parseInt($('#numofwish').html()) +1)
+            $('#wish-'+id).addClass(' text-danger')
+          }else if(data === '201'){
+
+              $('#wish-'+id).addClass(' text-danger')
+          }
+        }
+      })
+
+
+
+
+    }
+
+
+    $('.add-cart').click(function() {
+    addtocart($(this).attr('data-pro-id'));
+
+    })
+    $('.wish').click(function() {
+    addtowish($(this).attr('data-pro-id'));
+
+    })
+
+
+    $('#feedbacksubmit').click(function() {
+      let feedback =  $('#feedbackinput').val();
+      if(feedback.length > 2) {
+        $.post({
+          url: 'api/feedback.php',
+          data: {feedback: feedback},
+          success: function(data, status){
+            if(data === '200'){
+              alert('Message sent successful')
+            }else if(data === '500'){
+              alert('Something Wrong with the server')
+            }else if(data === '401'){
+              alert("Login Again")
+            }else{
+              alert("Something went wrong")
+            }
+            $('#feedbackinput').val('')
+          }
+        })
+      }
+    })
+
 
 
 

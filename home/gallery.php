@@ -120,6 +120,7 @@ session_start(); ?>
 
 
 <body>
+  
   <div class="container-fluid allcontain">
 
     <nav class="navbar navbar-expand-lg bg-light">

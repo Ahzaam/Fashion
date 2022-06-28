@@ -2,13 +2,13 @@
   session_start();
   function validate() {
 
-    $name = $_POST['uname'];
-    $decrypt =  $_POST['pword'];
+    $email = $_POST['email'];
+    $decrypt =  $_POST['password'];
 
-    include "../con.php";
+    include "../../con.php";
 
 
-    $query = "SELECT * FROM registeration WHERE name = '$name' OR email = '$name'";
+    $query = "SELECT * FROM user_table WHERE  email = '$email'";
     $result = $conn->query($query);
 
     $pass = "";
@@ -16,14 +16,16 @@
       $row = $result->fetch_assoc();
       $pass = $row["password"];
       $email = $row["email"];
-
+      $userid = $row["user_uuid"];
+      $name = $row["name"];
 
   } else {
-    echo "0 results";
+    echo 204;
+    return 0;
 
   }
 
-  include "../admin/crypt.php";
+  include "../../admin/api/crypt.php";
 
   if(strlen($decrypt) < 16){
     $cou = floor(16 / strlen($decrypt));
@@ -47,23 +49,23 @@
   $crypt_pass = openssl_encrypt($decrypt, $ciphering ,  $encryption_iv, $options, $newkey);
 
   if($pass == $crypt_pass){
-    $_SESSION['uname'] = $row["name"];
-    $_SESSION['login'] =true;
-    $_SESSION['email'] = $email;
-    $_SESSION['profile'] = NULL;
+    $_SESSION['userid'] = $userid;
+    $_SESSION['login'] = True;
 
-    include "record.php";
-      record($name,$email, $crypt_pass,"TRUE");
-      mail($email,"Login","your login to megatron using your emai");
-      header("Location:".$_REQUEST["page"]);
+
+
+      echo 200;
+
 
 
     }else{
-      include "record.php";
-      record($name,$email, $crypt_pass,"FALSE");
-      header("Location:login.php?page=" . $_REQUEST["page"] . "&pas=0");
+
+      echo 401;
+
     }
   }
+if(isset($_POST)){
+    validate();
+}
 
-  validate();
  ?>

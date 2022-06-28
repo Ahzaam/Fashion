@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
 // $email = $row["email"];
 $conn->close();
 if($pass == $newencrypt ){
-  $_SESSION['dbpassalloc'] =$pass;
+  $_SESSION['dbpassalloc'] = $pass;
   $_SESSION['dbpasscode'] = 'secure';
   $_SESSION['admintype'] = $type;
   $_SESSION['adminid'] = $adminid;

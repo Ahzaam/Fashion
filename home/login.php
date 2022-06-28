@@ -5,7 +5,6 @@
   <title>Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="{% static 'service/css/login.css' %}">
   <!-- Font Awesome -->
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -17,7 +16,11 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+  <style media="screen">
+    .nav{
+      cursor: pointer;
+    }
+  </style>
 
 
 
@@ -28,14 +31,14 @@
     <div id="formContentsignin" class='formContent col-lg-5 offset-lg-3 text-start'>
       <!-- Tabs Titles -->
       <div class="row">
-        <div class="offset-2 col-3" onclick="window.location='/'" style="cursor:pointer;">
+        <div class="offset-2 nav col-3" onclick="window.location='index.php'" style="cursor:pointer;">
           <h2 class="lead"> Home </h2>
         </div>
         <div class=" col-3">
-          <h2 class="active lead text-primary"> Sign In </h2>
+          <h2 class="active nav lead text-primary"> Sign In </h2>
         </div>
         <div class="col-3">
-          <h2 class="inactive underlineHover lead" id='change1'>Register </h2>
+          <h2 class="inactive nav underlineHover lead" id='change1'>Register </h2>
         </div>
       </div>
 
@@ -50,7 +53,7 @@
 
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Email address</label>
-          <input type="email" class="form-control" name='email' id='logemail' placeholder="Email">
+          <input type="email" class="form-control" name='email' id='logemail' autocomplete placeholder="Email">
           <div id='logemailerror'  class="invalid-feedback">
 
           </div>
@@ -58,7 +61,7 @@
 
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Password</label>
-          <input type="password" class="form-control" id='logpassword' name='password' placeholder="Password">
+          <input type="password" class="form-control" id='logpassword' autocomplete name='password' placeholder="Password">
           <div class="form-check my-3">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
@@ -128,33 +131,7 @@
               <input type="password" class="form-control" id="checkpassword">
             </div>
 
-            <div class="col-md-6">
-              <label for="inputCity" class="form-label">City</label>
-              <input type="text" class="form-control" name='city' id="inputcity">
-              <div  class="invalid-feedback">
-                Enter City
-              </div>
-            </div>
 
-            <div class="col-md-6">
-              <label for="inputState" class="form-label">State</label>
-              <select id="inputstate" class="form-select" name='state'>
-                <option selected>Choose...</option>
-
-                <option value="Central">Central</option>
-                <option value="North Central">North Central</option>
-                <option value="North Eastern">North Eastern</option>
-                <option value="North Western">North Western</option>
-                <option value="Sabaragamuwa">Sabaragamuwa</option>
-                <option value="Southern">Southern</option>
-                <option value="Uva">Uva</option>
-                <option value="Western">Western</option>
-
-              </select>
-              <div  class="invalid-feedback">
-                Select a State
-              </div>
-            </div>
 
           </div>
 
@@ -167,26 +144,7 @@
 
 
         </form>
-        <div class="col-md-12 d-none" id='otpsec'>
-          <label for="" class='form-label text-success'>We have sent a verification code via email. Check your inbox</label>
-          <div class="row">
 
-            <form id='otpform' >
-
-              <div class="col-md-5">
-                <input type="text" name="otp" id='confotp' class='form-control  mt-3' placeholder="Enter Code">
-                <div  class="invalid-feedback">
-                  Invalid OTP
-                </div>
-              </div>
-              <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3 mt-3" id='confotpbtn'>Confirm OTP</button>
-              </div>
-            </form>
-
-          </div>
-
-        </div>
       </div>
     </div>
   </div>
@@ -196,7 +154,7 @@
     <div class=" col-lg-8">
       <h1 class='display-3'>Hi <span id='sucname'></span>!, Account Created <span class='text-success'>Succesfully</span> </h1>
       <h1 class='display-5'>You can Sign in now as <span class='text-muted' id='sucemail'> </span></h1>
-      <a href="/auth" class="btn btn-primary my-5">Login Now</a>
+      <a href="login.php" class="btn btn-primary my-5">Login Now</a>
     </div>
   </div>
 
@@ -205,9 +163,7 @@
   <!-- Link Javascript Script Files--><!-- Link Javascript Script Files-->
 
 
-
-  <!-- Ajax Script Files-->
-  <script src="/static/service/js/Ajax/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
 
     // Show password
@@ -216,7 +172,7 @@
     })
     </script>
   <!-- Login Script Files-->
-  <script src="/static/service/js/login.js"></script>
+  <script src="js/login.js"></script>
 
 
 

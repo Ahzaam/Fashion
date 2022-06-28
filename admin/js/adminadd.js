@@ -1,7 +1,20 @@
   $(document).ready(function(){
 
-    $('#uploadimgicon').click(function(){
-      $('#upload_image').click( )
+    $('#moreimages').change(function(){
+      console.log(event.target.files.length)
+      if(event.target.files.length > 4) {
+        alert('Only 4 images are allowed')
+        $('#moreimages').val('')
+        return}
+      for (var i = 0; i < event.target.files.length; i++) {
+        const img = document.createElement('img')
+        $(img).addClass('col')
+        $(img).attr('src', URL.createObjectURL(event.target.files[i]))
+        $('#imgprev2').append(img)
+        console.log(event.target.files[i])
+      }
+
+
     })
 
     var $modal = $('#modal');
@@ -34,7 +47,7 @@
 
     $modal.on('shown.bs.modal', function() {
       cropper = new Cropper(image, {
-        aspectRatio: 1,
+        aspectRatio: 4/5,
         viewMode:1,
         preview:'.preview'
       });
@@ -45,11 +58,7 @@
 
     // test_image
     $('#crop').click(function(){
-      if($('#upload_image').width() > $('#upload_image').height()){
-        let min = $('#upload_image').height()
-      }else{
-        min = $('#upload_image').width()
-      }
+
 
       canvas = cropper.getCroppedCanvas({
         width:900,

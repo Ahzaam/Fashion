@@ -293,11 +293,11 @@ require('pageauth.php')
 
       </div>
     </div>
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3" >
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='../'">
       <div class="our-team">
 
         <div class="team-content">
-          <h3 class="name">Top Selling <i class="fa fa-heart mx-2" style='color:#ff70a6;' aria-hidden="true"></i></h3>
+          <h3 class="name">View Site <i class="fa fa-heart mx-2" style='color:#ff70a6;' aria-hidden="true"></i></h3>
 
         </div>
 
@@ -312,16 +312,17 @@ require('pageauth.php')
         </div>
 
       </div>
-    </div><div class="col-6 col-sm-6 col-md-4 col-lg-3" >
+    </div><div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='management/users.php'">
       <div class="our-team">
 
-        <div class="team-content">
+        <div class="team-content" >
           <h3 class="name">Users <i class="fa fa-users mx-2" style='color:#70d6ff;' aria-hidden="true"></i></h3>
 
         </div>
 
       </div>
-    </div><div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='api/logout.php'">
+    </div>
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='api/logout.php'">
       <div class="our-team">
 
         <div class="team-content text-danger">

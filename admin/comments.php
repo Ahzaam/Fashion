@@ -8,8 +8,6 @@
   <meta charset="utf-8">
   <title>Comments</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../files/icon_css/all.css">
-  <script defer src="../files/icon_js/all.js"></script>
 
 
     <!-- Font Awesome -->
@@ -63,7 +61,8 @@
 
 
     <div class="comments">
-      <h1 class='display-6'>Feedbacks</h1>
+      <h1 class='display-6'>Feedbacks & Questions</h1>
+        <div class="row">
       <?php
       include '../con.php';
       $query = "SELECT * FROM comments_feedback WHERE status = 'unread'";
@@ -77,10 +76,11 @@
 
           ?>
 
-          <div class="feed my-lg-4">
-            <p class="h5">  <?php echo $name ?></p>
-            <div class="row row-cols-2">
 
+
+
+            <div class=" col-5 mx-md-5 border my-5">
+              <p class="h5">  <?php echo $name ?></p>
               <div class="col">
                 <p>
                   <?php echo $msg ?>
@@ -94,14 +94,76 @@
                 </div>
               </div>
 
-            </div>
+
+
+          <?php
+          if($row['product_id'] != ''){
+
+
+            include "../con.php";
+            $productq = "SELECT * FROM product_table WHERE id='".$row['product_id']."'";
+            $product = $conn->query($productq );
+
+            if ($product->num_rows > 0) {
+              $prorow = $product->fetch_assoc();
+
+                $color = ($prorow['status'] == 'selling') ? 'success' : 'danger';
+
+
+                echo "
+                <div class='card mb-3 mx-lg-4' style='max-width: 540px;'>
+                <div class='row g-0'>
+                <div class='col-md-4 my-4'>
+                <img src=../". $prorow['image']." class='img-fluid rounded-start' alt='Image'>
+
+                <h5 class='card-title text-center'>" . $prorow['name']       . "</h5>
+                <div class='card-footer'>
+                <small class='text-muted  '> Added " . $prorow['date']      . "</small>
+                </div>
+                </div>
+                <div class='col-md-8'>
+                <div class='card-body text-start m-2'>
+
+                <p class='card-text'>" . $prorow['description']      . " </p>
+                <p class='card-text'> Price: " . $prorow['price']      . "LKR  ||  Size:  <span class='badge text-bg-info'>" . $prorow['size'] . "</p>
+                <p class='card-text my-4'> Display: <span class='badge text-bg-secondary'>" . $prorow['display']      . "</span></span></p>
+                <button type='button' class='btn btn-light my-2'>
+                Stock <span class='badge rounded-pill text-bg-primary'>" . $prorow['stock'] . "</span>
+                </button>
+                <button type='button' class='btn btn-light my-2'>
+                Selled  <span class='badge text-bg-success'>" . $prorow['selled'] . "</span>
+                </button>
+                <button type='button' class='btn btn-light my-2'>
+                  <span class='badge text-bg-$color '>" . $prorow['status'] . "</span>
+                </button>
+                <a href='edit.php?id=". $prorow['id'] ."' class='btn btn-primary my-2 w-100'>Edit Now</a>
+
+                </div>
+                </div>
+                </div>
+
+                </div>
+
+                ";
+
+
+
+
+            }
+
+
+          }else{
+            echo "<p class='display-4 text-center'>Question</p>";
+          }
+          ?>
           </div>
 
           <?php
+
         }
       }
       ?>
-
+  </div>
     </div>
 
   </div>

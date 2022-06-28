@@ -68,6 +68,7 @@ require('pageauth.php')
     height: 0;
     transition: .5s ease;
     width: 100%;
+
   }
 
   .image_area:hover .overlay {
@@ -105,7 +106,13 @@ require('pageauth.php')
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Item Added Successfully
+          <?php if(isset($_REQUEST['suc']) && isset($_REQUEST['error'])){
+            $suc = $_REQUEST['error'];
+            echo $suc;
+          }
+
+          ?>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -129,24 +136,24 @@ require('pageauth.php')
     <form class="from my-5" action="api/add.php" method="post" enctype="multipart/form-data">
       <div class="row">
 
-        <div class="mb-3 col-lg-5">
+        <div class="mb-3 col-lg-4">
           <label for="exampleFormControlInput1" class="form-label">Name</label>
           <input type="text" class="form-control" name='name' id="exampleFormControlInput1" required placeholder="Name">
 
+
+        </div>
+
+        <div class="mb-3 col-lg-4">
           <label for="exampleFormControlInput1" class="form-label">Price(LKR)</label>
           <input type="number" class="form-control" name='price' id="exampleFormControlInput1" required placeholder="1000 LKR">
+
+
+        </div>
+        <div class="mb-3 col-lg-4">
 
           <label for="exampleFormControlInput1" class="form-label">Color</label>
           <input type="color" class="form-control" name='color'  id="exampleFormControlInput1">
         </div>
-
-        <div class="mb-3 col-lg-7">
-          <div class="">
-            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-            <textarea class="form-control" name='description' required id="exampleFormControlTextarea1" rows="7"></textarea>
-          </div>
-        </div>
-
 
 
 
@@ -155,12 +162,26 @@ require('pageauth.php')
       <div class="row">
 
         <div class="mb-3 col-lg-5">
-          <label for="exampleFormControlInput1" class="form-label">Images</label>
+          <label for="exampleFormControlInput1" class="form-label">Display Image</label>
           <input type="file" class="form-control"  required id="upload_image" >
           <input type="hidden" id='hiddeninputimg'  name="my_image" value="">
-          <div class="  " style=' cursor: pointer;' id='uploadimgicon'>
-            <div class="text-start m-lg-5 m-2">
-              <img src="../home/images/uploadpng.png" class=' text-center' style='max-height:300px; border-radius:10px;' alt="Image" id='img_prev'>
+
+
+
+          <div class="  " style=' cursor: pointer;' id=''>
+            <div class="text-start row">
+              <div class="col-12">
+                <img src="../home/images/uploadpng.png" class=' text-center' style='max-height:300px; border-radius:10px;' alt="Image" id='img_prev'>
+
+              </div>
+
+              <label for="exampleFormControlInput1" class="form-label">More Images</label>
+              <input type="file" id='moreimages' class="form-control"  name="my_images[]"  multiple>
+                <p class="text-success" style="font-size:12px;">You can add multiple 4 images at Ones For this Field</p>
+              <div class="col-12 row row-cols-4 my-2" id='imgprev2'>
+
+              </div>
+
               <div class="d-none" id='resdiv'>
                 <p class=''>Resolution <span id='resolution'></span> </p>
               </div>
@@ -172,13 +193,17 @@ require('pageauth.php')
 
         <div class="mb-3 col-lg-7 ">
           <div class="">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea class="form-control" name='description' required id="exampleFormControlTextarea1" rows="7"></textarea>
+          </div>
+          <div class="">
             <label for="exampleFormControlTextarea1" class="form-label">Category </label>
             <select class="form-select" name='category' aria-label="Default select example" required>
               <option selected value="none">--Select Category --</option>
               <option value="Mens Dress">Mens Dress</option>
               <option value="Womens Dress">Womens Dress</option>
               <option value="Islamic Girls Dress">Islamic Girls Dress</option>
-
+              <option value="Blazer">Blazer</option>
               <option value="Kids Toy" >Kids Toy</option>
               <option value="Kids Dress" >Kids Dress</option>
               <option value="Teens Dress" >Teens Dress</option>
@@ -230,7 +255,7 @@ require('pageauth.php')
             <div class="mb-3 col-lg-7 my-4">
               <label for="exampleFormControlInput1" class="form-label"></label><br>
 
-              <button type="submit" class='btn btn-primary w-100' name='submit'>Save</button>
+              <button type="submit" id='submit' class='btn btn-primary w-100' name='submit'>Save</button>
 
             </select>
           </div>
@@ -261,15 +286,15 @@ require('pageauth.php')
 </form>
 </div> -->
 
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade" id="modal"     tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg h-100" role="document">
     <div class="modal-content">
 
       <div class="modal-body">
         <div class="img-container">
 
           <div class="w-100">
-            <img src="" style='min-width:300px;' id="sample_image" />
+            <img src="" style='min-width:300px; max-width:400px;' id="sample_image" />
           </div>
           <div class="col-md-4">
             <div class="preview"></div>
@@ -302,6 +327,9 @@ $(document).ready(function() {
   if(val == 1){
     $('#savechanges').click()
   }
+
+
+
 })
 </script>
 <script src='js/adminadd.js'></script>

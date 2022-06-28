@@ -17,7 +17,7 @@ div.option{
 }
 
 .option img{
-  
+
   overflow:hidden;
 
 }
@@ -32,9 +32,11 @@ div.option{
 .banner .centered {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left:60%;
   transform: translate(-50%, -50%);
 }
+
+
 
 .top-left {
   position: absolute;

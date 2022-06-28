@@ -109,7 +109,7 @@
 
 <div class="container position-relative ">
   <div class="my-5 position-absolute top-0 start-0">
-    <a type="button" class="btn btn-light nav-link active m-lg-2 m-2 w-100 " href="admin.php">
+    <a type="button" class="btn btn-light nav-link active m-lg-2 m-2 w-100 " onclick="history.back()">
       <i class="fa fa-arrow-left" aria-hidden="true"></i><span class="badge text-bg-secondary"></span>
     </a>
   </div>
@@ -209,7 +209,7 @@
 
         <div class="mb-3 col-lg-5">
           <!-- <label for="exampleFormControlInput1" class="form-label">Images</label> -->
-          <input type="file" class="form-control d-none "  required id="upload_image" >
+          <input type="file" class="form-control d-none"  required id="upload_image" >
           <input type="hidden" id='hiddeninputimg'  name="my_image" value="">
           <div class="  " style=' cursor: pointer;' id='uploadimgicon'>
             <div class="text-start ">
@@ -333,7 +333,7 @@
           <div class="img-container">
 
               <div class="w-100">
-                <img src="" style='min-width:300px;' id="sample_image" />
+                <img src="" style='min-width:300px; max-width:400px;' id="sample_image" />
               </div>
               <div class="col-md-4">
                 <div class="preview"></div>
@@ -352,7 +352,13 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#img_prev').click(function() {
+        $('#upload_image').click()
+      })
+    })
+  </script>
   <script src='js/adminadd.js'></script>
 
   <script src='js/edit.js'>

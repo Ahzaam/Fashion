@@ -58,7 +58,7 @@ $(document).ready(function() {
       data: {id: id},
       success: function (data, status) {
         console.log(data);
-          history.back()
+          // history.back()
       }
     })
   })
