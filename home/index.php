@@ -720,7 +720,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
         <?php
         include '../con.php';
-        $query = "SELECT id, image, name FROM product_table WHERE display='owl-carousel' AND status='selling'";
+        $query = "SELECT id, image, name FROM product_table WHERE display='owl-carousel' AND status='selling' AND stock > 0";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0){
@@ -761,7 +761,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
     <?php
     include '../con.php';
-    $query = "SELECT id, image, name, price FROM product_table WHERE display='grid' AND status='selling'";
+    $query = "SELECT id, image, name, price FROM product_table WHERE display='grid' AND status='selling'  AND stock > 0";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0){

@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Gallery</title>
+  <title>Deleted Gallery</title>
 
 
     <!-- Font Awesome -->
@@ -50,7 +50,7 @@
     </div>
     <br><br>
     <div class="container">
-      
+<h1 class='display-5 text-danger my-5'>Deleted Gallery</h1>
 
       <div class="input-group mb-3 my-5 ">
         <input type="text" class="form-control" onsearch='postsearch()' id='searchingallery' placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -72,7 +72,7 @@
             <?php
 
             include "../con.php";
-            $query = "SELECT * FROM deleted_product_table  ";
+            $query = "SELECT * FROM deleted_product_table ORDER BY rowid DESC ";
             $result = $conn->query($query);
 
             if ($result->num_rows > 0) {
@@ -103,7 +103,7 @@
                 <button type='button' class='btn btn-light my-2'>
                 Selled  <span class='badge text-bg-success'>" . $row['selled'] . "</span>
                 </button>
-                <a href='edit.php?id=". $row['id'] ."' class='btn btn-primary my-2 w-100'>Edit Now</a>
+                <a href='api/restore.php?productid=". $row['id'] ."' class='btn btn-danger rounded-pill my-2 w-100'>Restore</a>
 
                 </div>
                 </div>
@@ -128,7 +128,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/search.js">
+    <script src="js/delsearch.js">
 
     </script>
   </body>

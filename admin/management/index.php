@@ -25,7 +25,7 @@ require "pageauth.php";
   integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  <script defer  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -77,7 +77,7 @@ require "pageauth.php";
                 }else{
                   echo '<td><i class="fa-solid fa-circle-xmark text-danger"></i> Pending</td>';
                 }
-                echo '<td><id='.$id.' button type="button" class="removeadmin btn btn-danger">Remove</button></td>';
+                echo '<td><button type="button" id='.$id.' class="removeadmin btn btn-danger rounded-pill">Remove</button></td>';
               }
 
               ?>

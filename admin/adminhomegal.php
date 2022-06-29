@@ -65,7 +65,7 @@ body{
       <br><br>
       <div class="container-fluid mx-lg-2">
 
-
+        <h1 class='display-5 my-5'>Gallery</h1>
         <div class="input-group mb-3 my-5 ">
           <input type="text" class="form-control" onsearch='postsearch()' id='searchingallery' placeholder="Enter Id, Name, Part of description" aria-label="Recipient's username" aria-describedby="button-addon2">
           <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>

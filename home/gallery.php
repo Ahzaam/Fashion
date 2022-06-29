@@ -120,7 +120,7 @@ session_start(); ?>
 
 
 <body>
-  
+
   <div class="container-fluid allcontain">
 
     <nav class="navbar navbar-expand-lg bg-light">
@@ -208,7 +208,7 @@ session_start(); ?>
 
         include "../con.php";
 
-        $query = "SELECT * FROM product_table WHERE stock > 0 AND display='grid'";
+        $query = "SELECT * FROM product_table WHERE stock > 0 AND status = 'selling' ORDER BY category ASC";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
@@ -236,40 +236,7 @@ session_start(); ?>
       </div>
 
     </div>
-    <div class="container my-5">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        <?php
 
-        include "../con.php";
-
-        $query = "SELECT * FROM product_table WHERE stock > 0 AND display='owl-carousel'";
-        $result = $conn->query($query);
-
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()){
-
-
-            echo "
-            <div class='col'>
-            <div class='card'>
-            <img src='../". $row['image'] ."' class='card-img-top' alt='Image'>
-            <div class='card-body text-start'>
-            <h5 class='card-title'>". $row['name'] ."</h5>
-            <p class='card-text'>". $row['description'] ."</p>
-            </div>
-            </div>
-            </div>
-            ";
-
-
-
-          }
-
-        }
-        ?>
-      </div>
-
-    </div>
     <script src='js/gallery.js'></script>
 
 
