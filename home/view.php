@@ -78,10 +78,10 @@
 
   include "../con.php";
 
-  $cus_id = $_REQUEST['product'];
+  $pro_id = $_REQUEST['product'];
 
 
-  $query = "SELECT * FROM product_table WHERE `id` = '$cus_id'" ;
+  $query = "SELECT * FROM product_table WHERE `id` = '$pro_id' && status = 'selling'" ;
   $rs = $conn->query($query);
   //
   if(mysqli_num_rows($rs)>0){
@@ -223,7 +223,14 @@
 
     <?php
   }else{
-    echo "<h1 class='display-1 text-danger text-center my-5'>Item has been Deleted</h1>";
+      echo '<div class="container position-relative ">
+      <div class="my-5 position-absolute top-0 start-0">
+        <a type="button" class="btn btn-light nav-link active m-lg-2 m-2 w-100 " onclick="history.back()">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i><span class="badge text-bg-secondary"></span>
+        </a>
+      </div>
+    </div>';
+    echo "<h1 class='display-1 text-danger text-center my-5'>Item Has Been Deleted</h1>";
 
   }
 

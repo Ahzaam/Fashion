@@ -31,7 +31,7 @@ include '../../con.php';
       if($search == '' || $search == ' '){
         $query = "SELECT id, name, description, image FROM product_table AND status='selling'  ORDER BY date DESC LIMIT 4";
       }else{
-        $query = "SELECT id, name, description, image FROM product_table WHERE( description LIKE  '%$search%' OR name LIKE  '%$search%'OR category REGEXP  '$search' OR description REGEXP  '$search' OR name REGEXP  '$search' ) AND status='selling' LIMIT   5 "; // OR name REGEXP '[[:<:]]$search[[:>:]]' OR category LIKE '%$search%'
+        $query = "SELECT id, name, description, image FROM product_table WHERE( description LIKE  '%$fullsearch%' OR name LIKE  '%$fullsearch%' OR category LIKE  '$fullsearch' ) AND status='selling' LIMIT   5 "; // OR name REGEXP '[[:<:]]$search[[:>:]]' OR category LIKE '%$search%'
       }
 
 
@@ -51,7 +51,17 @@ include '../../con.php';
         echo json_encode($resarray);
       }else{
 
-              echo  '[{"status":"noresults"}]';
+        $query = "SELECT id, name, description, image FROM product_table WHERE(description REGEXP  '$search' OR name REGEXP  '$search' OR category REGEXP  '$search') AND status='selling' LIMIT   5 ";
+        $regresults = $conn->query($query);
+        if($regresults->num_rows > 0){
+          while ($row = $regresults->fetch_assoc()){
+            $resarray[] = $row;
+
+          }
+          echo json_encode($resarray);
+        }else{
+          echo  '[{"status":"noresults"}]';
+        }
 
         }
     }

@@ -109,6 +109,7 @@
 
                 $color = ($prorow['status'] == 'selling') ? 'success' : 'danger';
 
+                echo "<h6 class='h5 my-3'>" . $row['product_id'] . "</h6>";
 
                 echo "
                 <div class='card mb-3 mx-lg-4' style='max-width: 540px;'>

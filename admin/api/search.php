@@ -1,27 +1,7 @@
 <?php
 include '../../con.php';
   if(isset($_POST)){
-    if(isset($_POST['event'])){
-      if($_POST['event'] == 'lightbox'){
-        $id = $_POST['id'];
-        $query = "SELECT * FROM product_table WHERE id='$id' ";
-        $result = $conn->query($query);
 
-        if($result->num_rows > 0){
-          while($row = $result->fetch_assoc()){
-            $lightboxarr[] = $row;
-          }
-          echo json_encode($lightboxarr);
-        }
-
-      }else{
-        echo 'Error';
-      }
-
-
-
-
-    }else{
       $search = $_POST['search'];
       $fullsearch = $_POST['search'];
       $arr[] = explode(' ', $search);
@@ -31,7 +11,7 @@ include '../../con.php';
       if($search == '' || $search == ' '){
         $query = "SELECT id, name, description, image FROM product_table ORDER BY date DESC LIMIT 6";
       }else{
-        $query = "SELECT id, name, description, image FROM product_table WHERE(id LIKE '%$search%' OR description LIKE  '%$search%' OR name LIKE  '%$search%' OR description REGEXP  '$search' OR name REGEXP  '$search' OR category REGEXP  '$search')  LIMIT   6 "; // OR name REGEXP '[[:<:]]$search[[:>:]]' OR category LIKE '%$search%'
+        $query = "SELECT id, name, description, image FROM product_table WHERE(id LIKE '%$fullsearch%' OR description LIKE  '%$fullsearch%' OR name LIKE  '%$fullsearch%' OR category LIKE  '$fullsearch' )  LIMIT   6 "; // OR name REGEXP '[[:<:]]$search[[:>:]]' OR category LIKE '%$search%'
       }
 
 
@@ -49,12 +29,23 @@ include '../../con.php';
 
         }
         echo json_encode($resarray);
+        // OR
       }else{
+        
+        $query = "SELECT id, name, description, image FROM product_table WHERE(description REGEXP  '$search' OR name REGEXP  '$search' OR category REGEXP  '$search') LIMIT   6 ";
+        $regresults = $conn->query($query);
+        if($regresults->num_rows > 0){
+          while ($row = $regresults->fetch_assoc()){
+            $resarray[] = $row;
 
-              echo  '[{"status":"noresults"}]';
+          }
+          echo json_encode($resarray);
+        }else{
+          echo  '[{"status":"noresults"}]';
+        }
 
         }
-    }
+
 
 
   }
