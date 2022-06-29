@@ -41,8 +41,8 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
   integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- <link rel="stylesheet" href="../files/icon_css/all.css">
-  <script defer src="../files/icon_js/all.js"></script> -->
+
+
 
 
   <!-- owl carousel -->
@@ -52,6 +52,8 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
   <link rel="stylesheet" href="../files/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="../files/owl-carousel/carousel.css">
 
+
+
   <!-- bootstrap -->
 
   <!-- CSS only -->
@@ -60,8 +62,13 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
   <!-- Grid -->
   <link rel="stylesheet" href="../files/grid/grid.css">
+
+
+
   <style media="screen">
   .dropdown{border-radius:5px;width:180px;}
   .dropdown:hover .dropdown-menu{
@@ -94,14 +101,14 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
   .dressimgcaro{
     border-radius:100px;
   }
-  .card-img-top:hover{
+  /* .card-img-top:hover{
     transition: 0.5s;
     opacity:1;
   }
   .card-img-top{
     transition: 0.5s;
     opacity:0.7;
-  }
+  } */
 
   .sectionglass {
 
@@ -452,9 +459,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
                         <a class="dropdown-item" href="#">Image to HTML</a>
                       </div>
 
-                      <div>
-                        <img src="images\woman-5461769_1280.jpg" class='mx-3' alt="Image">
-                      </div>
 
                     </div>
                   </div>
@@ -685,40 +689,12 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
 
 
-
-
-<div class="container-fluid" >
-  <div class="row justify-content-center" >
-    <div class="add-image d-inline-block position-relative  col-lg-5 col-md-9 col-sm-12 col-10 mt-5 mx-4" style="background-image: linear-gradient(to right, #a8f6f9, #2cf8fe);">
-      <img src="images/add1.png"  alt="">
-      <div class="top-left">
-        <br>
-        <h2 type='1'>New Born <br>Baby essentials</h2>
-        <button type="button1" class="btn btn-primary" name="button">Shop Now</button>
-      </div>
-    </div>
-
-    <div class="add-image d-inline-block position-relative offset-lg-1 col-lg-5 col-md-9 col-sm-12 col-10 mt-5 mx-4" style="background-image: linear-gradient(to left, #fcccf6, #fa87eb);">
-      <img src="images/add2.png"   alt="">
-      <div class="top-left">
-        <br>
-        <h2 type='2'>Best collection of<br>Gift for babies  </h2>
-        <button type="button2" class="btn btn-primary" name="button">Shop Now</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- End of Dress -->
 <!-- carousel -->
 
 
-<div class="container-fluid mt-5 text-start " style="border-radius:20px;  background-image: background: #bdc3c7;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-">
-<h1 class='display-2 m-3 text-white'>Baby Clothes</h1>
-<section class="sectionglass my-5 mx-lg-5" style="opacity:; border-radius:10px;">
+<div class="container-fluid mt-5 text-start " >
+<h1 class='display-2 m-3 text-dark'>Mens Blazer's</h1>
+<section class="sectionglas my-5 mx-lg-5" style="">
   <div class="container-fluid shadow text-center  py-lg-5 " >
     <div class="container-fluid text-center">
       <div class="row">
@@ -765,186 +741,6 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
 
         ?>
 
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-1.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-2.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-3.jpg" class="card-img-top">
-            <div class="card-body ">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-4.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-5.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-6.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-7.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-8.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-9.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-10.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-11.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-12.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-13.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-14.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-15.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-16.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-17.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-18.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item dressimgcaro lightboxsupport">
-          <div class="card border-0">
-            <img src="images\product-19.jpg" class="card-img-top">
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
 
 
 
@@ -1009,195 +805,6 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
 
 
 
-    <div class="col-md-3 col-sm-6 mt-5 col-6">
-      <div class="product-grid shadow rounded">
-        <div class="product-image">
-          <a href="#">
-            <img class="pic-1" src="items/shop-1.jpg">
-            <img class="pic-2" src="items/shop-1.jpg">
-          </a>
-          <span class="product-trend-label">Trend</span>
-          <ul class="social">
-            <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
-            <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
-
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-
-            <!-- <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-ca"></i></a></li>
-            <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
-            <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li> -->
-          </ul>
-        </div>
-
-        <div class="product-content px-3">
-          <h3 class="title"><a href="#">Men's Blazer</a></h3>
-          <div class="price discount"><span>$21.00</span> $ 15.99</div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-    <div class="col-md-3 col-sm-6 mt-5 col-6">
-      <div class="product-grid shadow rounded">
-        <div class="product-image">
-          <a href="#">
-            <img class="pic-1" src="items/shop-2.jpg">
-            <img class="pic-2" src="items/shop-2.jpg">
-          </a>
-          <span class="product-trend-label">Trend</span>
-          <span class="product-discount-label">-20%</span>
-          <ul class="social">
-            <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
-            <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
-            <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-          </ul>
-        </div>
-        <div class="product-content px-3">
-          <h3 class="title"><a href="#">Grey Rabit</a></h3>
-          <div class="price discount"><span>1000LKR </span> 800LKR</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mt-5 col-6">
-      <div class="product-grid shadow rounded">
-        <div class="product-image">
-          <a href="#">
-            <img class="pic-1" src="items/shop-3.jpg">
-            <img class="pic-2" src="items/shop-3.jpg">
-          </a>
-          <span class="product-trend-label">Trend</span>
-          <span class="product-discount-label">-10%</span>
-          <ul class="social">
-            <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
-            <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
-            <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-          </ul>
-        </div>
-        <div class="product-content px-3">
-          <h3 class="title"><a href="#">Grey Moon</a></h3>
-          <div class="price discount"><span>500LKR</span> 450LKR</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mt-5 col-6">
-      <div class="product-grid shadow rounded">
-        <div class="product-image">
-          <a href="#">
-            <img class="pic-1" src="items/shop-4.jpg">
-            <img class="pic-2" src="items/shop-4.jpg">
-          </a>
-          <span class="product-trend-label">Trend</span>
-          <ul class="social">
-            <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
-            <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
-            <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-          </ul>
-        </div>
-        <div class="product-content px-3">
-          <h3 class="title"><a href="#">Men's Blazer</a></h3>
-          <div class="price discount"><span>$21.00</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mt-5 col-6">
-      <div class="product-grid shadow rounded">
-        <div class="product-image">
-          <a href="#">
-            <img class="pic-1" src="items/shop-5.jpg">
-            <img class="pic-2" src="items/shop-5.jpg">
-          </a>
-          <span class="product-trend-label">Trend</span>
-          <ul class="social">
-            <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
-            <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
-            <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-          </ul>
-        </div>
-        <div class="product-content px-3">
-          <h3 class="title"><a href="#">Men's Blazer</a></h3>
-          <div class="price discount"><span>$21.00</span></div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-md-3 col-sm-6 mt-5 col-6">
-      <div class="product-grid shadow rounded">
-        <div class="product-image">
-          <a href="#">
-            <img class="pic-1" src="items/shop-6.jpg">
-            <img class="pic-2" src="items/shop-6.jpg">
-          </a>
-          <span class="product-trend-label">Trend</span>
-          <ul class="social">
-            <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
-            <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
-            <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-          </ul>
-        </div>
-        <div class="product-content px-3">
-          <h3 class="title"><a href="#">Men's Blazer</a></h3>
-          <div class="price discount"><span>$21.00</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mt-5 col-6">
-      <div class="product-grid shadow rounded">
-        <div class="product-image">
-          <a href="#">
-            <img class="pic-1" src="items/shop-9.jpg">
-            <img class="pic-2" src="items/shop-9.jpg">
-          </a>
-          <span class="product-trend-label">Trend</span>
-          <ul class="social">
-            <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
-            <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
-            <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-          </ul>
-        </div>
-        <div class="product-content px-3">
-          <h3 class="title"><a href="#">Men's Blazer</a></h3>
-          <div class="price discount"><span>$21.00</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mt-5 col-6">
-      <div class="product-grid shadow rounded">
-        <div class="product-image">
-          <a href="#">
-            <img class="pic-1" src="items/shop-8.jpg">
-            <img class="pic-2" src="items/shop-8.jpg">
-          </a>
-          <span class="product-trend-label">Trend</span>
-          <ul class="social">
-            <li><a data-tip="Add to Cart" class="add-cart"><i class="fa fa-shopping-cart"></i></a></li>
-            <li><a class="wish" data-tip="Wishlist"><i class="fa fa-heart"></i></a></li>
-            <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-          </ul>
-        </div>
-        <div class="product-content px-3">
-          <h3 class="title"><a href="#">Men's Blazer</a></h3>
-          <div class="price discount"><span>$21.00</span></div>
-        </div>
-      </div>
-    </div>
-
 
 
   </div>
@@ -1218,16 +825,16 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
 
 
         <div class="col-lg-4 col-sm-11 text-start">
-          <p><i class="fas fa-map-marker me-3 " style="color:red;font-size:16px;"></i>218 Fifth Avenue, HeavenTower NewYork City </p>
-          <p><i class="fas fa-phone me-3" style="color:red;"></i>(+68) 123 456 7890</p>
-          <p><i class="fas fa-envelope me-3" style="color:red;"></i>Hot-Support@Dagon.com</p>
+          <p><i class="fas fa-map-marker me-3 text-primary " ></i>344 Peradeniya Rd, Kandy 20000 </p>
+          <p><i class="fas fa-phone me-3 text-primary" ></i>(+94) 77 788 8199</p>
+          <p><i class="fas fa-envelope me-3 text-primary" ></i>bcas.kc.info@gmail.com</p>
 
           <?php
           if(isset($_SESSION['login']) && $_SESSION['login']){
             ?>
             <div class="input-group my-5 rounded-pill">
               <input type="text" class="form-control" id='feedbackinput' placeholder=" Feedback & Questions" aria-label="Recipient's username" aria-describedby="button-addon2">
-              <button class="btn btn-primary" id='feedbacksubmit' type="button" id="button-addon2">Send</button>
+                <button class="btn btn-outline-danger" id='feedbacksubmit' type="button" id="button-addon2">Send</button>
             </div>
 
             <?php
@@ -1280,10 +887,12 @@ $('.owl-carousel').owlCarousel({
 });
 </script>
 
-<script type="text/javascript" src="../files/addtocart.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 <script src='js/home.js'> </script>
 </body>
 
