@@ -87,9 +87,8 @@
                 </p>
                 <div class="input-group mb-3">
                   <input type="text" class="form-control" id='input<?php echo $id ?>' placeholder="Reply" aria-label="Reply" aria-describedby="button-addon2">
-                  <button class="marktik btn btn-primary" sty id='<?php echo $id ?>' type="button" id="button-addon2"><i class="fa fa-check  text-white" aria-hidden="true"></i></button>
-                  <button class="tik btn btn-success" id='<?php echo $id ?>' type="button" id="button-addon2">Reply</button>
-                  <button class="deltik btn btn-danger" id='<?php echo $id ?>' type="button" id="button-addon2">Delete</button>
+                  <button class="marktik btn btn-primary"  id='<?php echo $id ?>' type="button" id="button-addon2"><i class="fa fa-check  text-white" aria-hidden="true"></i></button>
+                  <button class="deltik btn btn-danger" data-id='<?php echo $id ?>' type="button" id="button-addon2">Delete</button>
 
                 </div>
               </div>

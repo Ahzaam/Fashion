@@ -481,7 +481,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
                       </button>
                       <ul class="dropdown-menu dropdown-menu-right">
                         <p class="dropdown-item" id='emaildrp'>Email</p>
-
+                        <a class="dropdown-item" href="useracc.php">My Account</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-white bg-danger" href="api/logout.php">Log Out</a>
                       </ul>
