@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2022 at 06:06 PM
+-- Generation Time: Jun 30, 2022 at 06:23 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -70,7 +70,8 @@ INSERT INTO `admin_table` (`id`, `admin_id`, `name`, `password`, `admin_type`, `
 (85, '62b85ad8aa1c0', 'Sharfa', 'OaoW9B+CEoJU/ZMaM1y9Og==', 'staff', 'sharfa@gmail.com'),
 (86, '62b86f2cb9ac0', 'Arshaad', 'notset', 'staff', 'arshad.adkn@gmail.com'),
 (87, '62b88466ae57b', 'Anha', '2/6s/+s13pyrE/zQ5u20Pw==', 'staff', 'fawmeeanha@gmail.com'),
-(88, '62bc8b21c650f', 'Mushrifa', '2/6s/+s13pyrE/zQ5u20Pw==', 'staff', 'mushrifaa380@gmail.com');
+(88, '62bc8b21c650f', 'Mushrifa', '2/6s/+s13pyrE/zQ5u20Pw==', 'staff', 'mushrifaa380@gmail.com'),
+(90, '62bdcdb0a2bfa', 'admin', 'khvU8s6Z+MsvABNEUY/bfg==', 'super', 'admin@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -349,7 +350,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `admin_table`
 --
 ALTER TABLE `admin_table`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `cart`
