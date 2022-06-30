@@ -75,7 +75,7 @@
           <input class="btn btn-primary my-5" type="submit" id='loginbtn' value="Login">
         </div>
       </form>
-
+    
     </div>
 
 
@@ -146,6 +146,20 @@
         </form>
 
       </div>
+    </div>
+    <div class="row text-end w-100">
+      <div class="col-lg-12 col-md-12 text-end text-dark">
+        <p  >All Rights Reserved &reg; Copyright GLiDE.Ceylon.launchs Ahzam  &copy; <span id='date' ></span> - <span  id='datefu'> </span </p>
+      </div>
+      <script type="text/javascript">
+        let date = document.getElementById('date'); //
+        let datefu = document.getElementById('datefu');
+        const d = new Date();
+        let year = d.getFullYear();
+        date.innerHTML = year;
+        datefu.innerHTML = year + 5;
+        console.log(year)
+      </script>
     </div>
   </div>
 

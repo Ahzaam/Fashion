@@ -264,27 +264,26 @@ require('pageauth.php')
       </div>
     </div>
   </form>
-
+  <div class="row text-end w-100">
+    <div class="col-lg-12 col-md-12 text-end text-dark">
+      <p  >All Rights Reserved &reg; Copyright GLiDE.Ceylon.launchs Ahzam  &copy; <span id='date' ></span> - <span  id='datefu'> </span </p>
+    </div>
+    <script type="text/javascript">
+      let date = document.getElementById('date'); //
+      let datefu = document.getElementById('datefu');
+      const d = new Date();
+      let year = d.getFullYear();
+      date.innerHTML = year;
+      datefu.innerHTML = year + 5;
+      console.log(year)
+    </script>
+  </div>
 </div>
 
 
 
 
 
-
-
-<!--
-<div class="image_area">
-<form method="post">
-<label for="upload_image">
-<img src="upload/user.png" id="uploaded_image" class="img-responsive img-circle" />
-<div class="overlay">
-<div class="text">Click to Change Profile Image</div>
-</div>
-<input type="file" name="image" class="image" id="upload_image" style="display:none" />
-</label>
-</form>
-</div> -->
 
 <div class="modal fade" id="modal"     tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg h-100" role="document">

@@ -165,7 +165,20 @@
       ?>
   </div>
     </div>
-
+    <div class="row text-end w-100">
+      <div class="col-lg-12 col-md-12 text-end text-dark">
+        <p  >All Rights Reserved &reg; Copyright GLiDE.Ceylon.launchs Ahzam  &copy; <span id='date' ></span> - <span  id='datefu'> </span </p>
+      </div>
+      <script type="text/javascript">
+        let date = document.getElementById('date'); //
+        let datefu = document.getElementById('datefu');
+        const d = new Date();
+        let year = d.getFullYear();
+        date.innerHTML = year;
+        datefu.innerHTML = year + 5;
+        console.log(year)
+      </script>
+    </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
