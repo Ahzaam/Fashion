@@ -63,4 +63,163 @@ $(document).ready(function() {
   }
 
 
+
+    $('.lightboxsupport').click(function (e) {
+
+      let id = $(this).attr('id')
+
+      let data = {id: id, event:'lightbox'}
+      let url = 'api/search.php'
+      $.post({
+        url,data,
+        success: function (data, status){
+
+          let item = JSON.parse(data)
+
+
+          $(lightbox).addClass('active')
+
+          const img = document.createElement('img');
+          $(img).attr('src', '../'+item[0].image)
+          $(img).css('max-width', '600px')
+          $(img).addClass('w-100 ')
+          $(img).addClass('img-fluid')
+
+
+          while(lightbox.firstChild){
+            lightbox.removeChild(lightbox.firstChild)
+          }
+
+
+          const contdiv = document.createElement('div')
+
+
+          const bodydiv = document.createElement('div')
+          $(bodydiv).css('background-color', 'white')
+          $(bodydiv).css('border-radius', ' 20px 20px 20px 20px')
+          $(bodydiv).addClass('bodydiv ')
+          $(bodydiv).css('position', 'relative')
+          const name = document.createElement('h5')
+          $(name).addClass('h4')
+          $(name).html(item[0].name)
+
+          const body = document.createElement('p')
+          $(body).addClass('lead')
+          $(body).html(item[0].description)
+          const closebutton = document.createElement('div')
+          $(closebutton).css('position', 'absolute')
+
+          $(closebutton).css('top', '8px')
+          $(closebutton).css('left', '16px')
+          $(closebutton).html('<i class="fa-solid fa-2x fa-xmark"></i>')
+          $(closebutton).css('cursor', 'pointer')
+          $(closebutton).addClass('closelightbox')
+
+          $(closebutton).click(function (e) {
+
+            $(lightbox).removeClass('active');
+
+          })
+
+          bodydiv.appendChild(closebutton)
+          bodydiv.appendChild(name)
+          bodydiv.appendChild(body)
+          bodydiv.appendChild(img)
+
+          const abutton = document.createElement('a')
+          abutton.setAttribute('href','view.php?product='+id)
+          $(abutton).html('Buy Now')
+          $(abutton).addClass('btn btn-primary rounded-pill  mx-sm-5')
+
+          const cartbutton = document.createElement('button')
+          cartbutton.setAttribute('data-pro-id', id)
+          $(cartbutton).html('<i class="fa fa-shopping-cart"></i>')
+          $(cartbutton).addClass('add-cart btn btn-primary mx-2 rounded-pill my-2 ')
+
+          const wishbutton = document.createElement('button')
+          wishbutton.setAttribute('data-pro-id', id)
+          $(wishbutton).html('<i class="fa fa-heart"></i>')
+          $(wishbutton).addClass('add-wish btn btn-danger rounded-pill my-2 ')
+
+          $(cartbutton).click(function () {
+              addtocart($(this).attr('data-pro-id') );
+          })
+          $(wishbutton).click(function () {
+              addtowish($(this).attr('data-pro-id') );
+          })
+
+          const topleft = document.createElement('div')
+          $(topleft).addClass('top-left mx-5')
+          topleft.appendChild(abutton)
+          topleft.appendChild(cartbutton)
+          topleft.appendChild(wishbutton)
+
+
+
+          bodydiv.appendChild(topleft)
+          contdiv.appendChild(bodydiv)
+
+          lightbox.appendChild(contdiv)
+
+
+        }
+      })
+      $(lightbox).click(function (e) {
+        if(e.target !== e.currentTarget) return
+        $(this).removeClass('active');
+
+      })
+
+
+
+    })
+
+
+  }
+
+
+      function addtocart(id) {
+        $.post({
+          url: 'api/addtocart.php',
+          data: {id: id},
+          success: function (data, status) {
+            if(data === '200' ){
+
+
+              $('#numofcart').html(parseInt($('#numofcart').html()) +1)
+              $('#cart-'+id).addClass(' text-danger')
+            }else if(data === '201'){
+
+                  $('#cart-'+id).addClass(' text-danger')
+            }
+          }
+        })
+
+
+
+
+      }
+
+      function addtowish(id) {
+
+        $.post({
+          url: 'api/wishlist.php',
+          data: {id: id},
+          success: function (data, status) {
+            if(data === '200' ){
+
+
+              $('#numofwish').html(parseInt($('#numofwish').html()) +1)
+              $('#wish-'+id).addClass(' text-danger')
+            }else if(data === '201'){
+
+                $('#wish-'+id).addClass(' text-danger')
+            }
+          }
+        })
+
+
+
+
+
 })

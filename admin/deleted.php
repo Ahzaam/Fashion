@@ -72,7 +72,7 @@
             <?php
 
             include "../con.php";
-            $query = "SELECT * FROM deleted_product_table ORDER BY rowid DESC ";
+            $query = "SELECT * FROM deleted_product_table";
             $result = $conn->query($query);
 
             if ($result->num_rows > 0) {
