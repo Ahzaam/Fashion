@@ -255,7 +255,18 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
     margin: 0;
     padding: 0;
   }
+  body::-webkit-scrollbar {
+    width: 10px;
+  }
 
+  body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(89, 116, 255, 1);
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: grey;
+    outline: 1px solid slategrey;
+  }
   /* img{
   border-radius:20px 20px 20px 20px;
 
