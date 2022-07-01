@@ -2,7 +2,7 @@
 include '../../con.php';
   if(isset($_POST)){
     if(isset($_POST['event'])){
-      if($_POST['event'] == 'lightbox'){
+      if($_POST['event'] == 'lightbox' ){
         $id = $_POST['id'];
         $query = "SELECT * FROM product_table WHERE id='$id' AND status='selling'";
         $result = $conn->query($query);

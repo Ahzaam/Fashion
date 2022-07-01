@@ -7,21 +7,21 @@ session_start(); ?>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>MegaTrons</title>
-  <link rel="stylesheet" href="../home/nav_style.css">
-  <link rel="stylesheet" href="css/body.css">
+  <title>Gallery</title>
 
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../files/icon_css/all.css">
-  <script defer src="../files/icon_js/all.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+    integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-  <!-- owl carousel -->
-  <script src="../files/owl-carousel/jquery-3.6.0.js"></script>
-  <script src="../files/owl-carousel/owl.carousel.min.js"></script>
-  <link rel="stylesheet" href="../files/owl-carousel/owl.carousel.min.css">
-  <link rel="stylesheet" href="../files/owl-carousel/carousel.css">
+
+
 
   <!-- bootstrap -->
 
@@ -29,91 +29,10 @@ session_start(); ?>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-  <style media="screen">
-  .dropdown{border-radius:5px;width:180px;}
-  .dropdown:hover .dropdown-menu{
-    display:block;
-  }
-  .dropdown-menu{
-    text-align:center;
-
-  }
-  img[type='profile']{
-    margin-bottom:25px;
-    max-width:170px;
-    height:auto;
-
-  }
-  .allcontain{
-    max-width:1800px;
-  }
-  body{
-    text-align:center;
-  }
-  .dressimg{
-    border-radius:20px;
-  }
-  .dressimgcaro{
-    border-radius:100px;
-  }
-
-
-  .sectionglass {
-
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-    border-radius: 5px;
-    position: relative;
-    z-index: 1;
-    background: inherit;
-    overflow: hidden;
-  }
-
-  .sectionglass:before {
-    content: "";
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-    filter: blur(10px);
-    margin: -20px;
-  }
-  .searchdesc {
-     word-wrap: break-word;
-  }
-
-.gridserchanimation {
-    transition: 1s;
-    opacity: 0.1;
-
-}
-
-
-.card-text{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-}
-.gridserchanimation{
-
-}
-#gridcont{
-
-    transition:0.5;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-}
-
-  </style>
+  <link rel="stylesheet" href="css/gallery.css">
 
 
 </head>
@@ -217,7 +136,7 @@ session_start(); ?>
 
             echo "
             <div class='col'>
-            <div class='card'>
+            <div class='card lightboxsupport' data-id='" . $row['id'] ."'>
             <img src='../". $row['image'] ."' class='card-img-top' alt='Image'>
             <div class='card-body text-start'>
             <h5 class='card-title'>". $row['name'] ."</h5>
@@ -245,11 +164,16 @@ session_start(); ?>
           let year = d.getFullYear();
           date.innerHTML = year;
           datefu.innerHTML = year + 5;
-          console.log(year)
+        
         </script>
       </div>
     </div>
+    <div id='lightbox'>
 
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src='js/gallery.js'></script>
 
 

@@ -176,7 +176,7 @@
         let year = d.getFullYear();
         date.innerHTML = year;
         datefu.innerHTML = year + 5;
-        console.log(year)
+        
       </script>
     </div>
   </div>
@@ -186,11 +186,11 @@
   <script type="text/javascript">
   $(document).ready(function () {
     $('.tik').click(function () {
-      console.log($(this).attr('id'))
+
       let id = 'input' + $(this).attr('id')
     })
     $('.deltik').click(function () {
-      console.log($(this).attr('id'))
+
     })
     $('.marktik').click(function () {
       let inid = 'input' + $(this).attr('id')

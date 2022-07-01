@@ -75,7 +75,7 @@
           <input class="btn btn-primary my-5" type="submit" id='loginbtn' value="Login">
         </div>
       </form>
-    
+
     </div>
 
 
@@ -158,7 +158,7 @@
         let year = d.getFullYear();
         date.innerHTML = year;
         datefu.innerHTML = year + 5;
-        console.log(year)
+        
       </script>
     </div>
   </div>

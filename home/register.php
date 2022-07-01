@@ -56,7 +56,7 @@
                 document.getElementById("pword_error").innerHTML = "Password too short";
               }else{
                 document.getElementById("pword_error").innerHTML = "";
-                
+
               }
 
             });

@@ -267,51 +267,50 @@ function displaylightbox() {
 
 }
 
-
-    function addtocart(id) {
-      $.post({
-        url: 'api/addtocart.php',
-        data: {id: id},
-        success: function (data, status) {
-          if(data === '200' ){
-
-
-            $('#numofcart').html(parseInt($('#numofcart').html()) +1)
-            $('#cart-'+id).addClass(' text-danger')
-          }else if(data === '201'){
-
-                $('#cart-'+id).addClass(' text-danger')
-          }
-        }
-      })
+function addtocart(id) {
+     $.post({
+       url: 'api/addtocart.php',
+       data: {id: id},
+       success: function (data, status) {
+         if(data === '200' ){
 
 
+           $('#numofcart').html(parseInt($('#numofcart').html()) +1)
+           $('#cart-'+id).addClass(' text-danger')
+         }else if(data === '201'){
 
-
-    }
-
-    function addtowish(id) {
-
-      $.post({
-        url: 'api/wishlist.php',
-        data: {id: id},
-        success: function (data, status) {
-          if(data === '200' ){
-
-
-            $('#numofwish').html(parseInt($('#numofwish').html()) +1)
-            $('#wish-'+id).addClass(' text-danger')
-          }else if(data === '201'){
-
-              $('#wish-'+id).addClass(' text-danger')
-          }
-        }
-      })
+               $('#cart-'+id).addClass(' text-danger')
+         }
+       }
+     })
 
 
 
 
-    }
+   }
+
+   function addtowish(id) {
+
+     $.post({
+       url: 'api/wishlist.php',
+       data: {id: id},
+       success: function (data, status) {
+         if(data === '200' ){
+
+
+           $('#numofwish').html(parseInt($('#numofwish').html()) +1)
+           $('#wish-'+id).addClass(' text-danger')
+         }else if(data === '201'){
+
+             $('#wish-'+id).addClass(' text-danger')
+         }
+       }
+     })
+
+
+
+
+   }
 
 
     $('.add-cart').click(function() {

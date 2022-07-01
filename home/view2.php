@@ -21,56 +21,101 @@
   integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
   <style media="screen">
-  .image_area {
+
+  * {
+    box-sizing: border-box;
+
+  }
+
+  /* Position the image container (needed to position the left and right arrows) */
+  .container {
     position: relative;
   }
 
-  img {
-    display: block;
-    max-width: 100%;
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
   }
 
-  .preview {
-    overflow: hidden;
-    width: 160px;
-    height: 160px;
-    margin: 10px;
-    border: 1px solid red;
-  }
-
-  .modal-lg{
-    /* max-width:400px !important; */
-  }
-
-  .overlay {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.5);
-    overflow: hidden;
-    height: 0;
-    transition: .5s ease;
-    width: 100%;
-  }
-
-  .image_area:hover .overlay {
-    height: 50%;
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
     cursor: pointer;
   }
 
-  .text {
-    color: #333;
-    font-size: 20px;
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    color: #000000;
+    cursor: pointer;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
+  /* Position the "next button" to the right */
+  .next {
+    right: 10px;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+
+  /* Container for image text */
+  .caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Six columns side by side */
+  .column {
+    float: left;
+    width: 16.66%;
+  }
+
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+    opacity: 0.6;
+  }
+
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
+  img {
+    min-height:400px;
+  }
+  .dark{
+    color: #000000 !important;
+  }
 </style>
 </head>
 <body>
@@ -88,146 +133,218 @@
 
     $row = mysqli_fetch_assoc($rs);
     ?>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" id='savechanges' data-bs-target="#exampleModal">
-
-    </button>
-
-
-    <div class="container position-relative ">
-      <div class="my-5 position-absolute top-0 start-0">
-        <a type="button" class="btn btn-light nav-link active m-lg-2 m-2 w-100 " onclick="history.back()">
-          <i class="fa fa-arrow-left" aria-hidden="true"></i><span class="badge text-bg-secondary"></span>
-        </a>
-      </div>
-    </div>
-    <br><br>
+    <input readonly type="hidden" name="id" id='hiddenid' value="<?php echo $row['id'] ?>">
 
 
 
-    <div class="container my-5">
+
+    <div class="container text-start my-5">
+
+      <a type="button" class="text-start btn btn-light nav-link active m-lg-2 m-2 w-100 " onclick="history.back()">
+        <i class="fa fa-arrow-left dark" aria-hidden="true"></i><span class="badge text-bg-secondary"></span>
+
+      </a>
+      <div class="row">
 
 
 
-      <div class="">
-        <h1 class='display-6'> Item  No: <?php echo $row['id'] ?></h1>
-        <input readonly type="hidden" name="id" id='hiddenid' value="<?php echo $row['id'] ?>">
-      </div>
-
-
-
-        <div class="row">
-
-          <div class="mb-3 col-lg-5">
-            <!-- <label for="exampleFormControlInput1" class="form-label">Images</label> -->
-            <!-- <input readonly type="file" class="form-control d-none "  required id="upload_image" > -->
-            <!-- <input readonly type="hidden" id='hiddeninputimg'  name="my_image" value=""> -->
-            <div class="  " style=' cursor: pointer;' id='uploadimgicon'>
-              <div class="text-start ">
-                <img src="../<?php echo $row['image'] ?>" class=' text-center' style='max-height:400px; border-radius:10px;' alt="Image" id='img_prev'>
-                <div class="row row-cols-4" id='resdiv'>
-                  <?php
-                  if(isset($row['moreimg'])){
-                    $samples = explode('##', $row['moreimg']);
-
-                    
-                    foreach($samples as $src) {
-                      echo "<img src='../$src' class='col text-center' style=' border-radius:10px;' alt='$src' id='img_prev'>";
-                    }
-
-
-                  }
-                  ?>
-                </div>
-              </div>
-
-            </div>
-
+      <div class="col-lg-5 offset-lg-1">
+        <!-- Rating -->
+        <div class="d-flex align-items-center small mb-2">
+          <div class="text-warning mr-2">
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
           </div>
+          <!-- <a class="js-go-to link-muted" href="#reviewSection"
+          data-target="#reviewSection"
+          data-compensation="#header"
+          data-type="static">Read all 287 reviews</a> -->
+        </div>
+        <!-- End Rating -->
 
-          <div class="mb-3 col-lg-7 ">
-            <div class="">
-              <label for="exampleFormControlInput1" class="form-label">Name: <?php echo $row['name'] ?></label>
-              <br>
-              <label for="exampleFormControlTextarea1" class="form-label">About Product : <?php echo $row['description'] ?></label>
-              <br>
-              <label for="exampleFormControlInput1" class="form-label">Price: <?php echo $row['price'] ?>LKR</label>
-              <br>
+        <!-- Title -->
+        <div class="mb-5">
+          <h1 class="h3 font-weight-medium"><?php echo $row['name'] ?></h1>
+          <p><?php echo $row['description'] ?></p>
+        </div>
+        <!-- End Title -->
 
-              <div class="row">
-                <label for="exampleFormControlInput1" class="form-label col-2">Color</label>
-                <input readonly type="color" class="form-control deafultinput col-3 w-25" data-prev-data='<?php echo $row['colors'] ?>' value="<?php echo $row['colors'] ?>" name='color'  id="exampleFormControlInput1">
+        <!-- Price -->
+        <div class="mb-5">
+          <h2 class="font-size-1 text-secondary font-weight-medium mb-0">Total price:</h2>
+          <span class="font-size-2 font-weight-medium"><?php echo $row['price'] ?> LKR</span>
+          <span class="text-secondary ml-2"><del></del></span>
+        </div>
+        <!-- End Price -->
 
-              </div>
+        <!-- Quantity -->
+        <div class="border rounded py-2 px-3 mb-3">
+          <div class="js-quantity row align-items-center">
+            <div class="col-7">
+              <small class="d-block text-secondary font-weight-medium">Available stock</small>
+              <p><?php echo $row['stock'] ?></p>
             </div>
-            <div class="">
-              <label for="exampleFormControlTextarea1" class="form-label">Category: <?php echo $row['category'] ?> </label>
-
-
-            </div>
-
-            <div class="">
-              <label for="exampleFormControlInput1" class="form-label">Size: <?php echo $row['size'] ?></label>
-
-
-            </div>
-
-
-
-
-            <div class="">
-              <label for="exampleFormControlInput1"  class="form-label">Stock: <?php echo $row['stock'] ?></label>
-
-            </div>
-
-                      <?php
-                      if(isset($_SESSION['login']) && $_SESSION['login']){
-                        ?>
-
-                        <div class="my-5">
-                          <label for="exampleFormControlInput1"  class="form-label">Ask your Questions here an admministrator will reply you soon</label><br>
-                        <div class="input-group  rounded-pill">
-
-                          <input type="text" class="form-control" id='feedbackinput' placeholder="Questions about this product" aria-label="Recipient's username" aria-describedby="button-addon2">
-                          <button class="btn btn-primary" id='feedbacksubmit' type="button" id="button-addon2">Send</button>
-                        </div>
-                        </div>
-
-                        <?php
-                      }else{
-
-                        ?>
-                        <div class="input-group my-5 rounded-pill">
-                          <input type="text" class="form-control" readonly placeholder="Login To send Feedback & Questions" aria-label="Recipient's username" aria-describedby="button-addon2">
-                          <button class="btn btn-primary disabled" type="button" id="button-addon2">Send</button>
-                        </div>
-
-                        <?php
-                      }
-
-
-                       ?>
-
-
 
           </div>
         </div>
+        <!-- End Quantity -->
 
+        <!-- Quantity -->
+        <div class="border rounded py-2 px-3 mb-3">
+          <div class="js-quantity row align-items-center">
+            <div class="col-7">
+              <small class="d-block text-secondary font-weight-medium">Available Size</small>
+              <p><?php echo $row['size'] ?></p>
+            </div>
+
+          </div>
+        </div>
+        <!-- End Quantity -->
+
+        <!-- Accordion -->
+        <div id="shopCartAccordion" class="accordion mb-5">
+
+        </div>
+        <!-- End Accordion -->
+
+        <div class="mb-4">
+          <button type="button" class="btn add-cart  btn-primary rounded-pill transition-3d-hover">Add to Cart</button>
+          <button type="button" class="btn wish  btn-danger rounded-pill transition-3d-hover">Add to Wishlist</button>
+        </div>
+
+
+        <!-- Help Link -->
+        <div class="media align-items-center">
+          <span id="icon4" class="svg-preloader ie-height-48 w-50 max-width-6 mr-2">
+            <i class="fa-solid fa-comments text-primary"></i>
+            <span class="font-weight-medium mr-1">Need Help?</span>
+          </span>
+          <div class="media-body text-secondary small">
+            <?php
+            if(isset($_SESSION['login']) && $_SESSION['login']){
+              ?>
+
+              <div class="">
+                <label for="exampleFormControlInput1"  class="form-label">Ask your Questions here an admministrator will reply you soon</label><br>
+                <div class="input-group  rounded-pill">
+
+                  <input type="text" class="form-control" id='feedbackinput' placeholder="Questions about this product" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <button class="btn btn-primary" id='feedbacksubmit' type="button" id="button-addon2">Send</button>
+                </div>
+              </div>
+
+              <?php
+            }else{
+
+              ?>
+              <div class="input-group my-5 rounded-pill">
+                <input type="text" class="form-control" readonly placeholder="Login To send Feedback & Questions" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-primary disabled" type="button" id="button-addon2">Send</button>
+              </div>
+
+              <?php
+            }
+
+
+            ?>
+
+          </div>
+        </div>
         <div class="row text-end w-100 my-5">
           <div class="col-lg-12 col-md-12 text-end text-dark">
             <p  >All Rights Reserved &reg; Copyright GLiDE.Ceylon.launchs Ahzam  &copy; <span id='date' ></span> - <span  id='datefu'> </span </p>
-          </div>
-          <script type="text/javascript">
+            </div>
+            <script type="text/javascript">
             let date = document.getElementById('date'); //
             let datefu = document.getElementById('datefu');
             const d = new Date();
             let year = d.getFullYear();
             date.innerHTML = year;
             datefu.innerHTML = year + 5;
-            console.log(year)
-          </script>
+          
+            </script>
+          </div>
+        <!-- End Help Link -->
+      </div>
+
+
+
+      <div class="mb-3 col-lg-5 offset-lg-1">
+        <div class="container ">
+
+
+
+
+
+
+          <!-- Full-width images with number text -->
+          <div class="mySlides">
+            <img src="../<?php echo $row['image'] ?>" style="width:100%">
+          </div>
+          <?php
+          if(isset($row['moreimg']) && $row['moreimg'] != '') {
+            $samples = explode('##', $row['moreimg']);
+
+            foreach($samples as $src) {
+              echo '<div class="mySlides">';
+              echo '<div class="numbertext text-center"></div>';
+              echo "<img src='../$src' class='col text-center w-100'  style=' border-radius:10px; ' alt='$src' id='img_prev'>";
+              echo '</div>';
+            }
+            echo '<a class="prev" onclick="plusSlides(-1)">&#10094;</a>';
+            echo '<a class="next" onclick="plusSlides(1)">&#10095;</a>';
+          }
+          ?>
+
+
+
+
         </div>
+
+        <script type="text/javascript">
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("demo");
+          let captionText = document.getElementById("caption");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          captionText.innerHTML = dots[slideIndex-1].alt;
+        }
+
+      </script>
+
+
+
+    </div>
+      <!-- End Product Description -->
+    </div>
+
+
     </div>
 
 
@@ -237,21 +354,21 @@
 
     <?php
   }else{
-      echo '<div class="container position-relative ">
-      <div class="my-5 position-absolute top-0 start-0">
-        <a type="button" class="btn btn-light nav-link active m-lg-2 m-2 w-100 " onclick="history.back()">
-          <i class="fa fa-arrow-left" aria-hidden="true"></i><span class="badge text-bg-secondary"></span>
-        </a>
-      </div>
+    echo '<div class="container position-relative ">
+    <div class="my-5 position-absolute top-0 start-0">
+    <a type="button" class="btn btn-light nav-link active m-lg-2 m-2 w-100 " onclick="history.back()">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i><span class="badge text-bg-secondary"></span>
+    </a>
+    </div>
     </div>';
     echo "<h1 class='display-1 text-danger text-center my-5'>Item Has Been Deleted</h1>";
 
   }
 
   ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src='js/view.js'>
 
   </script>

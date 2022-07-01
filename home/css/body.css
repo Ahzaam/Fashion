@@ -6,9 +6,7 @@
 .carousel {
   text-align: center;
 }
-/* .navbar-nav .nav-item a{
-  color: red;
-} */
+
 div.option{
   width: 100%;
   height: auto;
@@ -50,7 +48,7 @@ div.option{
   min-height:270px;
   max-height: 300px;
   width:100%;
-  /* margin: 30px 0; */
+
   border-radius: 40px;
   overflow: auto;
   overflow: hidden;

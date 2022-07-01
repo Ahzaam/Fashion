@@ -146,7 +146,7 @@ require "pageauth.php";
 
           if(name === '' || email === '') return
           let data = $('#newadminform').serialize();
-          console.log(data);
+
           let url = 'newadmin.php';
 
           $.post({
@@ -156,7 +156,7 @@ require "pageauth.php";
               $('#newadmincodeout').val(data);
               $('#addnewadmin').addClass('disabled');
               $('#newadmincode').removeClass('d-none');
-              console.log(data + '<<<');
+
             }
           })
 
@@ -201,7 +201,7 @@ require "pageauth.php";
         let year = d.getFullYear();
         date.innerHTML = year;
         datefu.innerHTML = year + 5;
-        console.log(year)
+        
       </script>
     </div>
   </div>

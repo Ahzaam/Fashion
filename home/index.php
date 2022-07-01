@@ -267,10 +267,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
     background-color: grey;
     outline: 1px solid slategrey;
   }
-  /* img{
-  border-radius:20px 20px 20px 20px;
 
-  } */
   </style>
 
 </head>
@@ -280,7 +277,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
 
 
-
+  <!--Start Floating cart and Wish lidt Container -->
 
   <div class="container-fluid allcontain position-relative my-3">
     <div class="fixed-top align-middle d-flex d-none" id='cartandwish' style='z-index:1000;top: 15%; max-width:100px;'>
@@ -298,7 +295,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
           ?>
 
-
+          <!-- Start of floating cart icon -->
           <div class="btn-group w-100 my-3 dropend">
             <button  type="button" class="btn btn-primary rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <i class=" fas fa-shopping-cart  "></i><span class="badge text-bg-secondary mx-2" id='numofcart'><?php echo $numrows  ?></span>
@@ -332,7 +329,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
                   <?php
                   $i++;
                 }
-                echo '<li><a class="dropdown-item bg-primary" href="#">Go To Cart</a></li></ul>';
+                echo '<li><a class="dropdown-item bg-primary" href="cart.php">Go To Cart</a></li></ul>';
               }
 
 
@@ -340,7 +337,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
               ?>
 
             </div>
-            <!-- End Of Cart -->
+            <!-- End Of of floating cart icon -->
 
 
 
@@ -394,7 +391,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
                       <?php
                       $j++;
                     }
-                    echo '<li><a class="dropdown-item bg-primary" href="#">Go To Wishlist</a></li></ul>';
+                    echo '<li><a class="dropdown-item bg-primary" href="wish.php">Go To Wishlist</a></li></ul>';
                     ?>
                   </ul>
                   <?php
@@ -409,9 +406,15 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
             }
 
             ?>
+
+            <!--End of floating cart icon  -->
           </div>
         </div>
+<!-- End of flaoting container -->
 
+
+
+<!-- Start of Navbar -->
 
         <nav class="navbar navbar-expand-lg text-center bg-light">
           <div class="container-fluid">
@@ -507,15 +510,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
                 </div>
               </ul>
-              <!-- <div class="btn-group text-center">
-              <button type="button" class="btn btn-danger rounded-pill  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class=" fas fa-shopping-cart "></i>
-            </button>
-            <ul class="dropdown-menu  me-5" id='cart'>
-            <li><a class="dropdown-item" href="#">Actjhvhgchtfjyvhgfhyfyfyuion</a></li>
-
-          </ul>
-        </div> -->
 
         <form class="d-flex col-12 col-lg-3  d-lg-block" role="search">
           <div class=" row btn-group w-100">
@@ -526,10 +520,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
               </ul>
 
             </div>
-            <!-- <div class="col-4 ">
-            <button class="btn btn-primary " type="submit" id="search">Search</button>
-          </div> -->
-
 
         </div>
       </form>
@@ -541,6 +531,9 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 <!-- End of the Navbar -->
 
 
+
+
+<!-- Start of Carousel Banner -->
 <div class="container-fluid d-xl-flex justify-content-center">
   <div id="carouselExampleIndicators" class="carousel slide w-100" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -607,7 +600,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
       </div>
     </div>
 
-    <!-- End of the Slide -->
+    <!-- End of the Banner -->
 
 
 
@@ -616,38 +609,26 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
         <div class="col-lg-4 col-md-12 d-inline-block position-relative mt-5">
           <div class=" d-inline-block">
             <img src="images/easy-return.jpg" class='w-100' alt="">
-            <!-- <h2 class=" mt-5 ">Exclusive collection</h1> -->
-            <!-- <p class="text-muted mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p> -->
           </div>
         </div>
 
-        <!--
-        <div class="d-none d-lg-inline-block overflow-auto mx-lg-4" >
-        <img src="images\divi.png" class="" alt="">
-      </div> -->
 
       <div class="col-lg-4  col-md-12 d-inline-block position-relative  mt-5">
         <div class=" d-inline-block">
           <img src="images/replacement.jpg" class='w-100' alt="">
-          <!-- <h2 class="mt-5">Happiness </h1> -->
-          <!-- <p class="text-muted mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p> -->
         </div>
       </div>
-      <!--
-      <div class="	d-none d-lg-inline-block overflow-auto mx-lg-4">
-      <img src="images\divi.png" class=".d-sm-none .d-md-block d-lg-block" alt="">
-    </div> -->
 
     <div class="col-lg-4  col-md-12 d-inline-block position-relative   mt-5 ">
       <div class=" d-inline-block">
         <img src="images/free-shipping.jpg" class='w-100' alt="">
-        <!-- <h2 class="mt-5 ">Trending Toys</h1> -->
-        <!-- <p class="text-muted mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p> -->
+
       </div>
 
     </div>
   </div>
 </div>
+
 <!-- End of Feature -->
 
 
@@ -873,7 +854,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
                let year = d.getFullYear();
                date.innerHTML = year;
                datefu.innerHTML = year + 5;
-               console.log(year)
+
              </script>
            </div>
         </div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['userid']) && isset($_POST)){
+if(isset($_SESSION['login']) && isset($_POST) && $_SESSION['login']){
 
   $userid = $_SESSION['userid'];
 

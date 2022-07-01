@@ -15,10 +15,6 @@
       echo 200;
     }
 
-
-
-
-
   }else{
     if($_POST['id']){
       echo 404  ;

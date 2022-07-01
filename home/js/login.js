@@ -17,12 +17,12 @@ $(document).ready(function() {
     e.preventDefault();
 
     let data = $('#logform').serialize();
-    console.log(data);
+
     $.post({
       url:'api/validate.php',
       data: data,
       success: function (data, status) {
-        console.log(data);
+
         if(data === '204') {
           $('#logemailerror').html('Account Doesnt Exist')
           $('#logemail').addClass('is-invalid')
@@ -55,12 +55,12 @@ $(document).ready(function() {
                 $('#inputcity').addClass('is-invalid')
             }else{
               $('#registerbtn').addClass('')
-              console.log(data)
+
               $.post({
                 url: 'api/reg_val.php',
                 data: data,
                 success: function (data, status){
-                  console.log(data)
+
                   if(data === '226'){
                     $('#email').addClass('is-invalid')
                     $('#emailerror').html('Email Already Exist')
@@ -80,7 +80,7 @@ $(document).ready(function() {
 
 
           }else{
-            console.log($('#regpassword').val() + "  uhigugyyu" + $('#checkpassword').val())
+
             $('#passworderror').html('Password Doesnt Match');
             $('#regpassword').addClass('is-invalid')
             $('#checkpassword').addClass('is-invalid')
@@ -103,12 +103,12 @@ $(document).ready(function() {
       e.preventDefault()
       $('#confotpbtn').addClass('disabled')
       let otpveri = $('#otpform').serialize()
-      console.log($('#otpform').serialize())
+
       $.post({
         url: '/auth/user/verify/otp',
         data: otpveri,
         success: function (data, status){
-          console.log(data.status + ' ' + status)
+        
           if(data.status === 200 ){
             name = $('#nameper').val()
             email = $('#email').val()

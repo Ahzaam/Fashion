@@ -1,7 +1,7 @@
   $(document).ready(function(){
 
     $('#moreimages').change(function(){
-      console.log(event.target.files.length)
+
       if(event.target.files.length > 4) {
         alert('Only 4 images are allowed')
         $('#moreimages').val('')
@@ -11,7 +11,7 @@
         $(img).addClass('col')
         $(img).attr('src', URL.createObjectURL(event.target.files[i]))
         $('#imgprev2').append(img)
-        console.log(event.target.files[i])
+
       }
 
 
@@ -24,7 +24,7 @@
     var cropper;
 
     $('#upload_image').change(function(event){
-      console.log($(event.target.files[0]))
+      
       var files = event.target.files;
       // $('#test_image').val( window.URL.createObjectURL(event.target.files[0]));
       var done = function(url){

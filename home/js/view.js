@@ -10,7 +10,7 @@ $(document).ready(function() {
             url: 'api/questions.php',
             data: {feedback: feedback, proid: proid},
             success: function(data, status){
-              console.log(data)
+            
               if(data === '200'){
                 alert('Message sent successful')
               }else if(data === '500'){
@@ -25,4 +25,48 @@ $(document).ready(function() {
           })
         }
       })
+
+
+          $('.wish').click(function() {
+            id = $('#hiddenid').val();
+
+            $.post({
+              url: 'api/wishlist.php',
+              data: {id: id},
+              success: function (data, status) {
+                if(data === '200' ){
+                  $('.wish').removeClass('btn-danger');
+                  $('.wish').addClass(' btn-outline-danger')
+                }else if(data === '201'){
+                  $('.wish').removeClass('btn-danger');
+                  $('.wish').addClass(' btn-outline-danger')
+                }
+              }
+            })
+          });
+
+
+
+
+          $('.add-cart').click(function() {
+            id = $('#hiddenid').val();
+            $.post({
+              url: 'api/addtocart.php',
+              data: {id: id},
+              success: function (data, status) {
+                if(data === '200' ){
+
+                  $('.add-cart').removeClass('btn-primary');
+                  $('.add-cart').addClass(' btn-outline-primary')
+                }else if(data === '201'){
+                  $('.add-cart').removeClass('btn-primary');
+                  $('.add-cart').addClass(' btn-outline-primary')
+                }
+              }
+            })
+
+
+
+
+          });
 })
