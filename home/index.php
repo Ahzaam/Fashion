@@ -29,7 +29,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>NZ-Fasions</title>
-
+  <link rel="icon" href="images/logo-min-c.jpg">
   <link rel="stylesheet" href="css/body.css">
 
 
@@ -66,209 +66,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
   <!-- Grid -->
   <link rel="stylesheet" href="../files/grid/grid.css">
-
-
-
-  <style media="screen">
-  .dropdown{border-radius:5px;width:180px;}
-  .dropdown:hover .dropdown-menu{
-    display:block;
-  }
-  .dropdown-menu{
-    text-align:center;
-
-  }
-
-  .serchimg{
-    width:60px;
-    height:80px;
-  }
-  img[type='profile']{
-    margin-bottom:25px;
-    max-width:170px;
-    height:auto;
-
-  }
-  .allcontain{
-    max-width:1800px;
-  }
-  body{
-    text-align:center;
-  }
-  .dressimg{
-    border-radius:20px;
-  }
-  .dressimgcaro{
-    border-radius:100px;
-  }
-  /* .card-img-top:hover{
-    transition: 0.5s;
-    opacity:1;
-  }
-  .card-img-top{
-    transition: 0.5s;
-    opacity:0.7;
-  } */
-
-  .sectionglass {
-
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-    border-radius: 5px;
-    position: relative;
-    border-radius: 15px;
-    z-index: 1;
-    background: inherit;
-    overflow: hidden;
-  }
-
-  .sectionglass:before {
-    content: "";
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: inset 0 0 2000px rgba(0, 0, 0, 0.76);
-    filter: blur(10px);
-    margin: -20px;
-  }
-  .sectionglassdark {
-
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-    border-radius: 5px;
-    position: relative;
-    border-radius: 15px;
-    z-index: 1;
-    background: inherit;
-    overflow: hidden;
-  }
-
-  .sectionglassdark:before {
-    content: "";
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: inset 0 0 2000px rgba(0, 0, 0, 0.76);
-    filter: blur(10px);
-    margin: -20px;
-  }
-  .searchdesc {
-    word-wrap: break-word;
-  }
-  #lightbox{
-
-    position: fixed;
-    z-index:1000;
-    top: 0;
-
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    background-color: rgba(69, 69, 69, 0.53);
-
-    display: none;
-  }
-
-  .right {
-    position: absolute;
-    top: 50%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-  }
-  .left {
-    position: absolute;
-    top: 40%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-  }
-  #lightbox.active{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #lightbox img{
-    border-radius:0px 0px 20px 20px ;
-  }
-
-  .bodydiv{
-    margin: 0 15px 0 15px;
-    /* max-width:1920px; */
-
-  }
-
-  .top-left {
-    position: absolute;
-    top: 90%;
-    left: 15%;
-    /* padding-left:40px; */
-    /* padding-bottom: 40px; */
-    transform: translate(-50%, -50%);
-  }
-
-  .dressimgsec{
-    position: relative;
-    cursor: pointer;
-  }
-
-  .divcentered{
-    /* margin: 0 10px 0 10px; */
-    transition:0.5s;
-    position: absolute;
-    height:100%;
-    width: 96%;
-    top: 50%;
-    left: 50%;
-    border-radius:20px 20px 20px 20px;
-    transform: translate(-50%, -50%);
-  }
-  .centered2 {
-    opacity:0;
-    color:white;
-    transition:0.5s;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .dressimgsec:hover .divcentered{
-    transition:0.5s;
-    background-color: rgba(0, 0, 0, 0.69);
-  }
-
-  .dressimgsec:hover .centered2{
-    transition:0.5s;
-    opacity:1;
-  }
-
-  .dropdown-item-a{
-    margin: 0;
-    padding: 0;
-  }
-  *{
-    margin: 0;
-    padding: 0;
-  }
-  body::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  body::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(89, 116, 255, 1);
-  }
-
-  body::-webkit-scrollbar-thumb {
-    background-color: grey;
-    outline: 1px solid slategrey;
-  }
-
-  </style>
 
 </head>
 
@@ -418,7 +215,10 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
         <nav class="navbar navbar-expand-lg text-center bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">NZ-Fasions</a>
+            <a class="navbar-brand" href="#">
+      <img src="images/logo-min-c.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top">
+      NZ - Fasions
+    </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -487,6 +287,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
                   <a class="btn btn-danger mx-lg-5 rounded-pill" href="login.php">Login</a>
                 </li>
 
+                <li>
                 <div class="account d-none mx-lg-5"  id='account'>
                   <div class="btn-group">
                     <div class="btn-group">
@@ -509,6 +310,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
 
                 </div>
+                </li>
               </ul>
 
         <form class="d-flex col-12 col-lg-3  d-lg-block" role="search">
@@ -544,7 +346,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="images/perfume.jpg" type="sldimg" class="d-block "  alt="...">
+        <img src="images/perfume-logo.jpg" type="sldimg" class="d-block "  alt="...">
         <div class="right text-white sectionglass px-3 p-3 text-start">
           <h5 class="display-3" >
             Best Collection of Perfumes</h5>
@@ -556,7 +358,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
 
         <div class="carousel-item" style="">
-          <img src="images/blazer.jpg" class="d-block "  alt="...">
+          <img src="images/blazer-logo.jpg" class="d-block "  alt="...">
           <div class="left p-3 text-dark text-start  px-3">
             <h5 class="display-3" >Best Collection Of Blazers</h5>
             <p class="lead ">Blazers for all events Official, Wedding, Casual.</p>
@@ -568,7 +370,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
 
         <div class="carousel-item">
-          <img src="images/tshirtsbanner.jpg" class="d-block "  alt="...">
+          <img src="images/tshirtsbanner-logo.jpg" class="d-block "  alt="...">
           <div class="left p-3 text-start   px-3">
             <h5 class="display-1 text-dark">Best Collection Of T-Shirts</h5>
             <p class="lead text-dark  ">Elegance is always in style for men. There are all different kinds of elegance.<br> It can be silk, it can be a T-shirt.</p>
@@ -577,7 +379,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
         </div>
 
         <div class="carousel-item  w-flex">
-          <img src="images\allkindmen.jpg" class="d-block"  alt="...">
+          <img src="images\allkindmen-logo.jpg" class="d-block"  alt="...">
           <div class="right  text-start  px-2">
             <h5 class="display-3 text-dark">All Kind of Men Accesories in One Place</hh5>
               <p class="lead  text-dark my-lg-5">Best place for buy mens accesories</p>
