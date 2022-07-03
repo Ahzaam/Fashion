@@ -2,7 +2,7 @@
 session_start();
 include '../../con.php';
 
-if(isset($_REQUEST['productid']) && isset($_SESSION['dbpasscode']) && $_SESSION['dbpasscode'] = 'secure'){
+if(isset($_REQUEST['productid']) && isset($_SESSION['dbpasscode']) && $_SESSION['dbpasscode'] == 'secure'){
 
   $postid = $_REQUEST["productid"] ;
 

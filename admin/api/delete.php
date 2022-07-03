@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 include '../../con.php';
 
-if(isset($_POST)){
+if(isset($_POST) && isset($_SESSION['dbpasscode']) && $_SESSION['dbpasscode'] == 'secure'){
 
   $backup = "INSERT INTO deleted_product_table SELECT * FROM product_table WHERE id='". $_POST["id"] . "'";
   $backup = $result = $conn->query($backup);

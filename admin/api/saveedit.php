@@ -1,7 +1,7 @@
 <?php
 include '../../con.php';
-
-if(isset($_POST)){
+session_start();
+if(isset($_POST) && isset($_SESSION['dbpasscode']) && $_SESSION['dbpasscode'] == 'secure'){
 
 $id           = $_POST['id'];
 $size         = $_POST["size"];

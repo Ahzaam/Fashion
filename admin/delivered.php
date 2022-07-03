@@ -43,26 +43,25 @@ require "pageauth.php";
       <h1 class='display-1'>Order's</h1>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="orders.php">New Orders</a>
+        <a class="nav-link " aria-current="page" href="orders.php">New Orders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="pendingshipment.php">Pending Shipments</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="shipped.php">Shipped</a>
+        <a class="nav-link " href="shipped.php">Shipped</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="delivered.php">Delivered</a>
+        <a class="nav-link active" href="delivered.php">Delivered</a>
       </li>
     </ul>
   <div class="row">
     <div class="col-lg-9">
       <table class="table">
         <thead>
-          <tr >
+          <tr>
 
-            <th scope="col">No</th>
-            <th scope="col">Order UID</th>
+            <th scope="col">Order ID</th>
             <th scope="col">User ID</th>
             <th scope="col">Product ID</th>
             <th scope="col">Status</th>
@@ -75,24 +74,23 @@ require "pageauth.php";
 
           <?php
           include "../con.php";
-          $query = "SELECT * FROM orders WHERE status = 'pending'";
+          $query = "SELECT * FROM orders WHERE status = 'delivered'";
           $result = $conn->query($query);
 
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
               $id = $row['orderuid'];
-              $orderid = $row['orderid'];
-              ?>
-              <tr class='parent'>
 
-                <td><?php echo $orderid ?></td>
+              ?>
+              <tr>
+
                 <td><?php echo $id ?></td>
                 <td><?php echo $row['userid']?></td>
                 <td><?php echo $row['product_id']?></td>
                 <td><?php echo $row['status']?></td>
-                <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $orderid ?>' name="button">View Details</button> </th>
-                <td><button type="button" data-order-id="<?php echo $orderid ?>" class="confirm btn btn-primary rounded-pill" name="button">Confirm Order</button></td>
-                <td><button type="button" data-product-id='<?php echo $row['product_id'] ?>'    data-order-id="<?php echo $orderid ?>" class="cancel btn btn-danger rounded-pill" name="button">Cancel Order</button></td>
+                <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $row['orderid']?>' name="button">View Details</button> </th>
+                <td><button type="button" class="btn btn-dark rounded-pill" disabled name="button"><i class="fa-solid fa-truck text-success mx-2"></i><i class="fa-solid fa-circle-check text-success"></i></button></td>
+
 
 
 

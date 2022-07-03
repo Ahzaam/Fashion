@@ -1,6 +1,7 @@
 <?php
 include '../../con.php';
-  if(isset($_POST)){
+session_start();
+  if(isset($_POST) && isset($_SESSION['dbpasscode']) && $_SESSION['dbpasscode'] == 'secure'){
 
       $search = $_POST['search'];
       $fullsearch = $_POST['search'];

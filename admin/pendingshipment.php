@@ -43,10 +43,10 @@ require "pageauth.php";
       <h1 class='display-1'>Order's</h1>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="orders.php">New Orders</a>
+        <a class="nav-link " aria-current="page" href="orders.php">New Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="pendingshipment.php">Pending Shipments</a>
+        <a class="nav-link active" href="pendingshipment.php">Pending Shipments</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="shipped.php">Shipped</a>
@@ -59,9 +59,8 @@ require "pageauth.php";
     <div class="col-lg-9">
       <table class="table">
         <thead>
-          <tr >
-
-            <th scope="col">No</th>
+          <tr>
+            <th scope="col">ID</th>
             <th scope="col">Order UID</th>
             <th scope="col">User ID</th>
             <th scope="col">Product ID</th>
@@ -75,7 +74,7 @@ require "pageauth.php";
 
           <?php
           include "../con.php";
-          $query = "SELECT * FROM orders WHERE status = 'pending'";
+          $query = "SELECT * FROM orders WHERE status = 'confirmed'";;
           $result = $conn->query($query);
 
           if ($result->num_rows > 0) {
@@ -84,15 +83,14 @@ require "pageauth.php";
               $orderid = $row['orderid'];
               ?>
               <tr class='parent'>
-
                 <td><?php echo $orderid ?></td>
                 <td><?php echo $id ?></td>
                 <td><?php echo $row['userid']?></td>
                 <td><?php echo $row['product_id']?></td>
                 <td><?php echo $row['status']?></td>
-                <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $orderid ?>' name="button">View Details</button> </th>
-                <td><button type="button" data-order-id="<?php echo $orderid ?>" class="confirm btn btn-primary rounded-pill" name="button">Confirm Order</button></td>
-                <td><button type="button" data-product-id='<?php echo $row['product_id'] ?>'    data-order-id="<?php echo $orderid ?>" class="cancel btn btn-danger rounded-pill" name="button">Cancel Order</button></td>
+                <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $orderid?>' name="button">View Details</button> </th>
+                <td><button type="button"  data-order-id="<?php echo $orderid ?>" class="shipped btn btn-success rounded-pill" name="button">Make Shipped</button></td>
+
 
 
 
