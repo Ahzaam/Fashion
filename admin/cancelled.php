@@ -52,10 +52,10 @@ require "pageauth.php";
         <a class="nav-link " href="shipped.php">Shipped</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="delivered.php">Delivered</a>
+        <a class="nav-link" href="delivered.php">Delivered</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="cancelled.php">Cancelled</a>
+        <a class="nav-link active" href="cancelled.php">Cancelled</a>
       </li>
     </ul>
   <div class="row">
@@ -77,7 +77,7 @@ require "pageauth.php";
 
           <?php
           include "../con.php";
-          $query = "SELECT * FROM orders WHERE status = 'delivered'";
+          $query = "SELECT * FROM orders WHERE status = 'cancelled'";;
           $result = $conn->query($query);
 
           if ($result->num_rows > 0) {
@@ -92,7 +92,7 @@ require "pageauth.php";
                 <td><?php echo $row['product_id']?></td>
                 <td><?php echo $row['status']?></td>
                 <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $row['orderid']?>' name="button">View Details</button> </th>
-                <td><button type="button" class="btn btn-dark rounded-pill" disabled name="button"><i class="fa-solid fa-truck text-success mx-2"></i><i class="fa-solid fa-circle-check text-success"></i></button></td>
+                <td><button type="button"  data-order-id="<?php echo $id ?>" class=" btn btn-danger rounded-pill" disabled name="button">Cancelled</button></td>
 
 
 

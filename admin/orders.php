@@ -54,6 +54,9 @@ require "pageauth.php";
       <li class="nav-item">
         <a class="nav-link" href="delivered.php">Delivered</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link " href="cancelled.php">Cancelled</a>
+      </li>
     </ul>
   <div class="row">
     <div class="col-lg-9">

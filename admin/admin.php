@@ -177,7 +177,7 @@ require('pageauth.php')
     <div class="col-6 col-sm-6 col-md-4 col-lg-3 position-relative" onclick="location.href='adminhomegal.php'">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="images/gallery.png">
+          <img alt='Image' class="img-fluid" src="images/gallery.png">
         </div>
         <div class="team-content">
           <h3 class="name">Gallery <span class="badge text-bg-secondary"><?php echo $ins ?></span></h3>
@@ -192,7 +192,7 @@ require('pageauth.php')
     <div class="col-6 col-sm-6 col-md-4 col-lg-3 position-relative" onclick="location.href='comments.php'">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="images/feedback.jpg">
+          <img alt='Image' class="img-fluid" src="images/feedback.jpg">
         </div>
         <div class="team-content">
           <h3 class="name">Message</h3>
@@ -210,7 +210,7 @@ require('pageauth.php')
     <div class="col-6 col-sm-6 col-md-4 col-lg-3 position-relative" onclick="location.href='adminoofs.php'">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="images/outofstock.jpg">
+          <img alt='Image' class="img-fluid" src="images/outofstock.jpg">
         </div>
         <div class="team-content">
           <h3 class="name">Out of Stock</h3>
@@ -228,7 +228,7 @@ require('pageauth.php')
     <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='adminadd.php'">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="images/newproduct.jpg">
+          <img alt='Image' class="img-fluid" src="images/newproduct.jpg">
         </div>
         <div class="team-content">
           <h3 class="name">Add Product</h3>
@@ -242,7 +242,7 @@ require('pageauth.php')
     <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='management/'">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="images/admin.jpg">
+          <img alt='Image' class="img-fluid" src="images/admin.jpg">
         </div>
         <div class="team-content">
           <h3 class="name">Manage Admins</h3>
@@ -256,7 +256,7 @@ require('pageauth.php')
     <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='orders.php'">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="images/shipment.png">
+          <img alt='Image' class="img-fluid" src="images/shipment.png">
         </div>
         <div class="team-content">
           <h3 class="name">Orders & Shipments</h3>
@@ -270,7 +270,7 @@ require('pageauth.php')
     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="images/stats.png">
+          <img alt='Image' class="img-fluid" src="images/stats.png">
         </div>
         <div class="team-content">
           <h3 class="name">Statics</h3>
@@ -284,7 +284,7 @@ require('pageauth.php')
     <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='deleted.php'">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="images/deleted.jpg">
+          <img alt='Image' class="img-fluid" src="images/deleted.jpg">
         </div>
         <div class="team-content">
           <h3 class="name">Deleted Items</h3>
@@ -346,7 +346,7 @@ require('pageauth.php')
       let year = d.getFullYear();
       date.innerHTML = year;
       datefu.innerHTML = year + 5;
-      console.log(year)
+
     </script>
   </div>
 </div>
