@@ -33,7 +33,7 @@ $(document).ready(function() {
           $('#logpassword').addClass('is-invalid')
         }else if(data === '200'){
 
-        // history.back();
+        history.back();
         }
       }
     })

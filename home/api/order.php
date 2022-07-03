@@ -9,10 +9,10 @@
 
       $deduct = "UPDATE product_table SET stock= stock-1 WHERE id='$product_id' AND stock > 0";
       $deduct = $conn->query($deduct);
-      
+
       $query = "INSERT INTO orders(orderuid, userid, product_id) VALUES('". uniqid() . "', '$userid', '$product_id')";
-      // $result = $conn->query($query);
-      if($deduct){
+      $result = $conn->query($query);
+      if($result){
 
         echo 200;
       }else{
