@@ -243,7 +243,7 @@
 
         <!-- Price -->
         <div class="mb-5">
-          <h2 class="font-size-1 text-secondary font-weight-medium mb-0">P  rice: <span class="font-size-2 font-weight-medium"><span id='total'></span> LKR</span></h2>
+          <h2 class="font-size-1 text-secondary font-weight-medium mb-0">Price: <span class="font-size-2 font-weight-medium"><span id='total'></span> LKR</span></h2>
             <input type="hidden" id='fulltextprice' name="" value="<?php echo $row['price'] ?>">
 
           <span class="text-secondary ml-2"><del></del></span>
