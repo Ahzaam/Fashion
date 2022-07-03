@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>Wish list</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/logo-min-c.jpg">
 
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -32,7 +32,7 @@
       <i class="fa fa-arrow-left dark" aria-hidden="true"></i><span class="badge text-bg-secondary"></span>
 
     </a>
-    <h1 class='display-4'>Cart</h1>
+    <h1 class='display-4'>Cart  <a href="buynow.php"></a>   </h1>
     <ul class="list-unstyled">
 
       <?php
@@ -46,6 +46,7 @@
 
 
         if ($wishresult->num_rows > 0) {
+          echo '<a class="text-end btn btn-primary my-2" href="buynow.php?usercart='.$sesuserid.'" > Buy Now!</a>';
           while ($row = $wishresult->fetch_assoc()){
        ?>
   <!-- Products -->
@@ -62,8 +63,14 @@
             <h2 class="h6 font-weight-normal">
               <a class="text-secondary" href="view.php?product=<?php echo $row['id']?>" ><?php echo $row['name']; ?></a>
               <p class="text-muted my-2"><?php echo $row['description']; ?></p>
-              <span class="badge badge-success badge-pill ml-1">New arrival</span>
+              <?php
+                if($row['stock'] == 0) {
+                  echo '<span class="badge bg-danger badge-pill ml-1">Out of Stock</span>';
+                }
+               ?>
+
             </h2>
+
             <div class="d-block">
               <span class="h5"><?php echo $row['price']; ?> LKR</span>
             </div>

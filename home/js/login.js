@@ -22,7 +22,7 @@ $(document).ready(function() {
       url:'api/validate.php',
       data: data,
       success: function (data, status) {
-
+        console.log(data)
         if(data === '204') {
           $('#logemailerror').html('Account Doesnt Exist')
           $('#logemail').addClass('is-invalid')
@@ -33,7 +33,7 @@ $(document).ready(function() {
           $('#logpassword').addClass('is-invalid')
         }else if(data === '200'){
 
-          window.location.href = '../'
+        // history.back();
         }
       }
     })
@@ -108,7 +108,7 @@ $(document).ready(function() {
         url: '/auth/user/verify/otp',
         data: otpveri,
         success: function (data, status){
-        
+
           if(data.status === 200 ){
             name = $('#nameper').val()
             email = $('#email').val()

@@ -24,7 +24,7 @@
     var cropper;
 
     $('#upload_image').change(function(event){
-      
+
       var files = event.target.files;
       // $('#test_image').val( window.URL.createObjectURL(event.target.files[0]));
       var done = function(url){
@@ -47,7 +47,7 @@
 
     $modal.on('shown.bs.modal', function() {
       cropper = new Cropper(image, {
-        aspectRatio: 4/5,
+        aspectRatio: 3/4,
         viewMode:1,
         preview:'.preview'
       });

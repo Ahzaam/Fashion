@@ -8,7 +8,7 @@ session_start(); ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>Gallery</title>
-
+  <link rel="icon" href="images/logo-min-c.jpg">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -164,7 +164,7 @@ session_start(); ?>
           let year = d.getFullYear();
           date.innerHTML = year;
           datefu.innerHTML = year + 5;
-        
+
         </script>
       </div>
     </div>

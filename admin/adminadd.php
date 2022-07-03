@@ -177,6 +177,7 @@ require('pageauth.php')
 
               <label for="exampleFormControlInput1" class="form-label">More Images</label>
               <input type="file" id='moreimages' class="form-control"  name="my_images[]"  multiple>
+              <p class="text-danger" style="font-size:12px;">NOTE: Make sure to crop the images 4/5 resolution before upload</p>
                 <p class="text-success" style="font-size:12px;">You can add multiple 4 images at Ones For this Field</p>
               <div class="col-12 row row-cols-4 my-2" id='imgprev2'>
 
@@ -275,7 +276,7 @@ require('pageauth.php')
       let year = d.getFullYear();
       date.innerHTML = year;
       datefu.innerHTML = year + 5;
-      
+
     </script>
   </div>
 </div>

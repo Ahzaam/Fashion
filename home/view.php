@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>View Product</title>
+  <link rel="icon" href="images/logo-min-c.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -126,7 +127,7 @@
   $pro_id = $_REQUEST['product'];
 
 
-  $query = "SELECT * FROM product_table WHERE `id` = '$pro_id' && status = 'selling'" ;
+  $query = "SELECT * FROM product_table WHERE `id` = '$pro_id' && status = 'selling' AND stock > 0" ;
   $rs = $conn->query($query);
   //
   if(mysqli_num_rows($rs)>0){
@@ -242,8 +243,9 @@
 
         <!-- Price -->
         <div class="mb-5">
-          <h2 class="font-size-1 text-secondary font-weight-medium mb-0">Total price:</h2>
-          <span class="font-size-2 font-weight-medium"><?php echo $row['price'] ?> LKR</span>
+          <h2 class="font-size-1 text-secondary font-weight-medium mb-0">P  rice: <span class="font-size-2 font-weight-medium"><span id='total'></span> LKR</span></h2>
+            <input type="hidden" id='fulltextprice' name="" value="<?php echo $row['price'] ?>">
+
           <span class="text-secondary ml-2"><del></del></span>
         </div>
         <!-- End Price -->
@@ -281,6 +283,7 @@
         <div class="mb-4">
           <button type="button" class="btn add-cart  btn-primary rounded-pill transition-3d-hover">Add to Cart</button>
           <button type="button" class="btn wish  btn-danger rounded-pill transition-3d-hover">Add to Wishlist</button>
+          <a type="button" href='buynow.php?item=<?php echo $row['id']; ?>'  class="btn   btn-dark rounded-pill transition-3d-hover">Buy Now</a>
         </div>
 
 
@@ -333,7 +336,7 @@
                 let year = d.getFullYear();
                 date.innerHTML = year;
                 datefu.innerHTML = year + 5;
-                
+
                 </script>
               </div>
         <!-- End Help Link -->
@@ -343,7 +346,40 @@
 
     </div>
 
+    <script type="text/javascript">
+    let price = document.getElementById('fulltextprice');
 
+    price = price.value.toString()
+
+    function addcomma(price){
+      let lenght = price.length - 1
+      let csprc = ''
+      let arrlenght = 0
+      for(let i = lenght ; i >= 0; i--){
+
+
+        if(arrlenght % 3 == 0 && arrlenght != 0){
+          csprc += ','
+        }
+        csprc += price[i]
+        arrlenght ++
+      }
+
+      price = ''
+
+      csprc = csprc.toString()
+
+      for(let i = csprc.length - 1 ; i >= 0; i--){
+        price += csprc[i]
+
+      }
+
+      return price
+    }
+
+    document.getElementById('total').innerHTML = addcomma(price)
+
+    </script>
 
 
 
@@ -357,11 +393,12 @@
     </a>
     </div>
     </div>';
-    echo "<h1 class='display-1 text-danger text-center my-5'>Item Has Been Deleted</h1>";
+    echo "<h1 class='display-1 text-danger text-center my-5'>Deleted Or Out Of Stock</h1>";
 
   }
 
   ?>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>

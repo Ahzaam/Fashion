@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Register</title>
+    <link rel="icon" href="images/logo-min-c.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../files/css/bootstrap.css">
     <!-- <link rel="stylesheet" href="baby-corner/body.css"> -->

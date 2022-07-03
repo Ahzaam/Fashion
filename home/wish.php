@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Wish list</title>
+    <link rel="icon" href="images/logo-min-c.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -60,8 +61,13 @@
             <h2 class="h6 font-weight-normal">
               <a class="text-secondary" href="view.php?product=<?php echo $row['id']?>" ><?php echo $row['name']; ?></a>
               <p class="text-muted my-2"><?php echo $row['description']; ?></p>
-              <span class="badge badge-success badge-pill ml-1">New arrival</span>
+
             </h2>
+            <?php
+              if($row['stock'] == 0) {
+                echo '<span class="badge bg-danger badge-pill ml-1">Out of Stock</span>';
+              }
+             ?>
             <div class="d-block">
               <span class="h5"><?php echo $row['price']; ?> LKR</span>
             </div>

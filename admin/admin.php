@@ -253,7 +253,7 @@ require('pageauth.php')
     </div>
 
 
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='orders.php'">
       <div class="our-team">
         <div class="picture">
           <img class="img-fluid" src="images/shipment.png">

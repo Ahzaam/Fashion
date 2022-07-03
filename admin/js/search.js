@@ -28,7 +28,7 @@ $(document).ready(function() {
             prevresult = results
             $('#gridcont').html('')
             for(var i = 0; i < results.length; i++) {
-                resultdiv(i ,results[i].name, results[i].image, results[i].description, results[i].id)
+                resultdiv(i ,results[i].name, results[i].image, results[i].description, results[i].id, results[i].stock)
             }
 
 
@@ -44,8 +44,16 @@ $(document).ready(function() {
 
 
 
-  function resultdiv(i, name, src, description, id) {
-    let div = "<div id='gridserchanimation"+i+"' style='height: 100%;' class='gridserchanimation'><div class='card'><img src='../"+src+"' class='card-img-top' alt='Image'><div class='card-body text-start'><h5 class='card-title'>"+name +"</h5><p class='card-text'>"+ description +"</p><a class='btn btn-primary rounded-pill' href='edit.php?id="+id+"'>Edit</a></div></div></div>"
+  function resultdiv(i, name, src, description, id, stock) {
+
+    console.log(stock)
+    let color = ''
+    if(stock == 0){
+      color = 'bg-danger col-5 text-white  px-2 rounded'
+    }else{
+      color = 'col-5 bg-success text-white px-2 rounded'
+    }
+    let div = "<div id='gridserchanimation"+i+"' style='height: 100%;' class='gridserchanimation'><div class='card'><img src='../"+src+"' class='card-img-top' alt='Image'><div class='card-body text-start'><h5 class='card-title'>"+name +"</h5><p class='card-text'>"+ description +"</p><p class='card-text "+ color +" '>Stock: "+ stock +"</p><a class='btn btn-primary rounded-pill' href='edit.php?id="+id+"'>Edit</a></div></div></div>"
     // transform: translateX(-100px);
     $('#gridcont').append(div)
     let counter = 0.1;

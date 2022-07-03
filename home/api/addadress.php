@@ -11,6 +11,7 @@ if (isset($_POST) && isset($_SESSION['login']) && $_SESSION['login']){
   $stmt->execute();
 
   $stmt->close;
+  echo "success";
   header("Location:../useracc.php");
 }
 

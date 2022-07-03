@@ -190,11 +190,11 @@ function displaylightbox() {
         $(bodydiv).addClass('bodydiv ')
         $(bodydiv).css('position', 'relative')
         const name = document.createElement('h5')
-        $(name).addClass('h4')
+        $(name).addClass('h4 ms-5')
         $(name).html(item[0].name)
 
         const body = document.createElement('p')
-        $(body).addClass('lead')
+        $(body).addClass('lead ms-5')
         $(body).html(item[0].description)
         const closebutton = document.createElement('div')
         $(closebutton).css('position', 'absolute')
