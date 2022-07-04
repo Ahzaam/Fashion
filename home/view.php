@@ -117,6 +117,11 @@
   .dark{
     color: #000000 !important;
   }
+
+  .mp-0{
+    margin:0 ;
+
+  }
 </style>
 </head>
 <body>
@@ -255,11 +260,12 @@
           <div class="js-quantity row align-items-center">
             <div class="col-7">
               <small class="d-block text-secondary font-weight-medium">Available stock</small>
-              <p><?php echo $row['stock'] ?></p>
+              <p id='availablestock'><?php echo $row['stock'] ?></p>
             </div>
 
           </div>
         </div>
+
         <!-- End Quantity -->
 
         <!-- Quantity -->
@@ -273,6 +279,24 @@
           </div>
         </div>
         <!-- End Quantity -->
+        <div class="col-12">
+          <div class="row">
+            <div class="col-4 h5">
+              <label for="">Quantity: </label>
+            </div>
+            <div class="col-2 mp-0 text-end">
+              <button type="button" id='decquantity' class="mp-0 btn btn-secondary rounded-pill px-3 fw-bold" name="button">-</button>
+            </div>
+            <div class="col-3 mp-0">
+              <input id='quantity' type='number' step='1' disabled class='mp-0 form-control  col-5' value='14'>
+            </div>
+            <div class="col-2 mp-0">
+              <button type="button" id='incquantity' class="btn mp-0 btn-secondary fw-bold rounded-pill" name="button">+</button>
+            </div>
+          </div>
+
+        </div>
+
 
         <!-- Accordion -->
         <div id="shopCartAccordion" class="accordion mb-5">
@@ -283,7 +307,7 @@
         <div class="mb-4">
           <button type="button" class="btn add-cart  btn-primary rounded-pill transition-3d-hover">Add to Cart</button>
           <button type="button" class="btn wish  btn-danger rounded-pill transition-3d-hover">Add to Wishlist</button>
-          <a type="button" href='buynow.php?item=<?php echo $row['id']; ?>'  class="btn   btn-dark rounded-pill transition-3d-hover">Buy Now</a>
+          <a type="button" id='buynow' href='buynow.php?item=<?php echo $row['id']; ?>&quantity='  class="btn   btn-dark rounded-pill transition-3d-hover">Buy Now</a>
         </div>
 
 

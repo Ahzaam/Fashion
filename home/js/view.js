@@ -1,4 +1,36 @@
 $(document).ready(function() {
+  let available = parseInt($('#availablestock').html());
+  $('#quantity').val(1)
+  let initialurl = $('#buynow').attr('href')
+
+  $('#incquantity').click(function() {
+    let newq = parseInt($('#quantity').val())
+    if(available <= newq) {
+      alert('We Dont Have More Stock')
+      return false
+    }else{
+      quantity = newq + 1
+      $('#quantity').val(quantity)
+      $('#buynow').attr('href', initialurl + quantity    )
+    
+    }
+
+  })
+
+
+  $('#decquantity').click(function() {
+    let newq = parseInt($('#quantity').val())
+    if(1 >= newq) {
+      alert('Quantity Cannot Be 0')
+      return false
+    }else{
+      quantity = newq - 1
+      $('#quantity').val(quantity)
+      $('#buynow').attr('href', initialurl + quantity    )
+
+    }
+  })
+
 
 
       $('#feedbacksubmit').click(function() {
@@ -10,7 +42,7 @@ $(document).ready(function() {
             url: 'api/questions.php',
             data: {feedback: feedback, proid: proid},
             success: function(data, status){
-            
+
               if(data === '200'){
                 alert('Message sent successful')
               }else if(data === '500'){
