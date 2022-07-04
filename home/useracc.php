@@ -709,7 +709,7 @@
 
           <div class="  lists my-3" >
 
-            <div class="card scroll " >
+            <div class="card  " >
               <a class="d-flex align-items-center text-muted pt-2 ps-2" href='cart.php'><i class="fa fa-truck px-2" style='color:#25e4ab;'></i>Orders</a>
               <ul class="list-group list-group-flush ">
 
@@ -754,13 +754,7 @@
                       </div>
                     </div>
 
-                    <?php
-                    // $query = "SELECT status FROM orders WHERE  product_id='".$order['id']."'";
-                    // $result = $conn->query($query);
-                    //
-                    // $status = $result->fetch_assoc();
 
-                     ?>
                     <div class="col-4 offset-1">
                       <div class="card-bodyc" >
                         <div class="mb-2">

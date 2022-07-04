@@ -1,7 +1,8 @@
 $(document).ready(function() {
   $('.confirm').click(function () {
     let id = $(this).attr('data-order-id');
-    let data = {orderid:id, status:'confirmed'}
+    let product = $(this).attr('data-product-id');
+    let data = {orderid:id, status:'confirmed', productid:product}
     let parent = $(this).closest('.parent')
     $.post({url:'api/orderstatus.php',
             data: data,
@@ -80,7 +81,6 @@ $(document).ready(function() {
           $('#stock').removeClass('bg-success')
           $('#stock').addClass('bg-danger px-2  text-white rounded-pill')
         }else{
-          console.log(details.product.stock)
           $('#stock').removeClass('bg-danger')
           $('#stock').addClass('bg-success px-2  text-white rounded-pill')
         }

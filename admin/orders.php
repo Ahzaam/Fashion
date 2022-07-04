@@ -94,8 +94,8 @@ require "pageauth.php";
                 <td><?php echo $row['product_id']?></td>
                 <td><?php echo $row['status']?></td>
                 <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $orderid ?>' name="button">View Details</button> </th>
-                <td><button type="button" data-order-id="<?php echo $orderid ?>" class="confirm btn btn-primary rounded-pill" name="button">Confirm Order</button></td>
-                <td><button type="button" data-product-id='<?php echo $row['product_id'] ?>'    data-order-id="<?php echo $orderid ?>" class="cancel btn btn-danger rounded-pill" name="button">Cancel Order</button></td>
+                <td><button type="button" data-product-id='<?php echo $row['product_id'] ?>'  data-order-id="<?php echo $orderid ?>" class="confirm btn btn-primary rounded-pill" name="button">Confirm Order</button></td>
+                <td><button type="button" data-product-id='<?php echo $row['product_id'] ?>'  data-order-id="<?php echo $orderid ?>" class="cancel btn btn-danger rounded-pill" name="button">Cancel Order</button></td>
 
 
 
