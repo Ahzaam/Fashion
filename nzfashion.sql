@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2022 at 06:23 PM
+-- Generation Time: Jul 04, 2022 at 10:46 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -42,8 +42,8 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`userid`, `address_line1`, `address_line2`, `postalcode`, `state`, `id`, `phone`) VALUES
-('62bc7baa192ed', 'Nawalapitiya', '', '20600', 'Central', 2, '076 6 666 56'),
-('62bb0f1cb597c', 'D72 Hapugastalawa', 'Nawalapitiya', '20668', 'Central', 3, '0778822883');
+('62bb0f1cb597c', 'D72 Hapugastalawa', 'Nawalapitiya', '20668', 'Central', 3, '0778822883'),
+('62bc7baa192ed', 'Nawalapitiya', '', '20600', 'Central', 4, '0760550454');
 
 -- --------------------------------------------------------
 
@@ -86,13 +86,6 @@ CREATE TABLE `cart` (
   `count` int(2) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `customer_id`, `product_id`, `count`) VALUES
-(38, '62bb0f1cb597c', '62bc04a7e594e', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -123,7 +116,17 @@ INSERT INTO `comments_feedback` (`id`, `user_id`, `name`, `comment`, `status`, `
 (18, '62bb0f1cb597c', 'Ahzam', 'hello', 'read', '', 0, '', 'unread'),
 (19, '62bb0f1cb597c', 'Ahzam', 'rakugarkygakrygkyW', 'read', '', 0, '', 'unread'),
 (20, '62bb0f1cb597c', 'Ahzam', 'halamathi habibi halamathi habibo', 'read', '', 0, '62b374ba9d4b5', 'unread'),
-(21, '62bc7baa192ed', 'Sharfa', 'my first comment', 'read', 'Now what', 0, '', 'unread');
+(21, '62bc7baa192ed', 'Sharfa', 'my first comment', 'read', 'Now what', 0, '', 'unread'),
+(22, '62bc7baa192ed', 'Sharfa', 'tdehnetdh', 'read', '', 0, '', 'unread'),
+(23, '62bc7baa192ed', 'Sharfa', 'gwrzegesg', 'read', '', 0, '', 'unread'),
+(24, '62bc7baa192ed', 'Sharfa', 'ahaha', 'read', '', 0, '', 'unread'),
+(25, '62bc7baa192ed', 'Sharfa', 'ahahah', 'read', '', 0, '', 'unread'),
+(26, '62bc7baa192ed', 'Sharfa', 'ahahaha', 'read', '', 0, '', 'unread'),
+(27, '62bc7baa192ed', 'Sharfa', 'ahahahaha', 'read', '', 0, '', 'unread'),
+(28, '62bc7baa192ed', 'Sharfa', 'ahahah', 'read', '', 0, '', 'unread'),
+(29, '62bc7baa192ed', 'Sharfa', 'aahahahah', 'read', '', 0, '', 'unread'),
+(30, '62bc7baa192ed', 'Sharfa', 'ahzam is a null avoid loo[', 'read', 'k', 0, '62b97e70eaffc', 'unread'),
+(31, '62bc7baa192ed', 'Sharfa', '2022 7:08 Now', 'read', 'kkk', 0, '62b9b37da8a9b', 'unread');
 
 -- --------------------------------------------------------
 
@@ -155,9 +158,6 @@ CREATE TABLE `deleted_product_table` (
 --
 
 INSERT INTO `deleted_product_table` (`rowid`, `id`, `name`, `description`, `price`, `size`, `colors`, `image`, `stock`, `status`, `display`, `selled`, `date`, `category`, `addedby`, `moreimg`) VALUES
-(1, '62b35ae8dad43', 'auhfywfw', 'Super girl', 1568468353, 'M', '#fa0000', 'media/IMG-62b35ae8d61486.73658882.jpg', 0, 'stopped', 'owl-carousel', 0, '2022-06-22', 'Womens Dress', '', ''),
-(1, '62b373ea16773', 'Pink Girafe', 'Cute Girafe for Babies', 700, 'S', '#ff00c8', 'media/IMG-62b373ea102ca3.71457698.jpg', 1, 'selling', 'grid', 0, '2022-06-23', 'kids', '', ''),
-(2, '62b374375b9d6', 'Grey Moon Pillow', 'Grey moon pillow for chidren. made with comfortable material', 1000, 'S', '#949494', 'media/IMG-62b3743756c658.88681594.jpg', 13, 'selling', 'grid', 0, '2022-06-23', 'kids', '', ''),
 (3, '62b374ba9d4b5', 'Yellow Giraffe', 'Cute Yellow Giraffe for babies and kids', 1500, 'S', '#ffd500', 'media/IMG-62b374ba9c8b21.34418202.jpg', 13, 'selling', 'grid', 0, '2022-06-23', 'kids', '', ''),
 (4, '62b37513e123a', 'Teddy', 'Teddy bear', 1500, 'S', '#efe1eb', 'media/IMG-62b37513e09b26.28602004.jpg', 22, 'selling', 'grid', 0, '2022-06-23', 'kids', '', ''),
 (5, '62b37558f3084', 'Pink Deer', 'Cotton Teddy Bear for Babies', 1500, 'S', '#ffd6fc', 'media/IMG-62b37558f259f8.17102927.jpg', 11, 'selling', 'grid', 0, '2022-06-23', 'kids', '', ''),
@@ -197,6 +197,37 @@ INSERT INTO `deleted_product_table` (`rowid`, `id`, `name`, `description`, `pric
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `orderid` int(11) NOT NULL,
+  `orderuid` varchar(20) NOT NULL,
+  `userid` varchar(20) NOT NULL,
+  `product_id` varchar(20) NOT NULL,
+  `payment` int(10) NOT NULL,
+  `status` enum('pending','confirmed','shipped','delivered','cancelled') NOT NULL DEFAULT 'pending',
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`orderid`, `orderuid`, `userid`, `product_id`, `payment`, `status`, `date`) VALUES
+(43, '62c16e9346303', '62bb0f1cb597c', '62b9b37da8a9b', 0, 'cancelled', '2022-07-03'),
+(44, '62c16e9346303', '62bb0f1cb597c', '62b373ea16773', 0, 'shipped', '2022-07-03'),
+(45, '62c16e9346303', '62bb0f1cb597c', '62b374375b9d6', 0, 'shipped', '2022-07-03'),
+(46, '62c16e9346303', '62bb0f1cb597c', '62b764cf4335c', 0, 'cancelled', '2022-07-03'),
+(47, '62c16e9346303', '62bb0f1cb597c', '62b97e70eaffc', 0, 'shipped', '2022-07-03'),
+(48, '62c1b09faf986', '62bb0f1cb597c', '62b9b37da8a9b', 0, 'shipped', '2022-07-03'),
+(49, '62c1b4352f703', '62bc7baa192ed', '62b764cf4335c', 0, 'cancelled', '2022-07-03'),
+(50, '62c1b761cdf58', '62bc7baa192ed', '62b97e70eaffc', 0, 'cancelled', '2022-07-03'),
+(51, '62c1bbfdd6ffd', '62bc7baa192ed', '62b97e70eaffc', 0, 'confirmed', '2022-07-03');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product_table`
 --
 
@@ -224,11 +255,14 @@ CREATE TABLE `product_table` (
 --
 
 INSERT INTO `product_table` (`rowid`, `id`, `name`, `description`, `price`, `size`, `colors`, `image`, `stock`, `status`, `display`, `selled`, `date`, `category`, `addedby`, `moreimg`) VALUES
-(10, '62b69f364ff3f', 'Watch', 'Slim wrist watch for men women', 2000, 'M', '#ffdab8', 'media/62bc977f2cb7e-2022-06-29.png', 10, 'selling', 'none', 0, '2022-06-25', 'Womens Accesorie', '', ''),
-(26, '62b764cf4335c', 'Rollex', 'Golden interface and black leather strap.', 15000, 'S', '#e0e0e0', 'media/62bc97602af3b-2022-06-29.png', 1, 'stopped', 'none', 0, '2022-06-26', 'Mens Accesorie', '', ''),
-(12, '62b97e70eaffc', 'Mens Blazer', 'Grey Mens Blazer', 1000000, 'S', '#000000', 'media/62b97e70eaffc-2022-06-27.png', 10, 'selling', 'grid', 0, '2022-06-27', 'Blazer', '62b30c6627907 ', ''),
-(28, '62b9b37da8a9b', 'Mens Blazer', 'Mens Wedding Blazer pale blue', 150000, 'S, M, L', '#000000', 'media/2022-06-27-62b9b37da8a9b.png', 8, 'selling', 'owl-carousel', 0, '2022-06-27', 'Blazer', '62b30c6627907 ', 'media/2022-06-27-62b9b37da8a9b-(0).jpg '),
-(29, '62bc04a7e594e', 'Mens Blazer', 'mens wedding blazer', 1500000, 'S, M, L', '#f2f0e8', 'media/2022-06-29-62bc04a7e594e.png', 8, 'selling', 'grid', 0, '2022-06-29', 'Blazer', '62b30c6627907 ', 'media/2022-06-29-62bc04a7e594e-(0).jpg##media/2022-06-29-62bc04a7e594e-(1).jpg##media/2022-06-29-62bc04a7e594e-(2).jpg ');
+(1, '62b35ae8dad43', 'auhfywfw', 'Super girl', 1568468353, 'M', '#fa0000', 'media/IMG-62b35ae8d61486.73658882.jpg', 1, 'selling', 'owl-carousel', 0, '2022-06-22', 'Womens Dress', '', ''),
+(1, '62b373ea16773', 'Pink Girafe', 'Cute Girafe for Babies', 700, 'S', '#ff00c8', 'media/IMG-62b373ea102ca3.71457698.jpg', 0, 'selling', 'grid', 0, '2022-06-23', 'kids', '', ''),
+(2, '62b374375b9d6', 'Grey Moon Pillow', 'Grey moon pillow for chidren. made with comfortable material', 1000, 'S', '#949494', 'media/IMG-62b3743756c658.88681594.jpg', 0, 'selling', 'grid', 0, '2022-06-23', 'kids', '', ''),
+(10, '62b69f364ff3f', 'Watch', 'Slim wrist watch for men women', 2000, 'M', '#ffdab8', 'media/62bc977f2cb7e-2022-06-29.png', 0, 'selling', 'grid', 0, '2022-06-25', 'Womens Accesorie', '', ''),
+(26, '62b764cf4335c', 'Rollex', 'Golden interface and black leather strap.', 15000, 'S', '#e0e0e0', 'media/62bc97602af3b-2022-06-29.png', 2, 'selling', 'grid', 0, '2022-06-26', 'Mens Accesorie', '', ''),
+(12, '62b97e70eaffc', 'Mens Blazer', 'Grey Mens Blazer', 1000000, 'S', '#000000', 'media/62b97e70eaffc-2022-06-27.png', 2, 'selling', 'grid', 0, '2022-06-27', 'Blazer', '62b30c6627907 ', ''),
+(28, '62b9b37da8a9b', 'Mens Blazer', 'Mens Wedding Blazer pale blue', 150000, 'S, M, L', '#000000', 'media/2022-06-27-62b9b37da8a9b.png', 7, 'selling', 'grid', 0, '2022-06-27', 'Blazer', '62b30c6627907 ', 'media/2022-06-27-62b9b37da8a9b-(0).jpg '),
+(29, '62bc04a7e594e', 'Mens Blazer', 'mens wedding blazer', 1500000, 'S, M, L', '#f2f0e8', 'media/2022-06-29-62bc04a7e594e.png', 0, 'selling', 'grid', 0, '2022-06-29', 'Blazer', '62b30c6627907 ', 'media/2022-06-29-62bc04a7e594e-(0).jpg##media/2022-06-29-62bc04a7e594e-(1).jpg##media/2022-06-29-62bc04a7e594e-(2).jpg ');
 
 -- --------------------------------------------------------
 
@@ -269,7 +303,17 @@ CREATE TABLE `wish_list` (
 --
 
 INSERT INTO `wish_list` (`id`, `customer_id`, `product_id`) VALUES
-(16, '62bb0f1cb597c', '62bc04a7e594e');
+(16, '62bb0f1cb597c', '62bc04a7e594e'),
+(20, '62bc7baa192ed', '62b9b37da8a9b'),
+(21, '62bc7baa192ed', '62bc04a7e594e'),
+(22, '62bc7baa192ed', '62b97e70eaffc'),
+(23, '62bc7baa192ed', '62b373ea16773'),
+(24, '62bc7baa192ed', '62b374375b9d6'),
+(25, '62bb0f1cb597c', '62b9b37da8a9b'),
+(26, '62bb0f1cb597c', '62b764cf4335c'),
+(27, '62bb0f1cb597c', '62b97e70eaffc'),
+(28, '62bb0f1cb597c', '62b374375b9d6'),
+(29, '62bb0f1cb597c', '62b373ea16773');
 
 --
 -- Indexes for dumped tables
@@ -314,6 +358,12 @@ ALTER TABLE `deleted_product_table`
   ADD KEY `rowid` (`rowid`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orderid`);
+
+--
 -- Indexes for table `product_table`
 --
 ALTER TABLE `product_table`
@@ -344,7 +394,7 @@ ALTER TABLE `wish_list`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `admin_table`
@@ -356,19 +406,25 @@ ALTER TABLE `admin_table`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `comments_feedback`
 --
 ALTER TABLE `comments_feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `deleted_product_table`
 --
 ALTER TABLE `deleted_product_table`
   MODIFY `rowid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `product_table`
@@ -380,7 +436,7 @@ ALTER TABLE `product_table`
 -- AUTO_INCREMENT for table `wish_list`
 --
 ALTER TABLE `wish_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
