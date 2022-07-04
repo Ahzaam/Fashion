@@ -8,8 +8,13 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
     $orderid = $_POST['orderid'];
     $status = $_POST['status'];
 
-    $query = "SELECT * FROM orders WHERE userid = '$userid' AND orderid = $orderid";
-    $result = $conn->query($query);
+  
+    $stmt  = $conn->prepare("SELECT * FROM orders WHERE userid = ? AND orderid = ?");
+    $stmt->bind_param('si', $userid, $orderid);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
     if($result->num_rows > 0) {
       if($status == 'remove'){
         $remove = "DELETE FROM orders WHERE orderid='$orderid'";

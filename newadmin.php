@@ -15,7 +15,7 @@
 
     <?php
   }else{
-    $query = "SELECT admin_id FROM admin_table WHERE admin_id='".$_REQUEST['adminid']. "'";
+    $query = "SELECT admin_id FROM admin_table WHERE admin_id='".$_REQUEST['adminid']. "' AND password = 'notset'";
 
     include 'con.php';
 
