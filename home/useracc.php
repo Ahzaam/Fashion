@@ -137,9 +137,16 @@
   .lists{
     min-height:290px;
     max-height:290px;
-    overflow:auto;
+    overflow-y:auto;
+    overflow-x:hidden;
     padding:0 !important;
   }
+  .quantity{
+    margin:0;
+    padding:0;
+    font-size:25px;
+  }
+
 
   </style>
 </head>
@@ -665,7 +672,7 @@
 <div class="col-lg-4 my-3">
   <div class="  lists" >
 
-    <div class="card scroll " >
+    <div class="card  " >
       <ul class="list-group list-group-flush ">
 
         <?php
@@ -707,10 +714,10 @@
   </div>
 
 
-          <div class="  lists my-3" >
+          <div class=" card lists my-3" >
+<a class="d-flex align-items-center text-muted pt-2 ps-2" href='cart.php'><i class="fa fa-truck px-2" style='color:#25e4ab;'></i>Orders</a>
+            <div class="  " >
 
-            <div class="card  " >
-              <a class="d-flex align-items-center text-muted pt-2 ps-2" href='cart.php'><i class="fa fa-truck px-2" style='color:#25e4ab;'></i>Orders</a>
               <ul class="list-group list-group-flush ">
 
                 <?php
@@ -738,7 +745,7 @@
 
                     </div>
 
-                    <div class="col-4 offset-lg-1">
+                    <div class="col-4 ">
                       <div class="card-bodyc" >
                         <div class="mb-2">
                           <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#"><?php echo $product['category']; ?></a>
@@ -753,9 +760,11 @@
 
                       </div>
                     </div>
+                    <div class="col-2">
+                      <h1 class='display-6 quantity'>x<?php echo $order['quantity']; ?></h1>
+                    </div>
 
-
-                    <div class="col-4 offset-1">
+                    <div class="col-4 ">
                       <div class="card-bodyc" >
                         <div class="mb-2">
                           <div class="">
