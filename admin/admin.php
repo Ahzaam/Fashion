@@ -163,6 +163,10 @@ require('pageauth.php')
   $count = $conn->query($comments);
   $comments = $count->num_rows;
 
+  $orders = "SELECT * FROM orders WHERE status = 'pending'";
+  $oderscount = $conn->query($orders)->num_rows;
+
+
 
   $display = ($comments > 0) ?'':'d-none';
   ?>
@@ -253,7 +257,7 @@ require('pageauth.php')
     </div>
 
 
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='orders.php'">
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3 position-relative" onclick="location.href='orders.php'">
       <div class="our-team">
         <div class="picture">
           <img alt='Image' class="img-fluid" src="images/shipment.png">
@@ -264,6 +268,10 @@ require('pageauth.php')
         </div>
 
       </div>
+      <span class="position-absolute <?php echo ($oderscount > 0) ?'':'d-none' ?> top-0 start-12 translate-middle badge rounded-pill bg-danger">
+        <?php echo $oderscount; ?>
+        <span class="visually-hidden">Unread</span>
+      </span>
     </div>
 
 

@@ -10,6 +10,7 @@ $(document).ready(function() {
       $.post({url:'api/orderstatushome.php',
               data: data,
               success: function(data){
+                console.log(data)
                   if(data === '200'){
                     parent.remove();
                   }else{

@@ -196,7 +196,7 @@
           <!-- /Breadcrumb -->
 
           <div class="row gutters-sm">
-            <div class="col-md-4 my-3">
+            <div class="col-lg-4 my-3">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
@@ -465,7 +465,7 @@
 
 
 
-            <div class="col-md-4 my-sm-3 " >
+            <div class="col-lg-4 my-sm-3 " >
 
               <div class="row gutters-sm">
 
@@ -715,7 +715,7 @@
 
                 <?php
 
-                $orpro = "SELECT * FROM orders WHERE userid = '$sesuserid'";
+                $orpro = "SELECT * FROM orders WHERE userid = '$sesuserid' ORDER BY field(status, 'cancelled', 'shipped', 'confirmed', 'pending', 'delivered') ";
                 $opros = $conn->query($orpro);
 
 
