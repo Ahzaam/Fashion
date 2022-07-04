@@ -724,23 +724,26 @@
 
 
 
-                if($orders->num_rows > 0) {
-                  while($order = $orders->fetch_assoc()) {
-                    $getorders = "SELECT * FROM orders WHERE id in ('62b9b37da8a9b', '62b9b37da8a9b', '62b9b37da8a9b') ";
-                    $orders = $conn->query($getorders);
+                if($opros->num_rows > 0) {
+                  while($order = $opros->fetch_assoc()) {
+                    $queryproduct = "SELECT * FROM product_table WHERE id = '".$order['product_id']."'";
+                    $productresult = $conn->query($queryproduct);
+
+                    $product = $productresult->fetch_assoc();
+
                   ?>
                   <div class="row items" >
                     <div class="col-3 col-md-2 pr-0">
-                      <div class="bg-img-hero-center rounded-left h-100"><img src="../<?php echo $order['image']; ?>" class='w-100' alt=""></div>
+                      <div class="bg-img-hero-center rounded-left h-100"><img src="../<?php echo $product['image']; ?>" class='w-100' alt=""></div>
 
                     </div>
 
                     <div class="col-4 offset-lg-1">
                       <div class="card-bodyc" >
                         <div class="mb-2">
-                          <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#"><?php echo $order['category']; ?></a>
+                          <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#"><?php echo $product['category']; ?></a>
                           <h2 class="h6 font-weight-normal">
-                            <a class="text-secondary" href="view.php?product=<?php echo $order['id']?>"><?php echo $order['name']; ?></a>
+                            <a class="text-secondary" href="view.php?product=<?php echo $product['id']?>"><?php echo $product['name']; ?></a>
 
                           </h2>
 
@@ -764,11 +767,26 @@
                           <div class="">
                             <a class="d-inline-flex align-items-center small" href="#">
 
+                            <?php
+                            $status = $order['status'];
 
+                            echo "<span class='mx-2'> $status </span>";
+
+                             ?>
                             </a>
                           </div>
                           <h2 class="h6 font-weight-normal">
+                            <?php
+                            $status = $order['status'];
+                            if($status == 'cancelled'){
 
+                              echo '<button type="button" data-order-id="'.$order['orderid'].'" class="remove btn btn-danger rounded-pill" >Remove</button>';
+                            }else if($status == 'shipped'){
+                              echo '<button type="button" data-order-id="'.$order['orderid'].'" class="delivered btn btn-success rounded-pill" >Got It</button>';
+
+                            }
+
+                             ?>
                           </h2>
 
                         </div>

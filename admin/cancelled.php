@@ -63,8 +63,8 @@ require "pageauth.php";
       <table class="table">
         <thead>
           <tr>
-
-            <th scope="col">Order ID</th>
+            <th scope="col">ID</th>
+            <th scope="col">Order UID</th>
             <th scope="col">User ID</th>
             <th scope="col">Product ID</th>
             <th scope="col">Status</th>
@@ -86,7 +86,7 @@ require "pageauth.php";
 
               ?>
               <tr>
-
+                <td><?php echo $row['orderid']?></td>
                 <td><?php echo $id ?></td>
                 <td><?php echo $row['userid']?></td>
                 <td><?php echo $row['product_id']?></td>
