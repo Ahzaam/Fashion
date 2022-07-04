@@ -2,7 +2,9 @@
 .container-fluid{
 
 }
-
+body{
+  overflow-x: hidden;
+}
 .carousel {
   text-align: center;
 }

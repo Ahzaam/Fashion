@@ -137,9 +137,16 @@
   .lists{
     min-height:290px;
     max-height:290px;
-    overflow:auto;
+    overflow-y:auto;
+    overflow-x:hidden;
     padding:0 !important;
   }
+  .quantity{
+    margin:0;
+    padding:0;
+    font-size:25px;
+  }
+
 
   </style>
 </head>
@@ -196,7 +203,7 @@
           <!-- /Breadcrumb -->
 
           <div class="row gutters-sm">
-            <div class="col-md-4 my-3">
+            <div class="col-lg-4 my-3">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
@@ -465,7 +472,7 @@
 
 
 
-            <div class="col-md-4 my-sm-3 " >
+            <div class="col-lg-4 my-sm-3 " >
 
               <div class="row gutters-sm">
 
@@ -665,7 +672,7 @@
 <div class="col-lg-4 my-3">
   <div class="  lists" >
 
-    <div class="card scroll " >
+    <div class="card  " >
       <ul class="list-group list-group-flush ">
 
         <?php
@@ -707,15 +714,15 @@
   </div>
 
 
-          <div class="  lists my-3" >
+          <div class=" card lists my-3" >
+<a class="d-flex align-items-center text-muted pt-2 ps-2" href='cart.php'><i class="fa fa-truck px-2" style='color:#25e4ab;'></i>Orders</a>
+            <div class="  " >
 
-            <div class="card scroll " >
-              <a class="d-flex align-items-center text-muted pt-2 ps-2" href='cart.php'><i class="fa fa-truck px-2" style='color:#25e4ab;'></i>Orders</a>
               <ul class="list-group list-group-flush ">
 
                 <?php
 
-                $orpro = "SELECT * FROM orders WHERE userid = '$sesuserid'";
+                $orpro = "SELECT * FROM orders WHERE userid = '$sesuserid' ORDER BY field(status, 'cancelled', 'shipped', 'confirmed', 'pending', 'delivered') ";
                 $opros = $conn->query($orpro);
 
 
@@ -724,23 +731,26 @@
 
 
 
-                if($orders->num_rows > 0) {
-                  while($order = $orders->fetch_assoc()) {
-                    $getorders = "SELECT * FROM orders WHERE id in ('62b9b37da8a9b', '62b9b37da8a9b', '62b9b37da8a9b') ";
-                    $orders = $conn->query($getorders);
+                if($opros->num_rows > 0) {
+                  while($order = $opros->fetch_assoc()) {
+                    $queryproduct = "SELECT * FROM product_table WHERE id = '".$order['product_id']."'";
+                    $productresult = $conn->query($queryproduct);
+
+                    $product = $productresult->fetch_assoc();
+
                   ?>
                   <div class="row items" >
                     <div class="col-3 col-md-2 pr-0">
-                      <div class="bg-img-hero-center rounded-left h-100"><img src="../<?php echo $order['image']; ?>" class='w-100' alt=""></div>
+                      <div class="bg-img-hero-center rounded-left h-100"><img src="../<?php echo $product['image']; ?>" class='w-100' alt=""></div>
 
                     </div>
 
-                    <div class="col-4 offset-lg-1">
+                    <div class="col-4 ">
                       <div class="card-bodyc" >
                         <div class="mb-2">
-                          <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#"><?php echo $order['category']; ?></a>
+                          <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#"><?php echo $product['category']; ?></a>
                           <h2 class="h6 font-weight-normal">
-                            <a class="text-secondary" href="view.php?product=<?php echo $order['id']?>"><?php echo $order['name']; ?></a>
+                            <a class="text-secondary" href="view.php?product=<?php echo $product['id']?>"><?php echo $product['name']; ?></a>
 
                           </h2>
 
@@ -750,25 +760,36 @@
 
                       </div>
                     </div>
+                    <div class="col-2">
+                      <h1 class='display-6 quantity'>x<?php echo $order['quantity']; ?></h1>
+                    </div>
 
-                    <?php
-                    // $query = "SELECT status FROM orders WHERE  product_id='".$order['id']."'";
-                    // $result = $conn->query($query);
-                    //
-                    // $status = $result->fetch_assoc();
-
-                     ?>
-                    <div class="col-4 offset-1">
+                    <div class="col-4 ">
                       <div class="card-bodyc" >
                         <div class="mb-2">
                           <div class="">
                             <a class="d-inline-flex align-items-center small" href="#">
 
+                            <?php
+                            $status = $order['status'];
 
+                            echo "<span class='mx-2'> $status </span>";
+
+                             ?>
                             </a>
                           </div>
                           <h2 class="h6 font-weight-normal">
+                            <?php
+                            $status = $order['status'];
+                            if($status == 'cancelled'){
 
+                              echo '<button type="button" data-order-id="'.$order['orderid'].'" class="remove btn btn-danger rounded-pill" >Remove</button>';
+                            }else if($status == 'shipped'){
+                              echo '<button type="button" data-order-id="'.$order['orderid'].'" class="delivered btn btn-success rounded-pill" >Got It</button>';
+
+                            }
+
+                             ?>
                           </h2>
 
                         </div>

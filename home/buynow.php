@@ -387,7 +387,7 @@
 
 
 
-            $query = "SELECT  image, name, description, price, category FROM product_table WHERE id='$item' AND stock > 0 AND status ='selling'";
+            $query = "SELECT  image, name, description, price, category, stock FROM product_table WHERE id='$item' AND stock > 0 AND status ='selling'";
             $result = $conn->query($query);
 
             if($result->num_rows > 0){
@@ -423,7 +423,30 @@
 
               </div>
               <div class="col-12 border text-center my-2 py-4">
-                <input type="hidden" id='fulltextprice' name="" value="<?php echo $row['price'] ?>">
+
+                <h5>Quantity:
+                  <?php if(isset($_REQUEST['quantity'])){
+                    $quantity = $_REQUEST['quantity'];
+                    if($row['stock'] <= $quantity){
+                      $quantity = $row['stock'];
+                    }else if($quantity < 1){
+                      $quantity = 1;
+                    }
+                  }else{
+                    $quantity = 1;
+                  }
+                  echo '<input type="hidden" id="quantity" value="' . $quantity . '">';
+                  echo $quantity;
+                  $price = $row['price'];
+                  $total = $price * $quantity;
+
+                  ?>
+                </h5>
+
+              </div>
+              <div class="col-12 border text-center my-2 py-4">
+
+                <input type="hidden" id='fulltextprice' name="" value="<?php echo $total ?>">
                 <label for="" class='h4 w-100'>Total: <span id='total'> </span> LKR</label>
               </div>
               <!-- End Product -->
@@ -457,7 +480,7 @@
                     if($cartresult->num_rows > 0) {
                       while($cartrow = $cartresult->fetch_assoc()){
 
-
+                        $cart[] = $cartrow['id'];
                         ?>
                         <div class="row items" >
                           <div class="col-3 col-md-2 pr-0">
@@ -505,7 +528,7 @@
                         <?php
                         $total += $cartrow['price'];
                       }
-
+                      // print_r($cart);
                     }
                     ?>
 

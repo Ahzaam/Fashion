@@ -67,7 +67,7 @@ require "pageauth.php";
             <th scope="col">Order ID</th>
             <th scope="col">User ID</th>
             <th scope="col">Product ID</th>
-            <th scope="col">Status</th>
+            <th scope="col">Quantity</th>
             <th scope="col">#</th>
 
           </tr>
@@ -90,7 +90,7 @@ require "pageauth.php";
                 <td><?php echo $id ?></td>
                 <td><?php echo $row['userid']?></td>
                 <td><?php echo $row['product_id']?></td>
-                <td><?php echo $row['status']?></td>
+                <td><?php echo $row['quantity']?></td>
                 <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $row['orderid']?>' name="button">View Details</button> </th>
                 <td><button type="button" class="btn btn-dark rounded-pill" disabled name="button"><i class="fa-solid fa-truck text-success mx-2"></i><i class="fa-solid fa-circle-check text-success"></i></button></td>
 
