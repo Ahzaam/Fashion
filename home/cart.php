@@ -41,13 +41,21 @@
         include '../con.php';
 
         $sesuserid = $_SESSION['userid'];
-          $query = "SELECT * FROM product_table WHERE id in (SELECT product_id FROM cart WHERE customer_id = '$sesuserid')  AND status='selling' ";
-          $wishresult = $conn->query($query);
+        $query = "SELECT product_id, count, cart_id FROM cart WHERE customer_id = '$sesuserid'";
+        $orders = $conn->query($query);
 
 
-        if ($wishresult->num_rows > 0) {
+
+
+        if ($orders->num_rows > 0) {
           echo '<a class="text-end btn btn-primary my-2" href="buynow.php?usercart='.$sesuserid.'" > Buy Now!</a>';
-          while ($row = $wishresult->fetch_assoc()){
+          while ($ordrow = $orders->fetch_assoc()){
+
+            $query = "SELECT * FROM product_table WHERE id='".$ordrow['product_id']."'  AND status='selling' ";
+            $wishresult = $conn->query($query);
+
+            $row = $wishresult->fetch_assoc();
+
        ?>
   <!-- Products -->
   <li class="card py-3 mb-5">
@@ -64,11 +72,12 @@
               <a class="text-secondary" href="view.php?product=<?php echo $row['id']?>" ><?php echo $row['name']; ?></a>
               <p class="text-muted my-2"><?php echo $row['description']; ?></p>
               <?php
-                if($row['stock'] == 0) {
+              $stock = $row['stock'];
+                if($stock == 0) {
                   echo '<span class="badge bg-danger badge-pill ml-1">Out of Stock</span>';
                 }
                ?>
-
+               <p>Available Stock: <?php echo $stock; ?></p>
             </h2>
 
             <div class="d-block">
@@ -76,23 +85,30 @@
             </div>
           </div>
 
-          <div class="mb-3">
-            <a class="d-inline-flex align-items-center small" href="#">
-              <div class="text-warning mr-2">
-                <small class="fas fa-star"></small>
-                <small class="fas fa-star"></small>
-                <small class="fas fa-star"></small>
-                <small class="fas fa-star"></small>
-                <small class="far fa-star text-muted"></small>
-              </div>
-
-            </a>
-          </div>
 
         </div>
       </div>
       <div class="col-4 text-center">
-        <button type="button" class="btn btn-danger rounded-pill my-5" name="button">Remove</button>
+        <button type="button" data-cart-id='<?php echo $ordrow['cart_id'] ?>' class="remove btn btn-danger rounded-pill my-5" name="button">Remove</button>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-4 h5">
+                        <label for="">Quantity: </label>
+                      </div>
+                      <div class="col-2 mp-0 text-end">
+                        <button type="button" data-input='input-<?php echo $row['id'] ?>' data-cart-id='<?php echo $ordrow['cart_id'] ?>'  class="decquantity mp-0 btn btn-secondary rounded-pill px-3 fw-bold" name="button">-</button>
+                      </div>
+                      <div class="col-3 mp-0">
+
+                        <input  type='number' id='input-<?php echo $row['id'] ?>' step='1' disabled class='mp-0 form-control  col-5' value='<?php echo  ($ordrow['count'] > $stock)? $stock:$ordrow['count'] ?>'>
+                      </div>
+                      <div class="col-2 mp-0">
+                        <button type="button"  data-availablestock='<?php echo $stock ?>' data-cart-id='<?php echo $ordrow['cart_id'] ?>' data-input='input-<?php echo $row['id'] ?>' class="incquantity btn mp-0 btn-secondary fw-bold rounded-pill" name="button">+</button>
+                      </div>
+                    </div>
+
+                  </div>
       </div>
 
     </div>
@@ -112,5 +128,11 @@
    ?>
 </ul>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/cart.js">
+
+  </script>
   </body>
 </html>

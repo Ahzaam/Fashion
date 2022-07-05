@@ -462,8 +462,8 @@
 
           }else if(isset($_REQUEST['usercart'])){
 
-            $getcart = "SELECT * FROM product_table WHERE id in (SELECT product_id FROM cart WHERE customer_id = '$userid')  AND stock > 0 AND status='selling'";
-            $cartresult = $conn->query($getcart);
+            $getcart = "SELECT product_id, count FROM cart WHERE customer_id = '$userid'";
+            $cart = $conn->query($getcart);
             ?>
             <input type="hidden" id='ordertype' value="cart">
             <input type="hidden" id='thisid' name="" value="<?php echo $userid ?>">
@@ -477,10 +477,12 @@
 
                     <?php
                     $total = 0;
-                    if($cartresult->num_rows > 0) {
-                      while($cartrow = $cartresult->fetch_assoc()){
+                    if($cart->num_rows > 0) {
+                      while($carts = $cart->fetch_assoc()){
+                        $getproduct = "SELECT * FROM product_table WHERE id = '".$carts['product_id']."'  AND stock > 0 AND status='selling'";
+                        $cartresult = $conn->query($getproduct);
 
-                        $cart[] = $cartrow['id'];
+                        $cartrow = $cartresult->fetch_assoc();
                         ?>
                         <div class="row items" >
                           <div class="col-3 col-md-2 pr-0">
@@ -488,7 +490,7 @@
 
                           </div>
 
-                          <div class="col-4 offset-lg-1">
+                          <div class="col-4 ">
                             <div class="card-bodyc" >
                               <div class="mb-2">
                                 <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#"><?php echo $cartrow['category']; ?></a>
@@ -503,7 +505,7 @@
 
                             </div>
                           </div>
-                          <div class="col-4 offset-1">
+                          <div class="col-4 ">
                             <div class="card-bodyc" >
                               <div class="mb-2">
                                 <div class="">
@@ -524,9 +526,15 @@
                               </div>
                             </div>
                           </div>
+                          <div class="col-2">
+                            <p class=h4>x<?php
+                            $quantity = $carts['count'];
+                            echo  $quantity;
+                            ?></p>
+                          </div>
                         </div>
                         <?php
-                        $total += $cartrow['price'];
+                        $total += $cartrow['price'] * $quantity;
                       }
                       // print_r($cart);
                     }
