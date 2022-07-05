@@ -3,6 +3,8 @@
   if(isset($_POST['type']) && isset($_POST['id']) && isset($_SESSION['login']) && $_SESSION['login']){
 
     $userid = $_SESSION['userid'];
+    $total = 0;
+
     include '../../con.php';
     if($_POST['type'] == 'single'){
       if(isset($_POST['quantity'])){
@@ -29,13 +31,20 @@
       $getcart = "SELECT product_id, count FROM cart WHERE customer_id='$userid'";
       $cartresult = $conn->query($getcart);
       $suc = True;
+
+
+
       if($cartresult->num_rows > 0 ){
         while($row = $cartresult->fetch_assoc()){
           $product_id = $row['product_id'];
           $count = $row['count'];
 
-          $stock = $conn->query("SELECT stock FROM product_table WHERE  id='$product_id'")->fetch_assoc()['stock'];
-          if($stock < $count){
+          $prodet = $conn->query("SELECT stock, price FROM product_table WHERE  id='$product_id'")->fetch_assoc();
+          $stock = $prodet['stock'];
+
+          if($stock == 0){
+            continue;
+          }elseif($stock < $count){
             $count = $stock;
           }else if($count == 0){
             $count = 1;
@@ -45,6 +54,8 @@
           $deduct = $conn->query($deduct);
 
           if($deduct){
+            $total += $prodet['price'] * $count;
+
             $query = "INSERT INTO orders(orderuid, userid, product_id, quantity) VALUES('$uniqid', '$userid', '$product_id', '$count')";
             $result = $conn->query($query);
           }else{
@@ -56,6 +67,10 @@
           }else{
             $suc = False;
           }
+        }
+        if($total > 0){
+          $paymentquery = "INSERT INTO payments(order_uid, userid, total) VALUES('$uniqid', '$userid', '$total')";
+          $payment = $conn->query($paymentquery);
         }
       }
       if($suc){

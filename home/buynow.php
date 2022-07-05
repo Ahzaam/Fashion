@@ -479,64 +479,70 @@
                     $total = 0;
                     if($cart->num_rows > 0) {
                       while($carts = $cart->fetch_assoc()){
-                        $getproduct = "SELECT * FROM product_table WHERE id = '".$carts['product_id']."'  AND stock > 0 AND status='selling'";
+                        $getproduct = "SELECT * FROM product_table WHERE id = '".$carts['product_id']."' AND stock > 0  AND status='selling'";
                         $cartresult = $conn->query($getproduct);
 
+
+
                         $cartrow = $cartresult->fetch_assoc();
-                        ?>
-                        <div class="row items" >
-                          <div class="col-3 col-md-2 pr-0">
-                            <div class="bg-img-hero-center rounded-left h-100"><img src="../<?php echo $cartrow['image']; ?>" class='w-100' alt=""></div>
 
-                          </div>
-
-                          <div class="col-4 ">
-                            <div class="card-bodyc" >
-                              <div class="mb-2">
-                                <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#"><?php echo $cartrow['category']; ?></a>
-                                <h2 class="h6 font-weight-normal">
-                                  <a class="text-secondary" href="view.php?product=<?php echo $cartrow['id']?>"><?php echo $cartrow['name']; ?></a>
-
-                                </h2>
-
-                              </div>
-
-
+                        if($cartresult->num_rows > 0) {
+                          ?>
+                          <div class="row items" >
+                            <div class="col-3 col-md-2 pr-0">
+                              <div class="bg-img-hero-center rounded-left h-100"><img src="../<?php echo $cartrow['image']; ?>" class='w-100' alt=""></div>
 
                             </div>
-                          </div>
-                          <div class="col-4 ">
-                            <div class="card-bodyc" >
-                              <div class="mb-2">
-                                <div class="">
-                                  <a class="d-inline-flex align-items-center small" href="#">
-                                    <div class="text-warning mr-2" style="font-size:10px;">
-                                      <small class="fas fa-star "></small>
-                                      <small class="far fa-star text-muted"></small>
-                                      <small class="far fa-star text-muted"></small>
-                                      <small class="far fa-star text-muted"></small>
-                                      <small class="far fa-star text-muted"></small>
-                                    </div>
 
-                                  </a>
+                            <div class="col-4 ">
+                              <div class="card-bodyc" >
+                                <div class="mb-2">
+                                  <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#"><?php echo $cartrow['category']; ?></a>
+                                  <h2 class="h6 font-weight-normal">
+                                    <a class="text-secondary" href="view.php?product=<?php echo $cartrow['id']?>"><?php echo $cartrow['name']; ?></a>
+
+                                  </h2>
+
                                 </div>
-                                <h2 class="h6 font-weight-normal">
-                                  <a class="text-danger " href="#"><?php echo $cartrow['price']; ?> LKR</a>
-                                </h2>
+
+
+
                               </div>
                             </div>
+                            <div class="col-4 ">
+                              <div class="card-bodyc" >
+                                <div class="mb-2">
+                                  <div class="">
+                                    <a class="d-inline-flex align-items-center small" href="#">
+                                      <div class="text-warning mr-2" style="font-size:10px;">
+                                        <small class="fas fa-star "></small>
+                                        <small class="far fa-star text-muted"></small>
+                                        <small class="far fa-star text-muted"></small>
+                                        <small class="far fa-star text-muted"></small>
+                                        <small class="far fa-star text-muted"></small>
+                                      </div>
+
+                                    </a>
+                                  </div>
+                                  <h2 class="h6 font-weight-normal">
+                                    <a class="text-danger " href="#"><?php echo $cartrow['price']; ?> LKR</a>
+                                  </h2>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <p class=h4>x<?php
+                              $quantity = $carts['count'];
+                              echo  $quantity;
+                              ?></p>
+                            </div>
                           </div>
-                          <div class="col-2">
-                            <p class=h4>x<?php
-                            $quantity = $carts['count'];
-                            echo  $quantity;
-                            ?></p>
-                          </div>
-                        </div>
-                        <?php
-                        $total += $cartrow['price'] * $quantity;
+                          <?php
+                          $total += $cartrow['price'] * $quantity;
+                        }
+
                       }
-                      // print_r($cart);
+
                     }
                     ?>
 
