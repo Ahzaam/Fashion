@@ -40,7 +40,7 @@ require "pageauth.php";
   </div>
   <br><br>
   <div class="container my-5">
-      <h1 class='display-1'>Order's</h1>
+    <h1 class='display-1'>Order's</h1>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="orders.php">New Orders</a>
@@ -58,46 +58,64 @@ require "pageauth.php";
         <a class="nav-link " href="cancelled.php">Cancelled</a>
       </li>
     </ul>
-  <div class="row">
-    <div class="col-lg-9">
-      <table class="table">
-        <thead>
-          <tr >
+    <div class="row">
+      <div class="col-lg-9">
+        <table class="table">
+          <thead>
+            <tr >
 
-            <th scope="col">No</th>
-            <th scope="col">Order UID</th>
-            <th scope="col">User ID</th>
-            <th scope="col">Product ID</th>
-            <th scope="col">Quantity</th>
+              <th scope="col">No</th>
+              <th scope="col">Order UID</th>
+              <th scope="col">User ID</th>
+              <th scope="col">Product ID</th>
+              <th scope="col">Quantity</th>
 
-            <th scope="col">#</th>
+              <th scope="col">#</th>
 
-          </tr>
-        </thead>
-        <tbody>
+            </tr>
+          </thead>
+          <tbody>
 
 
-          <?php
-          include "../con.php";
-          $query = "SELECT * FROM orders WHERE status = 'pending'";
-          $result = $conn->query($query);
+            <?php
+            include "../con.php";
+            $query = "SELECT * FROM orders WHERE status = 'pending'";
+            $result = $conn->query($query);
 
-          if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-              $id = $row['orderuid'];
-              $orderid = $row['orderid'];
-              ?>
-              <tr class='parent'>
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                $id = $row['orderuid'];
+                $orderid = $row['orderid'];
+                ?>
+                <tr class='parent'>
 
-                <td><?php echo $orderid ?></td>
-                <td><?php echo $id ?></td>
-                <td><?php echo $row['userid']?></td>
-                <td><?php echo $row['product_id']?></td>
-                <td><?php echo $row['quantity']?></td>
-                
-                <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $orderid ?>' name="button">View Details</button> </th>
-                <td><button type="button" data-product-id='<?php echo $row['product_id'] ?>'  data-order-id="<?php echo $orderid ?>" class="confirm btn btn-primary rounded-pill" name="button">Confirm Order</button></td>
-                <td><button type="button" data-product-id='<?php echo $row['product_id'] ?>'  data-order-id="<?php echo $orderid ?>" class="cancel btn btn-danger rounded-pill" name="button">Cancel Order</button></td>
+                  <td><?php echo $orderid ?></td>
+                  <td><?php echo $id ?></td>
+                  <td><?php echo $row['userid']?></td>
+                  <td><?php echo $row['product_id']?></td>
+                  <td><?php echo $row['quantity']?></td>
+
+                  <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $orderid ?>' name="button">View Details</button> </th>
+                  <td>
+                    <button type="button"
+                    data-product-id='<?php echo $row['product_id'] ?>'
+                    data-order-id="<?php echo $orderid ?>"
+                    data-quantity="<?php echo $row['quantity'] ?>"
+                    class="confirm btn btn-primary rounded-pill"
+                    name="button">Confirm Order
+                  </button>
+                </td>
+
+
+                <td>
+                  <button type="button"
+                  data-product-id='<?php echo $row['product_id'] ?>'
+                  data-order-id="<?php echo $orderid ?>"
+                  data-quantity="<?php echo $row['quantity'] ?>"
+                  class="cancel btn btn-danger rounded-pill"
+                  name="button">Cancel Order
+                </button>
+              </td>
 
 
 
@@ -118,71 +136,71 @@ require "pageauth.php";
     <div class="col-lg-3">
 
 
-<div class="card" aria-hidden="true">
-  <div class="row">
-    <div class="col-5">
-      <img src="images/placeholder-3x4.jpg" class="card-img-top" id='proimg' alt="...">
-    </div>
-    <div class="col-6 my-3 placeholder-glow">
-      <div class="" id='name'>
-        <span class="placeholder col-12"></span>
-      </div>
-      <div class="" id='price'>
-        <span class="placeholder col-4"></span>
-      </div>
-      <div class="" id='stock'>
-        <span class="placeholder col-7"></span>
-      </div>
+      <div class="card" aria-hidden="true">
+        <div class="row">
+          <div class="col-5">
+            <img src="images/placeholder-3x4.jpg" class="card-img-top" id='proimg' alt="...">
+          </div>
+          <div class="col-6 my-3 placeholder-glow">
+            <div class="" id='name'>
+              <span class="placeholder col-12"></span>
+            </div>
+            <div class="" id='price'>
+              <span class="placeholder col-4"></span>
+            </div>
+            <div class="" id='stock'>
+              <span class="placeholder col-7"></span>
+            </div>
 
-    </div>
-  </div>
-
-
-  <div class="card-body">
-    <h5 class="card-title placeholder-glow" id='customer'>
-      <span class="placeholder col-6"></span>
-    </h5>
-    <p class="card-text " >
-      <div class="row placeholder-glow">
-
-        <div class="" id='address_line1'>
-            <span class="placeholder col-5"></span>
+          </div>
         </div>
 
-        <div class="" id='address_line2'>
-            <span class="placeholder col-8"></span>
-        </div>
 
-        <div class="" id='state'>
-            <span class="placeholder col-4"></span>
-        </div>
-        <div class="" id='phone'>
+        <div class="card-body">
+          <h5 class="card-title placeholder-glow" id='customer'>
             <span class="placeholder col-6"></span>
-        </div>
-        <div class="" id='postalcode'>
-            <span class="placeholder col-7"></span>
-        </div>
+          </h5>
+          <p class="card-text " >
+            <div class="row placeholder-glow">
 
+              <div class="" id='address_line1'>
+                <span class="placeholder col-5"></span>
+              </div>
+
+              <div class="" id='address_line2'>
+                <span class="placeholder col-8"></span>
+              </div>
+
+              <div class="" id='state'>
+                <span class="placeholder col-4"></span>
+              </div>
+              <div class="" id='phone'>
+                <span class="placeholder col-6"></span>
+              </div>
+              <div class="" id='postalcode'>
+                <span class="placeholder col-7"></span>
+              </div>
+
+            </div>
+          </p>
+
+        </div>
       </div>
-    </p>
-
-  </div>
-</div>
     </div>
   </div>
 
 
-    <div class="row text-end w-100">
-      <div class="col-lg-12 col-md-12 text-end text-dark">
-        <p  >All Rights Reserved &reg; Copyright GLiDE.Ceylon.launchs Ahzam  &copy; <span id='date' ></span> - <span  id='datefu'> </span </p>
+  <div class="row text-end w-100">
+    <div class="col-lg-12 col-md-12 text-end text-dark">
+      <p  >All Rights Reserved &reg; Copyright GLiDE.Ceylon.launchs Ahzam  &copy; <span id='date' ></span> - <span  id='datefu'> </span </p>
       </div>
       <script type="text/javascript">
-        let date = document.getElementById('date'); //
-        let datefu = document.getElementById('datefu');
-        const d = new Date();
-        let year = d.getFullYear();
-        date.innerHTML = year;
-        datefu.innerHTML = year + 5;
+      let date = document.getElementById('date'); //
+      let datefu = document.getElementById('datefu');
+      const d = new Date();
+      let year = d.getFullYear();
+      date.innerHTML = year;
+      datefu.innerHTML = year + 5;
 
       </script>
     </div>

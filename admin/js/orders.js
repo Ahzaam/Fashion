@@ -2,11 +2,13 @@ $(document).ready(function() {
   $('.confirm').click(function () {
     let id = $(this).attr('data-order-id');
     let product = $(this).attr('data-product-id');
-    let data = {orderid:id, status:'confirmed', productid:product}
+    let quantity = parseInt($(this).attr('data-quantity'))
+    let data = {orderid:id, status:'confirmed', productid:product, quantity:quantity}
     let parent = $(this).closest('.parent')
     $.post({url:'api/orderstatus.php',
             data: data,
             success: function(data){
+            
                 if(data === '200'){
                   parent.remove();
                 }else{
@@ -40,7 +42,8 @@ $(document).ready(function() {
   $('.cancel').click(function () {
     let id = $(this).attr('data-order-id');
     let product = $(this).attr('data-product-id');
-    let data = {orderid:id, status:'cancelled', productid:product}
+    let quantity = parseInt($(this).attr('data-quantity'))
+    let data = {orderid:id, status:'cancelled', productid:product, quantity:quantity}
     let parent = $(this).closest('.parent')
 
     $.post({url:'api/orderstatus.php',
