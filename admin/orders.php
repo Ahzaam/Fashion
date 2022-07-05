@@ -29,6 +29,27 @@ require "pageauth.php";
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+  <style media="screen">
+    .bg0{
+      background-color: #daffff;
+    }
+    .bg1{
+        background-color: #fffcd7;
+    }
+    .bg2{
+      background-color: #f9ebfb;
+    }
+    .bg3{
+      background-color: #eaffd1;
+    }
+    .bg4{
+      background-color: #d4ffe4;
+    }
+    .bg5{
+      background-color: #e4eefe;
+    }
+  </style>
+
 </head>
 <body>
   <div class="container position-relative ">
@@ -82,12 +103,16 @@ require "pageauth.php";
             $query = "SELECT * FROM orders WHERE status = 'pending'";
             $result = $conn->query($query);
 
+
             if ($result->num_rows > 0) {
+              $recentuid = '';
               while ($row = $result->fetch_assoc()) {
                 $id = $row['orderuid'];
                 $orderid = $row['orderid'];
+
+
                 ?>
-                <tr class='parent'>
+                <tr class='parent <?php echo $id ?>'>
 
                   <td><?php echo $orderid ?></td>
                   <td><?php echo $id ?></td>
@@ -96,121 +121,136 @@ require "pageauth.php";
                   <td><?php echo $row['quantity']?></td>
 
                   <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $orderid ?>' name="button">View Details</button> </th>
+
+                  <?php
+                  if($id != $recentuid){
+                    $recentuid = $id;
+                    echo "<input type='hidden' class='uniqclasses' value='".$recentuid."'>"
+                    ?>
+
+                    <td>
+                      <button type="button"
+                      data-product-id='<?php echo $row['product_id'] ?>'
+                      data-order-id="<?php echo $id ?>"
+                      data-quantity="<?php echo $row['quantity'] ?>"
+                      class="confirm btn btn-primary rounded-pill"
+                      name="button">Confirm Order
+                    </button>
+                  </td>
+
+
                   <td>
                     <button type="button"
                     data-product-id='<?php echo $row['product_id'] ?>'
-                    data-order-id="<?php echo $orderid ?>"
+                    data-order-id="<?php echo $id ?>"
                     data-quantity="<?php echo $row['quantity'] ?>"
-                    class="confirm btn btn-primary rounded-pill"
-                    name="button">Confirm Order
+                    class="cancel btn btn-danger rounded-pill"
+                    name="button">Cancel Order
                   </button>
                 </td>
 
 
-                <td>
-                  <button type="button"
-                  data-product-id='<?php echo $row['product_id'] ?>'
-                  data-order-id="<?php echo $orderid ?>"
-                  data-quantity="<?php echo $row['quantity'] ?>"
-                  class="cancel btn btn-danger rounded-pill"
-                  name="button">Cancel Order
-                </button>
-              </td>
+
+                <?php
+              }else{
+                echo '<td></td> <td></td>';
+              }
+
+              ?>
 
 
-
-              </tr>
-              <?php
-            }
+            </tr>
+            <?php
           }
+        }
 
-          ?>
-
-
-
-
-        </tbody>
-
-      </table>
-    </div>
-    <div class="col-lg-3">
+        ?>
 
 
-      <div class="card" aria-hidden="true">
-        <div class="row">
-          <div class="col-5">
-            <img src="images/placeholder-3x4.jpg" class="card-img-top" id='proimg' alt="...">
+
+
+      </tbody>
+
+    </table>
+  </div>
+  <div class="col-lg-3">
+
+
+    <div class="card" aria-hidden="true">
+      <div class="row">
+        <div class="col-5">
+          <img src="images/placeholder-3x4.jpg" class="card-img-top" id='proimg' alt="...">
+        </div>
+        <div class="col-6 my-3 placeholder-glow">
+          <div class="" id='name'>
+            <span class="placeholder col-12"></span>
           </div>
-          <div class="col-6 my-3 placeholder-glow">
-            <div class="" id='name'>
-              <span class="placeholder col-12"></span>
+          <div class="" id='price'>
+            <span class="placeholder col-4"></span>
+          </div>
+          <div class="" id='stock'>
+            <span class="placeholder col-7"></span>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="card-body">
+        <h5 class="card-title placeholder-glow" id='customer'>
+          <span class="placeholder col-6"></span>
+        </h5>
+        <p class="card-text " >
+          <div class="row placeholder-glow">
+
+            <div class="" id='address_line1'>
+              <span class="placeholder col-5"></span>
             </div>
-            <div class="" id='price'>
+
+            <div class="" id='address_line2'>
+              <span class="placeholder col-8"></span>
+            </div>
+
+            <div class="" id='state'>
               <span class="placeholder col-4"></span>
             </div>
-            <div class="" id='stock'>
+            <div class="" id='phone'>
+              <span class="placeholder col-6"></span>
+            </div>
+            <div class="" id='postalcode'>
               <span class="placeholder col-7"></span>
             </div>
 
           </div>
-        </div>
+        </p>
 
-
-        <div class="card-body">
-          <h5 class="card-title placeholder-glow" id='customer'>
-            <span class="placeholder col-6"></span>
-          </h5>
-          <p class="card-text " >
-            <div class="row placeholder-glow">
-
-              <div class="" id='address_line1'>
-                <span class="placeholder col-5"></span>
-              </div>
-
-              <div class="" id='address_line2'>
-                <span class="placeholder col-8"></span>
-              </div>
-
-              <div class="" id='state'>
-                <span class="placeholder col-4"></span>
-              </div>
-              <div class="" id='phone'>
-                <span class="placeholder col-6"></span>
-              </div>
-              <div class="" id='postalcode'>
-                <span class="placeholder col-7"></span>
-              </div>
-
-            </div>
-          </p>
-
-        </div>
       </div>
     </div>
   </div>
+</div>
 
 
-  <div class="row text-end w-100">
-    <div class="col-lg-12 col-md-12 text-end text-dark">
-      <p  >All Rights Reserved &reg; Copyright GLiDE.Ceylon.launchs Ahzam  &copy; <span id='date' ></span> - <span  id='datefu'> </span </p>
-      </div>
-      <script type="text/javascript">
-      let date = document.getElementById('date'); //
-      let datefu = document.getElementById('datefu');
-      const d = new Date();
-      let year = d.getFullYear();
-      date.innerHTML = year;
-      datefu.innerHTML = year + 5;
-
-      </script>
+<div class="row text-end w-100">
+  <div class="col-lg-12 col-md-12 text-end text-dark">
+    <p  >All Rights Reserved &reg; Copyright GLiDE.Ceylon.launchs Ahzam  &copy; <span id='date' ></span> - <span  id='datefu'> </span </p>
     </div>
+    <script type="text/javascript">
+    let date = document.getElementById('date'); //
+    let datefu = document.getElementById('datefu');
+    const d = new Date();
+    let year = d.getFullYear();
+    date.innerHTML = year;
+    datefu.innerHTML = year + 5;
 
-
+    </script>
   </div>
 
-  <script src='js/orders.js'>
 
-  </script>
+</div>
+
+<script src='js/orders.js'>
+
+</script>
 
 
 </body>

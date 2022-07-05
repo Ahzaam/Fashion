@@ -1,4 +1,17 @@
 $(document).ready(function() {
+
+  let i = 0
+  $('.uniqclasses').each(function(index) {
+    let classes = '.'+$(this).val()
+    $(classes).addClass('bg' + i)
+    i++
+    if(i == 6){
+      i=0
+    }
+  })
+
+
+
   $('.confirm').click(function () {
     let id = $(this).attr('data-order-id');
     let product = $(this).attr('data-product-id');
@@ -8,9 +21,9 @@ $(document).ready(function() {
     $.post({url:'api/orderstatus.php',
             data: data,
             success: function(data){
-            
+
                 if(data === '200'){
-                  parent.remove();
+                  location.reload()
                 }else{
                   alert('Something went wrong')
                 }
@@ -28,8 +41,9 @@ $(document).ready(function() {
     $.post({url:'api/orderstatus.php',
             data: data,
             success: function(data){
+              console.log(data)
               if(data === '200'){
-                parent.remove();
+              location.reload()
               }else{
                 alert('Something went wrong')
               }
@@ -49,8 +63,9 @@ $(document).ready(function() {
     $.post({url:'api/orderstatus.php',
             data: data,
             success: function(data){
+
               if(data === '200'){
-                parent.remove();
+                location.reload()
               }else{
                 alert('Something went wrong')
               }

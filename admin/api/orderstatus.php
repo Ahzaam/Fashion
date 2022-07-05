@@ -14,6 +14,9 @@ if(isset($_SESSION['dbpasscode']) && $_SESSION['dbpasscode'] == 'secure'){
 
       $increment = "UPDATE product_table SET stock= stock + $quantity WHERE id='$product_id'";
       $deduct = $conn->query($increment);
+
+      $cancelpayment = "UPDATE payments SET status = 'cancelled' WHERE order_uid='$orderid'";
+      $cancel = $conn->query($cancelpayment);
     }else if($status == 'confirmed'){
       $product_id = $_POST['productid'];
       $quantity = $_POST['quantity'];
@@ -22,7 +25,7 @@ if(isset($_SESSION['dbpasscode']) && $_SESSION['dbpasscode'] == 'secure'){
       $inc = $conn->query($selled);
     }
 
-    $query = "UPDATE orders SET status='$status' WHERE orderid='$orderid'";
+    $query = "UPDATE orders SET status='$status' WHERE orderuid='$orderid'";
     $result = $conn->query($query);
 
     if($result){

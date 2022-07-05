@@ -29,6 +29,29 @@ require "pageauth.php";
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
+    <style media="screen">
+      .bg0{
+        background-color: #daffff;
+      }
+      .bg1{
+          background-color: #fffcd7;
+      }
+      .bg2{
+        background-color: #f9ebfb;
+      }
+      .bg3{
+        background-color: #eaffd1;
+      }
+      .bg4{
+        background-color: #d4ffe4;
+      }
+      .bg5{
+        background-color: #e4eefe;
+      }
+    </style>
+
+
 </head>
 <body>
   <div class="container position-relative ">
@@ -79,21 +102,34 @@ require "pageauth.php";
           include "../con.php";
           $query = "SELECT * FROM orders WHERE status = 'confirmed'";;
           $result = $conn->query($query);
-
+          $recentuid = '';
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
               $id = $row['orderuid'];
               $orderid = $row['orderid'];
               ?>
-              <tr class='parent'>
+              <tr class='parent <?php echo $id ?>'>
                 <td><?php echo $orderid ?></td>
                 <td><?php echo $id ?></td>
                 <td><?php echo $row['userid']?></td>
                 <td><?php echo $row['product_id']?></td>
                 <td><?php echo $row['quantity']?></td>
                 <th scope="row"><button type="button" class="btn btn-info product rounded-pill" data-order-id='<?php echo $orderid?>' name="button">View Details</button> </th>
-                <td><button type="button"  data-order-id="<?php echo $orderid ?>" class="shipped btn btn-success rounded-pill" name="button">Make Shipped</button></td>
 
+                <?php
+                if($id != $recentuid){
+                  $recentuid = $id;
+                  echo "<input type='hidden' class='uniqclasses' value='".$recentuid."'>"
+                  ?>
+
+                <td><button type="button"  data-order-id="<?php echo $id ?>" class="shipped btn btn-success rounded-pill" name="button">Make Shipped</button></td>
+
+                <?php
+              }else{
+                echo '<td></td> <td></td>';
+              }
+
+              ?>
 
 
 
