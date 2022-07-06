@@ -275,10 +275,10 @@ require('pageauth.php')
     </div>
 
 
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3" onclick="location.href='stats/'">
       <div class="our-team">
         <div class="picture">
-          <img alt='Image' class="img-fluid" src="images/stats.png">
+          <img alt='Image' class="img-fluid" src="images/stats.png" >
         </div>
         <div class="team-content">
           <h3 class="name">Statics</h3>

@@ -9,11 +9,20 @@ if(isset($_SESSION['dbpasscode']) && $_SESSION['dbpasscode'] == 'secure'){
 
     if($status == 'cancelled'){
       $product_id = $_POST['productid'];
-      $quantity = $_POST['quantity'];
 
 
-      $increment = "UPDATE product_table SET stock= stock + $quantity WHERE id='$product_id'";
-      $deduct = $conn->query($increment);
+      $quantiyquery = "SELECT product_id, quantity FROM orders WHERE orderuid='$orderid'";
+      $resquantity = $conn->query($quantiyquery);
+
+      if($resquantity->num_rows > 0){
+        while($row = $resquantity->fetch_assoc()){
+          $quantity = $row['quantity'];
+          $id = $row['product_id'];
+            $increment = "UPDATE product_table SET stock= stock + $quantity WHERE id = '$id' ";
+          $deduct = $conn->query($increment);
+        }
+      }
+
 
       $cancelpayment = "UPDATE payments SET status = 'cancelled' WHERE order_uid='$orderid'";
       $cancel = $conn->query($cancelpayment);

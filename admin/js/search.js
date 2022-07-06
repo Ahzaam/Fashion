@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     let search = $(this).val();
     if(value === search || String.fromCharCode(e.keyCode) === ' ' ) {
-
+      return
     }else{
       value = search
       url = 'api/search.php';

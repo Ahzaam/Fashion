@@ -41,7 +41,6 @@ $(document).ready(function() {
     $.post({url:'api/orderstatus.php',
             data: data,
             success: function(data){
-              console.log(data)
               if(data === '200'){
               location.reload()
               }else{
@@ -63,7 +62,6 @@ $(document).ready(function() {
     $.post({url:'api/orderstatus.php',
             data: data,
             success: function(data){
-
               if(data === '200'){
                 location.reload()
               }else{

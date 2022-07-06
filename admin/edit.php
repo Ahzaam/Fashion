@@ -314,7 +314,7 @@
         let year = d.getFullYear();
         date.innerHTML = year;
         datefu.innerHTML = year + 5;
-      
+
       </script>
     </div>
   </div>
