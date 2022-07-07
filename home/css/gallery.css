@@ -1,11 +1,8 @@
-.dropdown{border-radius:5px;width:180px;}
+
 .dropdown:hover .dropdown-menu{
   display:block;
 }
-.dropdown-menu{
-  text-align:center;
 
-}
 img[type='profile']{
   margin-bottom:25px;
   max-width:170px;

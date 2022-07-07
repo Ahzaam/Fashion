@@ -25,10 +25,10 @@ if(isset($_POST['type']) && isset($_POST['id']) && isset($_SESSION['login']) && 
     $getproprice = "SELECT price FROM product_table WHERE id='$product_id'";
     $price = $conn->query($getproprice);
 
-    $price = $price->fetch_assoc()['price'];
+    $total = $price->fetch_assoc()['price'] * $quantity;
 
 
-    $paymentquery = "INSERT INTO payments(order_uid, userid, total) VALUES('$uniqid', '$userid', '$price')";
+    $paymentquery = "INSERT INTO payments(order_uid, userid, total) VALUES('$uniqid', '$userid', '$total')";
     $payment = $conn->query($paymentquery);
 
     if($result){

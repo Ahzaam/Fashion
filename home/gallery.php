@@ -10,14 +10,14 @@ session_start(); ?>
   <title>Gallery</title>
   <link rel="icon" href="images/logo-min-c.jpg">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
-    integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+  integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
@@ -55,50 +55,35 @@ session_start(); ?>
             </li>
 
 
-            <li class="nav-item dropdown">
-              <!-- first is the link in your navbar -->
-              <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
 
-              <!-- your mega menu starts here! -->
-              <div class="dropdown-menu dropdown-menu-right text-start" aria-labelledby="servicesDropdown">
+            <li class="nav-item dropdown mx-3">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+                <?php
 
-                <!-- the standard dropdown items -->
-                <a class="dropdown-item" href="#">What we do</a>
-                <a class="dropdown-item" href="#">How we fit your needs</a>
 
-                <!-- next, a divider to tidy things up -->
-                <div class="dropdown-divider"></div>
+                $querycategory = "SELECT  DISTINCT category FROM product_table WHERE stock > 0 AND status='selling'";
+                $catresult = $conn->query($querycategory);
 
-                <!-- finally, using flex to create your layout -->
-                <div class="d-md-flex align-items-start justify-content-start">
 
-                  <div>
-                    <div class="dropdown-header">Development</div>
-                    <a class="dropdown-item" href="#">Bespoke software</a>
-                    <a class="dropdown-item" href="#">Mobile apps</a>
-                    <a class="dropdown-item" href="#">Websites</a>
-                  </div>
 
-                  <div>
-                    <div class="dropdown-header">Professional Services</div>
-                    <a class="dropdown-item" href="#">Project rescue</a>
-                    <a class="dropdown-item" href="#">Source code recovery</a>
-                    <a class="dropdown-item" href="#">Application support &amp; maintenance</a>
-                  </div>
 
-                  <div>
-                    <div class="dropdown-header">Fixed Price Services</div>
-                    <a class="dropdown-item" href="#">Add cookie consent</a>
-                    <a class="dropdown-item" href="#">Add captcha</a>
-                    <a class="dropdown-item" href="#">Add core data</a>
-                    <a class="dropdown-item" href="#">Custom error pages</a>
-                    <a class="dropdown-item" href="#">Contact form creation</a>
-                    <a class="dropdown-item" href="#">Automated backups</a>
-                    <a class="dropdown-item" href="#">Image to HTML</a>
-                  </div>
-                </div>
-              </div>
+
+                if($catresult->num_rows > 0) {
+                  while ($row = $catresult->fetch_assoc()) {
+                    $category = $row['category'];
+                    echo '<li><a class="dropdown-item" href="category.php?category='.$category.'">'.$category.'</a></li>';
+                  }
+                }
+
+                ?>
+              </ul>
             </li>
+
+
             <li class="nav-item">
               <a class="nav-link" href="gallery.php">Gallery</a>
             </li>
@@ -114,14 +99,14 @@ session_start(); ?>
 
     <div class="container my-5 ">
       <div class="input-group mb-3 my-5 ">
-    <input type="text" class="form-control" onsearch='postsearch()' id='searchingallery' placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-  </div>
+        <input type="text" class="form-control" onsearch='postsearch()' id='searchingallery' placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+      </div>
 
-  <div class="gridcont my-5" >
-    <div class="row row-cols-1 row-cols-md-4  row-cols-2 g-4 " id='gridcont'>
-    </div>
-  </div>
+      <div class="gridcont my-5" >
+        <div class="row row-cols-1 row-cols-md-4  row-cols-2 g-4 " id='gridcont'>
+        </div>
+      </div>
       <div class="row row-cols-1 row-cols-md-4 g-4 ">
         <?php
 
@@ -156,8 +141,8 @@ session_start(); ?>
       <div class="row text-end w-100 my-5">
         <div class="col-lg-12 col-md-12 text-end text-dark">
           <p  >All Rights Reserved &reg; Copyright GLiDE.Ceylon.launchs Ahzam  &copy; <span id='date' ></span> - <span  id='datefu'> </span </p>
-        </div>
-        <script type="text/javascript">
+          </div>
+          <script type="text/javascript">
           let date = document.getElementById('date'); //
           let datefu = document.getElementById('datefu');
           const d = new Date();
@@ -165,17 +150,17 @@ session_start(); ?>
           date.innerHTML = year;
           datefu.innerHTML = year + 5;
 
-        </script>
+          </script>
+        </div>
       </div>
-    </div>
-    <div id='lightbox'>
+      <div id='lightbox'>
 
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src='js/gallery.js'></script>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src='js/gallery.js'></script>
 
 
-  </body>
-  </html>
+    </body>
+    </html>

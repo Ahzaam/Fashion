@@ -181,14 +181,10 @@ span{
   display: table;
 }
 
-.dropdown{border-radius:5px;width:180px;}
 .dropdown:hover .dropdown-menu{
   display:block;
 }
-.dropdown-menu{
-  text-align:center;
 
-}
 
 .serchimg{
   width:60px;

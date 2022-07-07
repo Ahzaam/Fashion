@@ -57,7 +57,7 @@
       <div class="col-8 offset-lg-1 col-lg-4">
         <div class="card-body py-5 px-md-4">
           <div class="mb-2">
-            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#"><?php echo $row['category']; ?></a>
+            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="category.php?category=<?php echo $row['category']; ?>"><?php echo $row['category']; ?></a>
             <h2 class="h6 font-weight-normal">
               <a class="text-secondary" href="view.php?product=<?php echo $row['id']?>" ><?php echo $row['name']; ?></a>
               <p class="text-muted my-2"><?php echo $row['description']; ?></p>
