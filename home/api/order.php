@@ -4,9 +4,11 @@ if(isset($_POST['type']) && isset($_POST['id']) && isset($_SESSION['login']) && 
 
   $userid = $_SESSION['userid'];
   $total = 0;
+  $uniqid = uniqid();
 
   include '../../con.php';
   if($_POST['type'] == 'single'){
+
     if(isset($_POST['quantity'])){
       $quantity = $_POST['quantity'];
     }else{
@@ -17,7 +19,6 @@ if(isset($_POST['type']) && isset($_POST['id']) && isset($_SESSION['login']) && 
     $deduct = "UPDATE product_table SET stock= stock - $quantity WHERE id='$product_id' AND stock > 0";
     $deduct = $conn->query($deduct);
 
-    $uniqid =  uniqid();
 
     $query = "INSERT INTO orders(orderuid, userid, product_id, quantity) VALUES('$uniqid', '$userid', '$product_id', '$quantity')";
     $result = $conn->query($query);
@@ -38,7 +39,7 @@ if(isset($_POST['type']) && isset($_POST['id']) && isset($_SESSION['login']) && 
     }
 
   }else if($_POST['type'] == 'cart'){
-    $uniqid = uniqid();
+
     $getcart = "SELECT product_id, count FROM cart WHERE customer_id='$userid'";
     $cartresult = $conn->query($getcart);
     $suc = True;
